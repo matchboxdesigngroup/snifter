@@ -15,6 +15,9 @@ $directories['includes'] = array(
 	'debug',
 	'titles',
 );
+$directories['classes']  = array(
+	'class-sn-theme-wrapper',
+);
 
 foreach ( $directories as $directory => $files ) {
 	if ( empty( $files ) ) continue;
