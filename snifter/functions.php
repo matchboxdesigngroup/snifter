@@ -17,6 +17,7 @@ $directories['includes'] = array(
 );
 $directories['classes']  = array(
 	'class-sn-theme-wrapper',
+	'class-sn-utilities',
 	'class-sn-form-fields',
 );
 
