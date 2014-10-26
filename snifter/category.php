@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying Author archive pages
+ * The template for displaying Category pages
  *
- * @link        http://codex.wordpress.org/Template_Hierarchy#Author_display
+ * @link http://codex.wordpress.org/Template_Hierarchy
  *
  * @package     WordPress
  * @subpackage  Snifter

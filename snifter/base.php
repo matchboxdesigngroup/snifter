@@ -8,9 +8,9 @@
 		<div class="wrap" role="document">
 			<div class="content">
 				<?php get_template_part( 'templates/partials/page-header' ); ?>
-				<div class="main" role="main">
+				<section id="primary" class="content-area main" role="main">
 					<?php include sn_template_path(); ?>
-				</div><?php //.main ?>
+				</section><?php //.main ?>
 				<?php if ( true ) { ?>
 				<aside class="sidebar" role="complementary">
 					<?php include sn_sidebar_path(); ?>

@@ -1,8 +1,6 @@
 <?php
 /**
- * The template for displaying Author archive pages
- *
- * @link        http://codex.wordpress.org/Template_Hierarchy#Author_display
+ * The template for displaying Search Results pages
  *
  * @package     WordPress
  * @subpackage  Snifter
