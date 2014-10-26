@@ -17,8 +17,10 @@ $directories['includes'] = array(
 );
 $directories['classes']  = array(
 	'class-sn-theme-wrapper',
+	'class-sn-form-fields',
 );
 
+// Require all the things!!!
 foreach ( $directories as $directory => $files ) {
 	if ( empty( $files ) ) continue;
 
