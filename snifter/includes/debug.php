@@ -7,16 +7,24 @@
  * @since       Snifter 1.0.0
  */
 
-global  $sn_utilities;
+
 
 /**
  * Enables Jetpack devleopment mode.
  *
  * @todo  Add localhost check.
  */
-if ( $sn_utilities->is_localhost() ) {
-	add_filter( 'jetpack_development_mode', '__return_true' );
-} // if()
+function sn_enable_jetpack_development_mode( $enabled ) {
+	global  $sn_utilities;
+
+	if ( $sn_utilities->is_localhost() ) {
+		return true;
+	} // if()
+
+	return $enabled;
+} // sn_enable_jetpack_development_mode()
+add_filter( 'jetpack_development_mode', 'sn_enable_jetpack_development_mode' );
+
 
 
 if ( ! function_exists( 'pp' ) ) {
