@@ -11,6 +11,9 @@
  */
 
 $directories             = array();
+$directories['includes'] = array(
+	'debug',
+);
 
 foreach ( $directories as $directory => $files ) {
 	if ( empty( $files ) ) continue;
