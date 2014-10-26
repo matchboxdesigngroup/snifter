@@ -13,6 +13,7 @@
 $directories             = array();
 $directories['includes'] = array(
 	'debug',
+	'titles',
 );
 
 foreach ( $directories as $directory => $files ) {
