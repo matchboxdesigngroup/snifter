@@ -1,0 +1,5 @@
+- Add primary-sidebar and sidebar-footer sidebars
+- Add primary-navigation menu
+- Cleanup comments.php, build out content types link, video, aside, etc..
+- Make sure all titles output are formatted correctly for the content type
+- Prevent direct access to individual partials
