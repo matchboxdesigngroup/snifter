@@ -19,6 +19,7 @@ $directories['classes']  = array(
 	'class-sn-theme-wrapper',
 	'class-sn-utilities',
 	'class-sn-form-fields',
+	'class-sn-images',
 );
 
 // Require all the things!!!

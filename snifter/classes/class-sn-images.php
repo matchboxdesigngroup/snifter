@@ -1,19 +1,23 @@
 <?php
 /**
- * MDG Images Class.
+ * SN Images Class.
  */
 
 /**
  * Handles adding custom image sizes and other global image related functionality.
  *
  * @package      WordPress
- * @subpackage   MDG_Base
+ * @subpackage   Snifter
+ * @since        Snifter 1.0.0
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
-class MDG_Images {
+class SN_Images {
 	/**
 	 * The available image sizes.
+	 *
+	 * @since Snifter 1.0.0
+	 *
 	 * @var  array
 	 */
 	public $image_sizes = array();
@@ -23,9 +27,9 @@ class MDG_Images {
 	/**
 	 * Class constructor
 	 *
-	 * @param array   $config  Class configuration
+	 * @since Snifter 1.0.0
 	 */
-	public function __construct( $config = array() ) {
+	public function __construct() {
 		// Custom Image Sizes
 		$this->set_image_sizes();
 		$this->register_sizes();
@@ -41,18 +45,12 @@ class MDG_Images {
 	 * Sets all of the custom image sizes
 	 *
 	 * <code>
-	 * $this->image_sizes['example_size'] = array(
-	 *  'width'  => 220,
-	 *  'height' => 130,
-	 *  'title'  => '220x130', // The default will be widthxheight but any string can be used
-	 *  'used_in' => array(
-	 *   'title' => 'Example Size', // Title to be used in Media notification
-	 *   'link'  => '' // Link to an image of the created size to be used in Media notification
-	 *  )
-	 * );
+	 * $this->set_image_sizes();
 	 * </code>
 	 *
-	 * @return Void
+	 * @since Snifter 1.0.0
+	 *
+	 * @return void
 	 */
 	public function set_image_sizes() {
 		// Example size - Duplicate this and get image resizing (for normal sizes)
@@ -72,7 +70,7 @@ class MDG_Images {
 		// 	'small'    => 300,
 		// 	'xs_small' => 300,
 		// );
-		// $this->set_responsive_image_sizes( 500, 200, 'some_image', $responsive_image_sizes, 'Used in some image spot' );
+		// $this->register_responsive_sizes( 500, 200, 'some_image', $responsive_image_sizes, 'Used in some image spot' );
 
 		// Featured image administrator column image size
 		$this->image_sizes[] = array(
@@ -92,19 +90,28 @@ class MDG_Images {
 	/**
 	 * Sets the image sizes for the responsive images plugin.
 	 *
-	 * set_responsive_image_sizes( 500, 200, 'some_image', array( 'med' => 200 ), 'Used in some image spot' )
+	 * <code>
+	 * $responsive_image_sizes = array(
+	 * 	'med'      => 400,
+	 * 	'small'    => 300,
+	 * 	'xs_small' => 300,
+	 * 	);
+	 * 	$this->register_responsive_sizes( 500, 200, 'some_image', $responsive_image_sizes, 'Used in some image spot' );
+	 * </code>
 	 *
-	 * @param integer $orig_width  Image largest/original width, this will be the 'full' size title.
-	 * @param integer $orig_height Image largest/original height.
-	 * @param string  $base_title  The title that will be prepended to the image size title.
-	 * @param string[] $img_sizes   {
-	 * @type string  $title Size title. => @type integer $width Image width.
+	 * @since Snifter 1.0.0
+	 *
+	 * @param   integer $orig_width  Image largest/original width, this will be the 'full' size title.
+	 * @param   integer $orig_height Image largest/original height.
+	 * @param   string  $base_title  The title that will be prepended to the image size title.
+	 * @param   array   $img_sizes   {
+	 *   @type  string  $title Size title. => @type integer $width Image width.
 	 * }
-	 * @param string  $used_in     Title to be used in Media notification
+	 * @param   string   $used_in     Title to be used in Media notification
 	 *
-	 * @return Void
+	 * @return  void
 	 */
-	private function set_responsive_image_sizes( $orig_width, $orig_height, $base_title, $img_sizes, $used_in = '' ) {
+	private function register_responsive_sizes( $orig_width, $orig_height, $base_title, $img_sizes, $used_in = '' ) {
 		$img_sizes['full'] = ( isset( $img_sizes['full'] ) ) ? $img_sizes['full'] : $orig_width;
 
 		foreach ( $img_sizes as $title => $newWidth ) {
@@ -121,7 +128,7 @@ class MDG_Images {
 				)
 			);
 		} // foreach()
-	} // set_responsive_image_sizes()
+	} // register_responsive_sizes()
 
 
 
@@ -129,7 +136,21 @@ class MDG_Images {
 	/**
 	 * Registers all of the new image sizes for use in our theme
 	 *
-	 * @return Void
+	 * @since Snifter 1.0.0
+	 *
+	 * <code>
+	 * $this->image_sizes['example_size'] = array(
+	 * 	'width'  => 220,
+	 * 	'height' => 130,
+	 * 	'title'  => '220x130', // The default will be widthxheight but any string can be used
+	 * 	'used_in' => array(
+	 *  	'title' => 'Example Size', // Title to be used in Media notification
+	 *  	'link'  => '', // Link to an image of the created size to be used in Media notification
+	 *  ),
+	 * );
+	 * </code>
+	 *
+	 * @return  void
 	 */
 	public function register_sizes() {
 		// first set the thumb size and make sure that this theme supports thumbs
@@ -163,7 +184,13 @@ class MDG_Images {
 	/**
 	 * Outputs the reference grid in the Media Library
 	 *
-	 * @return Void
+	 * <code>
+	 * add_action( 'wp_ajax_mdg-image-reference-grid', array( $this, 'output_reference_grid' ) );
+	 * </code>
+	 *
+	 * @since Snifter 1.0.0
+	 *
+	 * @return  void
 	 */
 	public function output_reference_grid() {
 		echo $this->reference_grid_html();
@@ -174,6 +201,12 @@ class MDG_Images {
 
 	/**
 	 * Creates the HTML for the image size reference grid in the Media Library
+	 *
+	 * <code>
+	 * $grid_html = $this->reference_grid_html();
+	 * </code>
+	 *
+	 * @since Snifter 1.0.0
 	 *
 	 * @return String The HTML with all of the different custom image sizes
 	 */
@@ -208,13 +241,15 @@ class MDG_Images {
 	 * Requires responsive images plugin to be activated in Grunt uglify config.
 	 *
 	 * <code>
-	 * <?php $resp_image = $mdg_stub->get_responsive_image( get_the_id(), 'some_image', null, true, array( 'title' => 'My title image' ) ); ?>
+	 * $resp_image = $sn_stub->get_responsive_image( get_the_id(), 'some_image', null, true, array( 'title' => 'My title image' ) );
 	 * </code>
+	 *
+	 * @since Snifter 1.0.0
 	 *
 	 * @see https://github.com/kvendrik/responsive-images.js
 	 *
 	 * @param   integer  $src_id       The attachment ID or the post ID to get the featured image from.
-	 * @param   string   $base_title   The base title of your responsive image size set in MDG_Images->set_image_sizes().
+	 * @param   string   $base_title   The base title of your responsive image size set in SN_Images->set_image_sizes().
 	 * @param   string   $default_img  Optional, default image URL, defaults to the 'full' size image, used if Javascript is not supported.
 	 * @param   boolean  $echo         Optional, to output the responsive image, default true.
 	 * @param   array    $attrs        Optional, HTML attributes to add to the img tag.
@@ -260,12 +295,18 @@ class MDG_Images {
 	/**
 	 * Handles merging together the different sizes for the data-src attribute.
 	 *
+	 * <code>
+	 * $data_src = $this->get_responsive_image_data_src(  $attachment_id, $base_title );
+	 * </code>
+	 *
+	 * @since Snifter 1.0.0
+	 *
 	 * @see https://github.com/kvendrik/responsive-images.js
 	 *
 	 * @param   integer  $attachment_id  The attachment ID to use when retrieving the image(s).
-	 * @param   [type]  $base_title     [description]
+	 * @param   string   $base_title     The image size base title.
 	 *
-	 * @return  [type]                  [description]
+	 * @return  string                  The image data SRC values.
 	 */
 	public function get_responsive_image_data_src( $attachment_id, $base_title ) {
 		$img_sizes = $this->get_responsive_image_sizes( $base_title );
@@ -286,6 +327,12 @@ class MDG_Images {
 
 	/**
 	 * Merges the supplied attributes so they can be added to the image.
+	 *
+	 * <code>
+	 * $img_attrs = $this->merge_responsive_image_attrs( $attrs, $attachment_id );
+	 * </code>
+	 *
+	 * @since Snifter 1.0.0
 	 *
 	 * @param   array   $attrs          The attributes to be merged.
 	 * @param   integer $attachment_id  The attachment ID of the responsive image.
@@ -326,6 +373,12 @@ class MDG_Images {
 	/**
 	 * Handles retrieving the thumbnail ID if the src_id is not an attachment.
 	 *
+	 * <code>
+	 * $attachment_id = $this->get_responsive_attachment_id( $src_id );
+	 * </code>
+	 *
+	 * @since Snifter 1.0.0
+	 *
 	 * @param   integer  $src_id  Either an attachment ID or the post ID to retrieve the thumbnail ID.
 	 *
 	 * @return  integer           The attachment ID.
@@ -347,6 +400,12 @@ class MDG_Images {
 
 	/**
 	 * Retrieves the responsive image sizes.
+	 *
+	 * <code>
+	 * $img_sizes = $this->get_responsive_image_sizes( $base_title );
+	 * </code>
+	 *
+	 * @since Snifter 1.0.0
 	 *
 	 * @param  string  $base_title The base image size used when adding responsive image sizes.
 	 *
@@ -386,7 +445,7 @@ class MDG_Images {
 
 		return $sizes;
 	} // get_responsive_image_sizes()
-} // END Class MDG_Images()
+} // END Class SN_Images()
 
-global $mdg_images;
-$mdg_images = new MDG_Images();
+global $sn_images;
+$sn_images = new SN_Images();
