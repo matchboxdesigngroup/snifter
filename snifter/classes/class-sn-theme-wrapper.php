@@ -5,7 +5,8 @@
  * @link http://scribu.net/wordpress/theme-wrappers.html
  *
  * @package      WordPress
- * @subpackage   SN_Base
+ * @subpackage   Snifter
+ * @since        Snifter 1.0.0
  */
 
 /**
