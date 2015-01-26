@@ -10,16 +10,34 @@
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
 
-$directories             = array();
+$directories = array();
+
+// Includes
 $directories['includes'] = array(
 	'debug',
 	'titles',
 );
+
+// Base classes
 $directories['classes']  = array(
 	'class-sn-theme-wrapper',
 	'class-sn-utilities',
 	'class-sn-form-fields',
 	'class-sn-images',
+	'class-sn-meta-helper',
+	'class-sn-nav-walker',
+	'class-sn-settings',
+	'class-sn-sidebar',
+	'class-sn-type-base',
+	'class-sn-walker-comments',
+	'class-sn-wp-admin',
+);
+
+// Post Types
+$directories['classes/post-types']  = array(
+	'class-sn-type-page',
+	'class-sn-type-post',
+	'class-sn-type-stub',
 );
 
 // Require all the things!!!
