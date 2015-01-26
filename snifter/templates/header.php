@@ -9,8 +9,8 @@
  * @since       Snifter 1.0.0
  */
 ?>
-<header class="banner" role="banner">
-	<a class="logo brand" href="<?php echo esc_url( home_url() ); ?>/"><?php bloginfo( 'name' ); ?></a>
+<header class="site-header" role="banner">
+	<a class="logo" href="<?php echo esc_url( home_url() ); ?>/"><?php bloginfo( 'name' ); ?></a>
 	<nav class="primary-navigation" role="navigation">
 		<?php if ( has_nav_menu( 'primary_navigation' ) ) { ?>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary_navigation', 'menu_class' => 'primary-navigation-menu' ) ); ?>
