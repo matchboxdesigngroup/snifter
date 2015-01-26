@@ -15,11 +15,11 @@
  * not work at all everything has sensible defaults.
  *
  * @package      WordPress
- * @subpackage   MDG_Base
+ * @subpackage   Snifter
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  *
- * @example mdg-bases/classes/class-mdg-type-stub.php
+ * @example sn-bases/classes/class-sn-type-stub.php
  */
 class MDG_Type_Base extends MDG_Meta_Helper {
 
@@ -42,7 +42,7 @@ class MDG_Type_Base extends MDG_Meta_Helper {
 	private $_post_type_supports;
 
 	/** @var string  All of the transients for each post type, post type will be used as key. */
-	private $_transient_title_option = 'mdgTransientTitles';
+	private $_transient_title_option = 'snTransientTitles';
 
 	/** @var integer Will set on construct */
 	protected $transient_expiry;
@@ -297,7 +297,7 @@ class MDG_Type_Base extends MDG_Meta_Helper {
 		$correct_post_type  = $this->is_current_post_type( $post_type );
 		$supports_thumbnail = post_type_supports( get_post_type(), 'thumbnail' );
 		if ( ! $this->disable_image_column and $correct_post_type and $supports_thumbnail  ) {
-			$cols['mdg_post_thumb'] = __( $this->featured_image_title );
+			$cols['sn_post_thumb'] = __( $this->featured_image_title );
 		} // if()
 		return $cols;
 	} // add_thumbnail_column()
@@ -313,7 +313,7 @@ class MDG_Type_Base extends MDG_Meta_Helper {
 	 * @return Void
 	 */
 	function display_thumbnail_column( $col, $id ) {
-		if ( $col == 'mdg_post_thumb' and $this->is_current_post_type( get_post_type( $id ) ) ) {
+		if ( $col == 'sn_post_thumb' and $this->is_current_post_type( get_post_type( $id ) ) ) {
 			echo get_the_post_thumbnail( $id, 'admin-list-thumb' );
 		} // if()
 	} // display_thumbnail_column()
@@ -588,7 +588,7 @@ class MDG_Type_Base extends MDG_Meta_Helper {
 	 * Requires responsive images plugin to be activated in Grunt uglify config.
 	 *
 	 * <code>
-	 * <?php $resp_image = $mdg_stub->get_responsive_image( get_the_id(), 'some_image', null, true, array( 'title' => 'My title image' ) ); ?>
+	 * <?php $resp_image = $sn_stub->get_responsive_image( get_the_id(), 'some_image', null, true, array( 'title' => 'My title image' ) ); ?>
 	 * </code>
 	 *
 	 * @see https://github.com/kvendrik/responsive-images.js
@@ -604,9 +604,9 @@ class MDG_Type_Base extends MDG_Meta_Helper {
 	 * @return string                  The responsive image HTML with no script fall back.
 	 */
 	public function get_responsive_image( $src_id, $base_title, $default_img = null, $echo = true, $attrs = array() ) {
-		global $mdg_images;
+		global $sn_images;
 
-		return $mdg_images->get_responsive_image( $src_id, $base_title, $default_img, $echo, $attrs );
+		return $sn_images->get_responsive_image( $src_id, $base_title, $default_img, $echo, $attrs );
 	} // get_responsive_image()
 
 
@@ -642,7 +642,7 @@ class MDG_Type_Base extends MDG_Meta_Helper {
 		$keys          = implode( '', array_keys( $flattened_array ) );
 		$values        = implode( '' , $flattened_array );
 		$transient_id  = md5( "{$keys}{$values}" );
-		$transient_id  = "_mdg{$transient_id}";
+		$transient_id  = "_sn{$transient_id}";
 
 		return $transient_id;
 	} // _custom_transient_title()
@@ -654,11 +654,11 @@ class MDG_Type_Base extends MDG_Meta_Helper {
 	 *
 	 * <code>$this->_get_all_cached_attachment_transient_ids();</code>
 	 *
-	 * @param   string  $prefix  Optional, the transient id prefix to search for default _mdg.
+	 * @param   string  $prefix  Optional, the transient id prefix to search for default _sn.
 	 *
 	 * @return  array            All of the current transient IDs.
 	 */
-	private function _get_all_cached_attachment_transient_ids( $prefix = '_mdg' ) {
+	private function _get_all_cached_attachment_transient_ids( $prefix = '_sn' ) {
 		global $wpdb;
 		$sql = "SELECT `option_name` AS `name`, `option_value` AS `value`
 						FROM  $wpdb->options

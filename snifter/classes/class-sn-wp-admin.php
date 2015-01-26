@@ -7,7 +7,7 @@
  * Handles all of the customizations wp-admin.
  *
  * @package      WordPress
- * @subpackage   MDG_Base
+ * @subpackage   Snifter
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
@@ -65,10 +65,10 @@ class MDG_WP_Admin extends SN_Utilities {
 		add_action( 'tgmpa_register', array( &$this, 'register_required_plugins' ) );
 
 		// Meta upload thumbnail
-		add_action( 'wp_ajax_mdg_meta_upload_thumb', array( &$this, 'mdg_meta_upload_thumb_callback' ) );
+		add_action( 'wp_ajax_sn_meta_upload_thumb', array( &$this, 'sn_meta_upload_thumb_callback' ) );
 
 		// Add MDG dashboard widget
-		// add_action( 'wp_dashboard_setup', array( &$this, 'add_mdg_dashboard_widget' ) );
+		// add_action( 'wp_dashboard_setup', array( &$this, 'add_sn_dashboard_widget' ) );
 	} // _add_actions()
 
 
@@ -423,12 +423,12 @@ class MDG_WP_Admin extends SN_Utilities {
 	 *
 	 * @return Void
 	 */
-	function add_mdg_dashboard_widget() {
+	function add_sn_dashboard_widget() {
 		wp_add_dashboard_widget(
-			'mdg_dashboard_widget',
+			'sn_dashboard_widget',
 			'Matchbox Design Group',
-			array( $this, 'mdg_dashboard_widget_callback' ),
-			array( $this, 'mdg_dashboard_widget_control_callback' )
+			array( $this, 'sn_dashboard_widget_callback' ),
+			array( $this, 'sn_dashboard_widget_control_callback' )
 		);
 	}
 
@@ -439,9 +439,9 @@ class MDG_WP_Admin extends SN_Utilities {
 	 *
 	 * @return Void
 	 */
-	function mdg_dashboard_widget_callback() {
-		get_template_part( 'templates/widget', 'mdg-dashboard' );
-	} // mdg_dashboard_widget_callback()
+	function sn_dashboard_widget_callback() {
+		get_template_part( 'templates/widget', 'sn-dashboard' );
+	} // sn_dashboard_widget_callback()
 
 
 
@@ -452,8 +452,8 @@ class MDG_WP_Admin extends SN_Utilities {
 	 *
 	 * @return  Void
 	 */
-	function mdg_dashboard_widget_control_callback() {
-	} // mdg_dashboard_widget_control_callback
+	function sn_dashboard_widget_control_callback() {
+	} // sn_dashboard_widget_control_callback
 
 
 
@@ -583,19 +583,19 @@ class MDG_WP_Admin extends SN_Utilities {
 	 *
 	 * @return  Void
 	 */
-	public function mdg_meta_upload_thumb_callback() {
+	public function sn_meta_upload_thumb_callback() {
 		if ( ! isset( $_GET['fileSrc'] ) ) {
 			echo json_encode( '' );
 			exit;
 		} // if()
 
-		global $mdg_form_fields;
-		$thumbnail = $mdg_form_fields->file_upload_field_thumbnail( $_GET['fileSrc'] );
+		global $sn_form_fields;
+		$thumbnail = $sn_form_fields->file_upload_field_thumbnail( $_GET['fileSrc'] );
 		echo json_encode( $thumbnail );
 		exit;
-	} // mdg_meta_upload_thumb_callback
+	} // sn_meta_upload_thumb_callback
 } // End class MDG_WP_Admin()
 
 // Set global instance
-global $mdg_wp_admin;
-$mdg_wp_admin = new MDG_WP_Admin();
+global $sn_wp_admin;
+$sn_wp_admin = new MDG_WP_Admin();

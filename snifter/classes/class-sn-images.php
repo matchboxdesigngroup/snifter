@@ -35,7 +35,7 @@ class SN_Images {
 		$this->register_sizes();
 
 		// ajax response to return the reference grid
-		add_action( 'wp_ajax_mdg-image-reference-grid', array( $this, 'output_reference_grid' ) );
+		add_action( 'wp_ajax_sn-image-reference-grid', array( $this, 'output_reference_grid' ) );
 	} // __construct()
 
 
@@ -185,7 +185,7 @@ class SN_Images {
 	 * Outputs the reference grid in the Media Library
 	 *
 	 * <code>
-	 * add_action( 'wp_ajax_mdg-image-reference-grid', array( $this, 'output_reference_grid' ) );
+	 * add_action( 'wp_ajax_sn-image-reference-grid', array( $this, 'output_reference_grid' ) );
 	 * </code>
 	 *
 	 * @since Snifter 1.0.0

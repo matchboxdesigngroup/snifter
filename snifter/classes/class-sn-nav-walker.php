@@ -15,7 +15,7 @@
  *   <li class="menu-sample-page"><a href="/sample-page/">Sample Page</a></li>
  *
  * @package      WordPress
- * @subpackage   MDG_Base
+ * @subpackage   Snifter
  */
 class MDG_Nav_Walker extends Walker_Nav_Menu {
 	/**
@@ -74,7 +74,7 @@ class MDG_Nav_Walker extends Walker_Nav_Menu {
 			$item_html = preg_replace( '/<a[^>]*>(.*)<\/a>/iU', '$1', $item_html );
 		} // if/elseif/elseif()
 
-		$item_html = apply_filters( 'mdg_wp_nav_menu_item', $item_html );
+		$item_html = apply_filters( 'sn_wp_nav_menu_item', $item_html );
 		$output .= $item_html;
 	} // start_el()
 
@@ -126,7 +126,7 @@ class MDG_Nav_Walker extends Walker_Nav_Menu {
  *
  * @return  array            The menu navigation classes.
  */
-function mdg_nav_menu_css_class( $classes, $item ) {
+function sn_nav_menu_css_class( $classes, $item ) {
 	$slug = sanitize_title( $item->title );
 	$classes = preg_replace( '/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes );
 	$classes = preg_replace( '/^((menu|page)[-_\w+]+)+/', '', $classes );
@@ -136,8 +136,8 @@ function mdg_nav_menu_css_class( $classes, $item ) {
 	$classes = array_unique( $classes );
 
 	return array_filter( $classes, 'is_element_empty' );
-} // mdg_nav_menu_css_class()
-add_filter( 'nav_menu_css_class', 'mdg_nav_menu_css_class', 10, 2 );
+} // sn_nav_menu_css_class()
+add_filter( 'nav_menu_css_class', 'sn_nav_menu_css_class', 10, 2 );
 add_filter( 'nav_menu_item_id', '__return_null' );
 
 
@@ -152,21 +152,21 @@ add_filter( 'nav_menu_item_id', '__return_null' );
  *
  * @return  array          wp_nav_menu arguments merged with defaults.
  */
-function mdg_nav_menu_args( $args = array() ) {
-	$mdg_nav_menu_args['container'] = false;
+function sn_nav_menu_args( $args = array() ) {
+	$sn_nav_menu_args['container'] = false;
 
 	if ( !$args['items_wrap'] ) {
-		$mdg_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+		$sn_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
 	} // if()
 
 	if ( current_theme_supports( 'bootstrap-top-navbar' ) && !$args['depth'] ) {
-		$mdg_nav_menu_args['depth'] = 2;
+		$sn_nav_menu_args['depth'] = 2;
 	} // if()
 
 	if ( !$args['walker'] ) {
-		$mdg_nav_menu_args['walker'] = new MDG_Nav_Walker();
+		$sn_nav_menu_args['walker'] = new MDG_Nav_Walker();
 	} // if()
 
-	return array_merge( $args, $mdg_nav_menu_args );
+	return array_merge( $args, $sn_nav_menu_args );
 }
-add_filter( 'wp_nav_menu_args', 'mdg_nav_menu_args' );
+add_filter( 'wp_nav_menu_args', 'sn_nav_menu_args' );

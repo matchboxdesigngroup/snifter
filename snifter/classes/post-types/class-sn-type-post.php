@@ -6,7 +6,7 @@
  * Handles anything custom for the default WordPress "post" post type.
  *
  * @package      WordPress
- * @subpackage   MDG_Base
+ * @subpackage   Snifter
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
@@ -20,7 +20,7 @@ class MDG_Type_Post extends MDG_Type_Base
 		$this->post_type_title  = 'Posts';
 		$this->post_type_single = 'Post';
 
-		$this->_set_mdg_meta_helper_options();
+		$this->_set_sn_meta_helper_options();
 
 		parent::__construct();
 	} // __construct()
@@ -32,7 +32,7 @@ class MDG_Type_Post extends MDG_Type_Base
 	 *
 	 * return Void
 	 */
-	private function _set_mdg_meta_helper_options() {
+	private function _set_sn_meta_helper_options() {
 		/** @var array Meta box id(s) to be removed */
 		$this->meta_boxes_to_remove = array(
 			// array(
@@ -101,7 +101,7 @@ class MDG_Type_Post extends MDG_Type_Base
 			//  'page'    => $this->post_type,
 			// ),
 		);
-	} // _set_mdg_meta_helper_options()
+	} // _set_sn_meta_helper_options()
 
 
 	/**
@@ -153,5 +153,5 @@ class MDG_Type_Post extends MDG_Type_Base
 	public function register_post_type() {}
 } // END Class MDG_Type_Post()
 
-global $mdg_post;
-$mdg_post = new MDG_Type_Post();
+global $sn_post;
+$sn_post = new MDG_Type_Post();

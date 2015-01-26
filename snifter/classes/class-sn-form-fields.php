@@ -248,7 +248,7 @@ class SN_Form_Fields extends SN_Utilities {
 	 * @return string         The color picker and description
 	 */
 	public function color_picker( $id, $meta, $desc, $attrs = array() ) {
-		$color_picker = $this->text_field( $id, $meta, $desc, array( 'class' => 'mdg-color-picker' ) );
+		$color_picker = $this->text_field( $id, $meta, $desc, array( 'class' => 'sn-color-picker' ) );
 
 		return $color_picker;
 	} // color_picker()
@@ -271,7 +271,7 @@ class SN_Form_Fields extends SN_Utilities {
 	public function file_upload_field( $id, $file_src, $desc, $attrs = array() ) {
 		$image_thumbnail = $this->file_upload_field_thumbnail( $file_src );
 
-		$input_field  = '<div id="meta_upload_'.esc_attr( $id ).'" class="mdg-meta-upload">';
+		$input_field  = '<div id="meta_upload_'.esc_attr( $id ).'" class="sn-meta-upload">';
 		$input_field .= '<input type="text" name="'.esc_attr( $id ).'" id="'.esc_attr( $id ).'" value="'.$file_src.'" size="30" />';
 		$input_field .= '<a href="#" id="meta_upload_link_'.esc_attr( $id ).'" class="upload-link button">upload</a>';
 		$input_field .= '<br>';
@@ -454,7 +454,7 @@ class SN_Form_Fields extends SN_Utilities {
 	 */
 	public function chosen_select( $id, $meta, $desc, $options, $attrs = array() ) {
 		$attrs = array(
-			'class' => 'mdg-chosen-select',
+			'class' => 'sn-chosen-select',
 			'style' => 'width:200px;',
 		);
 		$select = $this->select( $id, $meta, $desc, $options, $attrs );
@@ -484,7 +484,7 @@ class SN_Form_Fields extends SN_Utilities {
 		$attrs = array(
 			'name'    => $id,
 			'multiple' => 'multiple',
-			'class'    => 'mdg-chosen-select',
+			'class'    => 'sn-chosen-select',
 			'style'    => 'width:200px;',
 		);
 		$select = $this->select( $id, $meta, $desc, $options, $attrs );
@@ -509,7 +509,7 @@ class SN_Form_Fields extends SN_Utilities {
 	public function datepicker( $id, $meta, $desc, $date_format = 'DD, MM d, yy', $attrs = array() ) {
 		$attrs = array(
 			'data-format' => $date_format,
-			'class'       => 'mdg-datepicker datepicker',
+			'class'       => 'sn-datepicker datepicker',
 		);
 
 		$datepicker = $this->text_field( $id, $meta, $desc, $attrs );
@@ -536,7 +536,7 @@ class SN_Form_Fields extends SN_Utilities {
 		$wysiwg_editor = '';
 		$default_args  = array(
 			'teeny'         => false,
-			'editor_class'  => 'mdg-wyswig-editor',
+			'editor_class'  => 'sn-wyswig-editor',
 			'textarea_rows' => 8,
 		);
 		$wp_editor_settings = array_merge( $default_args, $args );
@@ -694,5 +694,5 @@ class SN_Form_Fields extends SN_Utilities {
 	} // select_form_field()
 } // End class SN_Form_Fields()
 
-global $mdg_form_fields;
-$mdg_form_fields = new SN_Form_Fields();
+global $sn_form_fields;
+$sn_form_fields = new SN_Form_Fields();

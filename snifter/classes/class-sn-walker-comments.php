@@ -9,7 +9,7 @@
  * @link http://twitter.github.com/bootstrap/components.html#media
  *
  * @package      WordPress
- * @subpackage   MDG_Base
+ * @subpackage   Snifter
  */
 class MDG_Walker_Comment extends Walker_Comment {
 	/**
@@ -105,8 +105,8 @@ class MDG_Walker_Comment extends Walker_Comment {
  *
  * @return  string           Avatar with Bootstrap classes.
  */
-function mdg_get_avatar( $avatar ) {
+function sn_get_avatar( $avatar ) {
 	$avatar = str_replace( "class='avatar", "class='avatar pull-left media-object", $avatar );
 	return $avatar;
-} // mdg_get_avatar()
-add_filter( 'get_avatar', 'mdg_get_avatar' );
+} // sn_get_avatar()
+add_filter( 'get_avatar', 'sn_get_avatar' );

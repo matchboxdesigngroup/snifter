@@ -5,7 +5,7 @@
  * @version      0.2.3
  *
  * @package      WordPress
- * @subpackage   MDG_Base
+ * @subpackage   Snifter
  *
  * @since        0.2.3
  *
@@ -22,7 +22,7 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 		 *
 		 * @var    string
 		 */
-		public $page_slug = 'mdg';
+		public $page_slug = 'sn-options';
 
 
 
@@ -33,7 +33,7 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 		 *
 		 * @var    string
 		 */
-		public $option_group = 'mdg_settings_group';
+		public $option_group = 'sn_settings_group';
 
 
 
@@ -60,7 +60,7 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 
 			$this->options = get_option( $this->option_group, array() );
 
-			$this->_add_mdg_settings_actions_filters();
+			$this->_add_sn_settings_actions_filters();
 		} // __construct()
 
 
@@ -69,8 +69,8 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 		 * Helper method to retrieve the options.
 		 *
 		 * <code>
-		 * global $mdg_setting;
-		 * $setting = $mdg_setting->get_setting( 'setting_key' );
+		 * global $sn_setting;
+		 * $setting = $sn_setting->get_setting( 'setting_key' );
 		 * </code>
 		 *
 		 * @since   0.2.3
@@ -136,7 +136,7 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 			// Description
 			$settings_fields[] = array(
 				'label'   => '',
-				'desc'    => '<div class="mdg-note">Meta description.</div>',
+				'desc'    => '<div class="sn-note">Meta description.</div>',
 				'id'      => 'info',
 				'type'    => 'info',
 				'visible' => false,
@@ -345,7 +345,7 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 		/**
 		 * Handles adding all of the MDG_Base setting actions and filters.
 		 *
-		 * <code>$this->_add_mdg_settings_actions_filters();</code>
+		 * <code>$this->_add_sn_settings_actions_filters();</code>
 		 *
 		 * @internal
 		 *
@@ -353,9 +353,9 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 		 *
 		 * @return  void
 		 */
-		private function _add_mdg_settings_actions_filters() {
+		private function _add_sn_settings_actions_filters() {
 			add_action( 'admin_menu', array( &$this, 'admin_add_page' ) );
-		} // _add_mdg_settings_actions_filters()
+		} // _add_sn_settings_actions_filters()
 
 
 
@@ -601,6 +601,6 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 	} // MDG_Settings()
 
 	// Instantiate Class
-	global $mdg_settings;
-	$mdg_settings = new MDG_Settings();
+	global $sn_settings;
+	$sn_settings = new MDG_Settings();
 } // if()

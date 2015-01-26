@@ -7,7 +7,7 @@
  * Handles anything to do with custom meta.
  *
  * @package      WordPress
- * @subpackage   MDG_Base
+ * @subpackage   Snifter
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
@@ -136,7 +136,7 @@ class MDG_Meta_Helper extends SN_Form_Fields {
 		} // if()
 
 		$html  = '';
-		$html .= '<div class="mdg-after-title">';
+		$html .= '<div class="sn-after-title">';
 
 		// Use nonce for verification
 		$html .= '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce( basename( __FILE__ ) ).'" />';
