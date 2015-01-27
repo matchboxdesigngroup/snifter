@@ -45,7 +45,7 @@ class SN_Utilities {
 		} // if()
 
 		// Check the possible HTTP hosts against the current HTTP host.
-		foreach ( $http_hosts as $http_host ) {
+		foreach ( $http_hosts as $host ) {
 			if ( strpos( $http_host, $host ) !== false ) {
 				return true;
 			} // if()
@@ -90,7 +90,7 @@ class SN_Utilities {
 		 */
 		$http_hosts = apply_filters( 'sn_is_localhost_http_hosts', $http_hosts );
 
-		return check_hosts( $http_hosts );
+		return $this->check_hosts( $http_hosts );
 	} // is_localhost()
 
 
