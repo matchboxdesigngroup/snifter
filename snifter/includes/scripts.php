@@ -23,19 +23,43 @@ function sn_enqueue_site_scripts() {
 	// CSS
 	if ( $ltie9 ) {
 		// CSS for IE.
-		wp_enqueue_style( 'main_css', "{$theme_uri}/assets/css/dist/main-ltie9.min.css", array(), $theme_version, 'all' );
+		wp_enqueue_style(
+			'sn_main_ltie9_css',
+			"{$theme_uri}/assets/css/dist/main-ltie9.min.css",
+			array(),
+			$theme_version,
+			'all'
+		);
 	} else {
 		// CSS for good browsers.
-		wp_enqueue_style( 'main_css', "{$theme_uri}/assets/css/dist/main.min.css", array(), $theme_version, 'all' );
+		wp_enqueue_style(
+			'sn_main_css',
+			"{$theme_uri}/assets/css/dist/main.min.css",
+			array(),
+			$theme_version,
+			'all'
+		);
 	} // if/else()
 
-	// Register Environment tests
-	wp_register_script( 'sn_env_tests_js', "{$theme_uri}/assets/js/dist/env-tests.min.js", array(), $theme_version, false );
+	// Register Environment JS
+	wp_register_script(
+		'sn_env_tests_js',
+		"{$theme_uri}/assets/js/dist/env-tests.min.js",
+		array(),
+		$theme_version,
+		false
+	);
 	wp_enqueue_script( 'sn_env_tests_js' );
 
-	// Register main js
-	wp_register_script( 'main_js', "{$theme_uri}/assets/js/dist/scripts.min.js", array( 'jquery-effects-core' ), $theme_version, true );
-	wp_enqueue_script( 'main_js' );
+	// Register Main JS
+	wp_register_script(
+		'sn_scripts_js',
+		"{$theme_uri}/assets/js/dist/scripts.min.js",
+		array( 'jquery-effects-core' ),
+		$theme_version,
+		true
+	);
+	wp_enqueue_script( 'sn_scripts_js' );
 } // sn_enqueue_site_scripts()
 add_action( 'wp_enqueue_scripts', 'sn_enqueue_site_scripts', 100 );
 
@@ -162,6 +186,7 @@ function sn_add_favicon() {
 } // sn_add_favicon()
 add_action( 'wp_head', 'sn_add_favicon' );
 add_action( 'admin_head', 'sn_add_favicon' );
+
 
 
 /**
