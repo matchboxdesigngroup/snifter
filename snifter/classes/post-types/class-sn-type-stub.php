@@ -1,16 +1,16 @@
 <?php
 /**
- * MDG Type Stub Class.
+ * SN Type Stub Class.
  */
 
 /**
  * You basically need to change [stub/Stub] to be your post
  * type name and then add your custom meta if needed, if no
  * custom meta is needed then delete the get_custom_meta_fields.
- * Please do take a look at MDG_Type_Base to see what parameters
+ * Please do take a look at SN_Type_Base to see what parameters
  * and methods are already available to use.
  *
- * The properties of MDG_Type_Base that you should/can alter are
+ * The properties of SN_Type_Base that you should/can alter are
  * all in __construct(). Anything thay isn't REQUIRED that you
  * do not use please remove before deploying to production. Also
  * any property that is optional has the defaults as an example.
@@ -25,7 +25,34 @@
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
-class MDG_Type_Stub extends MDG_Type_Base {
+class SN_Type_Stub extends SN_Type_Base {
+	/**
+	 * Holds all the transient keys for the cache.
+	 *
+	 * @param  array
+	 */
+	public $type_transients = array();
+
+
+
+	/**
+	 * The slug of the post types landing page if not post type archive.
+	 *
+	 * @var  string
+	 */
+	public $landing_page_slug = 'stub';
+
+
+
+	/**
+	 * The slug of the post types landing page template if not post type archive.
+	 *
+	 * @var  string
+	 */
+	public $landing_page_template = 'template-stub.php';
+
+
+
 	/**
 	 * Class constructor, handles instantiation functionality for the class
 	 */
@@ -39,11 +66,11 @@ class MDG_Type_Stub extends MDG_Type_Base {
 		/** @var string  REQUIRED singular title */
 		$this->post_type_single = 'Stub';
 
-		// MDG_Type_Base Properties.
-		$this->_set_sn_type_base_options();
+		// SN_Type_Base Properties.
+		$this->_set_mdg_type_base_options();
 
-		// MDG_Meta_Helper Properties
-		$this->_set_sn_meta_helper_options();
+		// SN_Meta_Helper Properties
+		$this->_set_mdg_meta_helper_options();
 
 		parent::__construct();
 
@@ -53,11 +80,11 @@ class MDG_Type_Stub extends MDG_Type_Base {
 
 
 	/**
-	 * Handles setting of the optional properties of MDG_Type_Base
+	 * Handles setting of the optional properties of SN_Type_Base
 	 *
 	 * return Void
 	 */
-	private function _set_sn_type_base_options() {
+	private function _set_mdg_type_base_options() {
 		/** @var array   The taxonomy "name" used in register_taxonomy() */
 		$this->taxonomy_name = "{$this->post_type}-categories";
 
@@ -154,15 +181,15 @@ class MDG_Type_Stub extends MDG_Type_Base {
 			'menu_icon'          => 'dashicons-edit',
 			// 'supports'        => This is handled by $this->post_type_supports do not set directly
 		);
-	} // _set_sn_type_base_options()
+	} // _set_mdg_type_base_options()
 
 
 	/**
-	 * Handles setting of the optional properties of MDG_Meta_Helper
+	 * Handles setting of the optional properties of SN_Meta_Helper
 	 *
 	 * return Void
 	 */
-	private function _set_sn_meta_helper_options() {
+	private function _set_mdg_meta_helper_options() {
 		/** @var string Sets the meta box title */
 		$this->meta_box_title = "{$this->post_type_single} Details";
 
@@ -246,7 +273,7 @@ class MDG_Type_Stub extends MDG_Type_Base {
 
 		/** @var array   Used to disable the addition of the featured image column */
 		$this->disable_image_column = false;
-	} // _set_sn_meta_helper_options()
+	} // _set_mdg_meta_helper_options()
 
 
 
@@ -265,7 +292,7 @@ class MDG_Type_Stub extends MDG_Type_Base {
 		// Description
 		$meta_fields[] = array(
 			'label'   => '',
-			'desc'    => '<div class="sn-note">Meta description.</div>',
+			'desc'    => '<div class="mdg-note">Meta description.</div>',
 			'id'      => 'info',
 			'type'    => 'info',
 			'visible' => false,
@@ -505,9 +532,37 @@ class MDG_Type_Stub extends MDG_Type_Base {
 	 * Add post type actions & filters
 	 */
 	private function _add_type_actions_filters() {
+		// Clears transients on post save
+		add_action( 'save_post', array( &$this, 'clear_type_transients' ) );
+
 		// Uncomment to redirect the single page to the landing page.
 		// add_action( 'template_redirect', array( &$this, 'single_redirect' ) );
 	} // _add_type_actions_filters()
+
+
+
+	/**
+	 * Clears all of the transients for the current post type.
+	 *
+	 * @todo  Make it easier to add type transients.
+	 *
+	 * <code>
+	 * add_action( 'save_post', array( &$this, 'clear_type_transients' ) );
+	 * </code>
+	 *
+	 * @param   integer  $post_id  The post id.
+	 *
+	 * @return  void
+	 */
+	public function clear_type_transients( $post_id ) {
+		if ( get_post_type( $post_id ) != $this->post_type ) {
+			return;
+		} // if()
+
+		foreach ( $this->type_transients as $transient ) {
+			$this->delete_transient( $transient );
+		} // foreach()
+	} // clear_type_transients()
 
 
 
@@ -518,11 +573,11 @@ class MDG_Type_Stub extends MDG_Type_Base {
 	 */
 	public function single_redirect() {
 		if ( is_single() and get_post_type() == $this->post_type ) {
-			wp_redirect( home_url( "/{$this->post_type}/" ) );
+			wp_redirect( home_url( "/{$this->landing_page_slug}/" ), '301' );
 			exit();
 		} // if()
 	} // single_redirect()
-} // END Class MDG_Type_Stub()
+} // END Class SN_Type_Stub()
 
-global $sn_stub;
-$sn_stub = new MDG_Type_Stub();
+global $mdg_stub;
+$mdg_stub = new SN_Type_Stub();

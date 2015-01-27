@@ -11,7 +11,7 @@
  * @package      WordPress
  * @subpackage   Snifter
  */
-class MDG_Walker_Comment extends Walker_Comment {
+class SN_Walker_Comment extends Walker_Comment {
 	/**
 	 * Start the list before the elements are added.
 	 *
@@ -48,7 +48,7 @@ class MDG_Walker_Comment extends Walker_Comment {
 	/**
 	 * Start the element output.
 	 *
-	 * @see MDG_Walker_Comment::start_el()
+	 * @see SN_Walker_Comment::start_el()
 	 *
 	 * @param string   $output  Passed by reference. Used to append additional content.
 	 * @param object   $comment Comment data object.
@@ -92,7 +92,7 @@ class MDG_Walker_Comment extends Walker_Comment {
 		}
 		echo "</div></li>\n";
 	} // end_el()
-} // MDG_Walker_Comment()
+} // SN_Walker_Comment()
 
 
 

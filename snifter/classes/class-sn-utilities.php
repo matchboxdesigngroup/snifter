@@ -1,6 +1,6 @@
 <?php
 /**
- * MDG Generic Class.
+ * Snifter Generic Class.
  */
 
 /**

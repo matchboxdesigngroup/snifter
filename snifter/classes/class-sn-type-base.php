@@ -1,6 +1,6 @@
 <?php
 /**
- * MDG Type Base Class
+ * Snifter Type Base Class
  */
 
 /**
@@ -21,7 +21,7 @@
  *
  * @example sn-bases/classes/class-sn-type-stub.php
  */
-class MDG_Type_Base extends MDG_Meta_Helper {
+class SN_Type_Base extends SN_Meta_Helper {
 
 	/** @var string  REQUIRED slug for post type */
 	public $post_type;
@@ -329,7 +329,7 @@ class MDG_Type_Base extends MDG_Meta_Helper {
 	 * @return bool If all required properties are set TRUE is returned
 	 */
 	private function _passed_config_test() {
-		if ( ! is_subclass_of( $this, 'MDG_Type_Base' ) )
+		if ( ! is_subclass_of( $this, 'SN_Type_Base' ) )
 			return false;
 
 		$errors = array();
@@ -593,10 +593,10 @@ class MDG_Type_Base extends MDG_Meta_Helper {
 	 *
 	 * @see https://github.com/kvendrik/responsive-images.js
 	 *
-	 * @uses MDG_Images()
+	 * @uses SN_Images()
 	 *
 	 * @param   integer  $src_id       The attachment ID or the post ID to get the featured image from.
-	 * @param   string   $base_title   The base title of your responsive image size set in MDG_Images->set_image_sizes().
+	 * @param   string   $base_title   The base title of your responsive image size set in SN_Images->set_image_sizes().
 	 * @param   string   $default_img  Optional, default image URL, defaults to the 'full' size image, used if Javascript is not supported.
 	 * @param   boolean  $echo         Optional, to output the responsive image, default true.
 	 * @param   array    $attrs        Optional, HTML attributes to add to the img tag.
@@ -749,4 +749,4 @@ class MDG_Type_Base extends MDG_Meta_Helper {
 
 		return $this->get_posts( $query_args );
 	} // get_posts_with_featured_image()
-} // END Class MDG_Type_Base()
+} // END Class SN_Type_Base()

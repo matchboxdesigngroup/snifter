@@ -10,14 +10,14 @@
  *   <li id="menu-item-8" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8"><a href="/">Home</a></li>
  *   <li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9"><a href="/sample-page/">Sample Page</a></l
  *
- * MDG_Nav_Walker example output:
+ * SN_Nav_Walker example output:
  *   <li class="menu-home"><a href="/">Home</a></li>
  *   <li class="menu-sample-page"><a href="/sample-page/">Sample Page</a></li>
  *
  * @package      WordPress
  * @subpackage   Snifter
  */
-class MDG_Nav_Walker extends Walker_Nav_Menu {
+class SN_Nav_Walker extends Walker_Nav_Menu {
 	/**
 	 * Checks current navigation classes.
 	 *
@@ -109,7 +109,7 @@ class MDG_Nav_Walker extends Walker_Nav_Menu {
 
 		parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
 	} // display_element()
-} // MDG_Nav_Walker()
+} // SN_Nav_Walker()
 
 
 
@@ -146,7 +146,7 @@ add_filter( 'nav_menu_item_id', '__return_null' );
  * Clean up wp_nav_menu_args.
  *
  * Remove the container.
- * Use MDG_Nav_Walker() by default.
+ * Use SN_Nav_Walker() by default.
  *
  * @param   array   $args  wp_nav_menu arguments.
  *
@@ -164,7 +164,7 @@ function sn_nav_menu_args( $args = array() ) {
 	} // if()
 
 	if ( !$args['walker'] ) {
-		$sn_nav_menu_args['walker'] = new MDG_Nav_Walker();
+		$sn_nav_menu_args['walker'] = new SN_Nav_Walker();
 	} // if()
 
 	return array_merge( $args, $sn_nav_menu_args );

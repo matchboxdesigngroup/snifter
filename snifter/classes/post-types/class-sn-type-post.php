@@ -1,7 +1,10 @@
 <?php
 /**
- * MDG Type Post Class.
+ * Snifter Type Post Class.
  */
+
+
+
 /**
  * Handles anything custom for the default WordPress "post" post type.
  *
@@ -10,16 +13,48 @@
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
-class MDG_Type_Post extends MDG_Type_Base
-{
+class SN_Type_Post extends SN_Type_Base {
+	/**
+	 * Holds all the transient keys for the cache.
+	 *
+	 * @param  array
+	 */
+	public $type_transients = array();
+
+
+
+	/**
+	 * The slug of the post types landing page if not post type archive.
+	 *
+	 * @var  string
+	 */
+	public $landing_page_slug = '';
+
+
+
+	/**
+	 * The slug of the post types landing page template if not post type archive.
+	 *
+	 * @var  string
+	 */
+	public $landing_page_template = '';
+
+
+
 	/**
 	 * Class constructor, handles instantiation functionality for the class
 	 */
 	function __construct() {
+		/** @var string  REQUIRED slug for post type */
 		$this->post_type        = 'post';
+
+		/** @var string  REQUIRED title of post type */
 		$this->post_type_title  = 'Posts';
+
+		/** @var string  REQUIRED singular title */
 		$this->post_type_single = 'Post';
 
+		// MDG_Meta_Helper Properties
 		$this->_set_sn_meta_helper_options();
 
 		parent::__construct();
@@ -28,7 +63,7 @@ class MDG_Type_Post extends MDG_Type_Base
 
 
 	/**
-	 * Handles setting of the optional properties of MDG_Meta_Helper
+	 * Handles setting of the optional properties of SN_Meta_Helper
 	 *
 	 * return Void
 	 */
@@ -110,7 +145,13 @@ class MDG_Type_Post extends MDG_Type_Base
 	 * @return ArrayObject Custom meta fields
 	 */
 	public function get_custom_meta_fields() {
-		return array();
+		$meta_fields = array();
+
+		if ( ! $this->is_current_post_type() ) {
+			return $meta_fields;
+		} // if()
+
+		return $meta_fields;
 	} // get_custom_meta_fields()
 
 
@@ -130,15 +171,6 @@ class MDG_Type_Post extends MDG_Type_Base
 			return $meta_fields;
 		} // if()
 
-		// Text
-		$meta_fields[] = array(
-			'label' => 'Text',
-			'desc'  => 'Text description.',
-			'id'    => "{$this->post_type}_after_title_text",
-			'type'  => 'text',
-		);
-
-
 		return $meta_fields;
 	} // get_custom_after_title_meta_fields()
 
@@ -151,7 +183,7 @@ class MDG_Type_Post extends MDG_Type_Base
 	 * @return Void
 	 */
 	public function register_post_type() {}
-} // END Class MDG_Type_Post()
+} // END Class SN_Type_Post()
 
 global $sn_post;
-$sn_post = new MDG_Type_Post();
+$sn_post = new SN_Type_Post();

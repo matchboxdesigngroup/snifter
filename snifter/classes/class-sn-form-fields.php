@@ -1,6 +1,6 @@
 <?php
 /**
- * MDG Meta Form Fields Class.
+ * Snifter Meta Form Fields Class.
  */
 
 /**
@@ -8,19 +8,38 @@
  *
  * @package      WordPress
  * @subpackage   Snifter
- * @since        Snifter 1.0.0
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
-class SN_Form_Fields extends SN_Utilities {
+class SN_Form_Fields extends SN_Generic {
 	/**
 	 * Class constructor
 	 *
-	 * @since       Snifter 1.0.0
+	 * @param array   $config Class configuration
 	 */
-	function __construct() {
+	function __construct( $config = array() ) {
 		parent::__construct();
 	} // __construct()
+
+
+
+	/**
+	 * Creates a HTML hidden input field.
+	 *
+	 * @param string  $id    id attribute
+	 * @param string  $meta  meta value
+	 *
+	 * @return string       The hidden input field and description
+	 */
+	public function hidden_field( $id, $meta ) {
+		$attrs = array(
+			'type'  => 'hidden',
+		);
+
+		$hidden_field = $this->text_field( $id, $meta, '', $attrs );
+
+		return $hidden_field;
+	} // hidden_field()
 
 
 
@@ -29,7 +48,7 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * <code>$this->label( $label, $id );</code>
 	 *
-	 * @since   Snifter 1.0.0
+	 * @since   0.2.3
 	 *
 	 * @param   string  $id     The input fields ID value.
 	 * @param   string  $label  The text to be displayed in the label.
@@ -51,11 +70,11 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * <code>$this->description( $description, $id );</code>
 	 *
-	 * @since   Snifter 1.0.0
+	 * @since   0.2.3
 	 *
 	 * @param   string  $description  The text to be displayed in the description.
 	 *
-	 * @return  string                The description for the form input field.
+	 * @return  string          The description for the form input field.
 	 */
 	public function description( $description ) {
 		if ( $description == '' ) {
@@ -72,7 +91,7 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * <code>$input_attrs = $this->merge_element_attributes( $default_attrs, $attrs );</code>
 	 *
-	 * @since   Snifter 1.0.0
+	 * @since   0.2.3
 	 *
 	 * @param   array   $defaults  The default attributes.
 	 * @param   array   $attrs     The supplied attributes
@@ -111,7 +130,7 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * <code>$allowed_html = $this->get_form_kses_allowed_html();</code>
 	 *
-	 * @since   Snifter 1.0.0
+	 * @since   0.2.3
 	 *
 	 * @return  array  Allowed HTML tags.
 	 */
@@ -172,14 +191,12 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML text field and description.
 	 *
-	 * @since   Snifter 1.0.0
+	 * @param string  $id    id attribute
+	 * @param string  $meta  meta value
+	 * @param string  $desc  description
+	 * @param array   $attrs Input attributes.
 	 *
-	 * @param   string   $id     Input id attribute.
-	 * @param   string   $meta   Input meta value.
-	 * @param   string   $desc   Input description.
-	 * @param   array    $attrs  Input attributes.
-	 *
-	 * @return  string         The text field and description
+	 * @return string       The text field and description
 	 */
 	public function text_field( $id, $meta, $desc, $attrs = array() ) {
 		$defaults = array(
@@ -190,7 +207,7 @@ class SN_Form_Fields extends SN_Utilities {
 			'size'  => '30',
 		);
 		$input_attrs = $this->merge_element_attributes( $defaults, $attrs );
-		$text_field  = "<input {$input_attrs} value='{$meta}'>";
+		$text_field  = "<input {$input_attrs} value=\"{$meta}\">";
 		$text_field .= $this->description( $desc );
 
 		return $text_field;
@@ -201,13 +218,11 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML email field and description.
 	 *
-	 * @since   Snifter 1.0.0
+	 * @param string  $id   id attribute
+	 * @param string  $meta meta value
+	 * @param string  $desc description
 	 *
-	 * @param   string  $id    Input id attribute.
-	 * @param   string  $meta  Input meta value.
-	 * @param   string  $desc  Input description,
-	 *
-	 * @return  string         The email field and description
+	 * @return string       The email field and description
 	 */
 	public function email_field( $id, $meta, $desc, $attrs = array() ) {
 		$email_field = $this->text_field( $id, $meta, $desc, array( 'type' => 'email' ) );
@@ -218,34 +233,47 @@ class SN_Form_Fields extends SN_Utilities {
 
 
 	/**
+	 * Creates a HTML number field and description.
+	 *
+	 * @param string  $id   id attribute
+	 * @param string  $meta meta value
+	 * @param string  $desc description
+	 *
+	 * @return string       The number field and description
+	 */
+	public function number_field( $id, $meta, $desc, $attrs = array() ) {
+		$number_field = $this->text_field( $id, $meta, $desc, array( 'type' => 'number' ) );
+
+		return $number_field;
+	} // number_field()
+
+
+
+	/**
 	 * Creates a HTML URL field and description.
 	 *
-	 * @since  Snifter 1.0.0
+	 * @param string  $id   id attribute
+	 * @param string  $meta meta value
+	 * @param string  $desc description
 	 *
-	 * @param  string  $id    Input id attribute.
-	 * @param  string  $meta  Input meta value.
-	 * @param  string  $desc  Input description.
-	 *
-	 * @return  string         The URL field and description
+	 * @return string       The URL field and description
 	 */
 	public function url_field( $id, $meta, $desc, $attrs = array() ) {
 		$url_field = $this->text_field( $id, $meta, $desc, array( 'type' => 'url' ) );
 
 		return $url_field;
-	} // email_field()
+	} // url_field()
 
 
 
 	/**
 	 * Creates a color picker.
 	 *
-	 * @since  Snifter 1.0.0
+	 * @param string  $id   id attribute
+	 * @param string  $meta meta value
+	 * @param string  $desc description
 	 *
-	 * @param  string  $id    Input id attribute
-	 * @param  string  $meta  Input meta value
-	 * @param  string  $desc  Input description
-	 *
-	 * @return string         The color picker and description
+	 * @return string       The color picker and description
 	 */
 	public function color_picker( $id, $meta, $desc, $attrs = array() ) {
 		$color_picker = $this->text_field( $id, $meta, $desc, array( 'class' => 'sn-color-picker' ) );
@@ -258,21 +286,20 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML input field and description.
 	 *
-	 * @since  Snifter 1.0.0
+	 * @param string  $id       id attribute
+	 * @param string  $file_src meta value
+	 * @param string  $desc     description
 	 *
-	 * @todo   Save the attachment id to meta instead of the URL.
-	 *
-	 * @param  string  $id        Input id attribute.
-	 * @param  string  $file_src  Input meta value.
-	 * @param  string  $desc      Input description.
-	 *
-	 * @return  string            The input field and description
+	 * @return string            The input field and description
 	 */
-	public function file_upload_field( $id, $file_src, $desc, $attrs = array() ) {
+	public function file_upload_field( $id, $meta, $desc, $attrs = array() ) {
+		$attachment_url  = wp_get_attachment_url( $meta );
+		$file_src        = ( $attachment_url ) ? $attachment_url : '';
 		$image_thumbnail = $this->file_upload_field_thumbnail( $file_src );
 
 		$input_field  = '<div id="meta_upload_'.esc_attr( $id ).'" class="sn-meta-upload">';
-		$input_field .= '<input type="text" name="'.esc_attr( $id ).'" id="'.esc_attr( $id ).'" value="'.$file_src.'" size="30" />';
+		$input_field .= $this->text_field( "{$id}_file_src", $file_src, '' );
+		$input_field .= $this->hidden_field( $id, $meta );
 		$input_field .= '<a href="#" id="meta_upload_link_'.esc_attr( $id ).'" class="upload-link button">upload</a>';
 		$input_field .= '<br>';
 		$input_field .= '<div class="description">'.wp_kses( $desc, 'post' ).'</div>';
@@ -286,11 +313,9 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Retrieves file upload field thumbnails
 	 *
-	 * @since   Snifter 1.0.0
+	 * @param string  $file_src The files source url
 	 *
-	 * @param   string   $file_src  The files source url.
-	 *
-	 * @return  string            The image HTML or an empty string.
+	 * @return string           The image HTML or an empty string
 	 */
 	public function file_upload_field_thumbnail( $file_src ) {
 		$file_id         = $this->get_attachment_id_from_src( $file_src );
@@ -326,13 +351,11 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML textarea and description.
 	 *
-	 * @since   Snifter 1.0.0
+	 * @param string  $id   id attribute
+	 * @param string  $meta meta value
+	 * @param string  $desc description
 	 *
-	 * @param   string  $id    Input id attribute.
-	 * @param   string  $meta  Input meta value.
-	 * @param   string  $desc  Input description.
-	 *
-	 * @return  string         The input field and description
+	 * @return string            The input field and description
 	 */
 	public function textarea( $id, $meta, $desc, $attrs = array() ) {
 		$textarea  = '<textarea name="'.esc_attr( $id ).'" id="'.esc_attr( $id ).'" cols="55" rows="4">'.$meta.'</textarea>';
@@ -347,13 +370,11 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML checkbox and description.
 	 *
-	 * @since   Snifter 1.0.0
+	 * @param string  $id   id attribute
+	 * @param string  $meta meta value
+	 * @param string  $desc description
 	 *
-	 * @param   string  $id    Input id attribute.
-	 * @param   string  $meta  Input meta value.
-	 * @param   string  $desc  Input description.
-	 *
-	 * @return  string         The checkbox input field and description
+	 * @return string            The input field and description
 	 */
 	public function checkbox( $id, $meta, $desc, $attrs = array() ) {
 		$attrs = array(
@@ -374,14 +395,12 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML radio and description.
 	 *
-	 * @since   Snifter 1.0.0
+	 * @param string  $id      id attribute
+	 * @param string  $meta    meta value
+	 * @param string  $desc    description
+	 * @param array   $options select options
 	 *
-	 * @param   string  $id       Input id attribute.
-	 * @param   string  $meta     Input meta value.
-	 * @param   string  $desc     Input description.
-	 * @param   array   $options  Input options.
-	 *
-	 * @return  string            The input field and description
+	 * @return string            The input field and description
 	 */
 	public function radio( $id, $meta, $desc, $options, $attrs = array() ) {
 		$i     = 1;
@@ -410,14 +429,12 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML select and description.
 	 *
-	 * @since   Snifter 1.0.0
+	 * @param string  $id      id attribute
+	 * @param string  $meta    meta value
+	 * @param string  $desc    description
+	 * @param array   $options select options
 	 *
-	 * @param   string  $id       Input id attribute.
-	 * @param   string  $meta     Input meta value.
-	 * @param   string  $desc     Input description.
-	 * @param   array   $options  Input options.
-	 *
-	 * @return  string            The input field and description
+	 * @return string            The input field and description
 	 */
 	public function select( $id, $meta, $desc, $options, $attrs = array() ) {
 		$defaults = array(
@@ -443,12 +460,10 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML chosen select and description.
 	 *
-	 * @since   Snifter 1.0.0
-	 *
-	 * @param   string  $id       Input id attribute.
-	 * @param   string  $meta     Input meta value.
-	 * @param   string  $desc     Input description.
-	 * @param   array   $options  Input options.
+	 * @param string  $id      id attribute
+	 * @param string  $meta    meta value
+	 * @param string  $desc    description
+	 * @param array   $options select options
 	 *
 	 * @return string            The input field and description
 	 */
@@ -469,14 +484,12 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * @todo    Fix chosen multi not saving correctly.
 	 *
-	 * @since   Snifter 1.0.0
+	 * @param string  $id      id attribute
+	 * @param string  $meta    meta value
+	 * @param string  $desc    description
+	 * @param array   $options select options
 	 *
-	 * @param   string  $id       Input id attribute.
-	 * @param   string  $meta     Input meta value.
-	 * @param   string  $desc     Input description.
-	 * @param   array   $options  Input select options.
-	 *
-	 * @return  string            The input field and description
+	 * @return string            The input field and description
 	 */
 	public function chosen_select_multi( $id, $meta, $desc, $options, $attrs = array() ) {
 		$id = "{$id}_multi_chosen";
@@ -499,12 +512,12 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a date picker.
 	 *
-	 * @param   string  $id           Input id attribute.
-	 * @param   string  $meta         Input meta value.
-	 * @param   string  $desc         Input description.
-	 * @param   string  $date_format  Optional, JavaScript date format default DD, MM d, yy.
+	 * @param string  $id           Id attribute.
+	 * @param string  $meta         Meta value.
+	 * @param string  $desc         Description.
+	 * @param string  $date_format  Optional, JavaScript date format default DD, MM d, yy.
 	 *
-	 * @return  string                The date picker and description.
+	 * @return string       The date picker and description
 	 */
 	public function datepicker( $id, $meta, $desc, $date_format = 'DD, MM d, yy', $attrs = array() ) {
 		$attrs = array(
@@ -520,16 +533,38 @@ class SN_Form_Fields extends SN_Utilities {
 
 
 	/**
+	 * Creates a date picker, but will be saved as strtotime().
+	 *
+	 * @param string  $id           Id attribute.
+	 * @param string  $meta         Meta value.
+	 * @param string  $desc         Description.
+	 * @param string  $date_format  Optional, JavaScript date format default DD, MM d, yy.
+	 *
+	 * @return string       The date picker and description
+	 */
+	public function time( $id, $meta, $desc, $date_format = 'F j ,Y', $attrs = array() ) {
+		$attrs = array(
+			'data-format' => $date_format,
+			'class'       => 'sn-datepicker datepicker',
+		);
+
+		$meta       = ( $meta == '' ) ? $meta : date( 'F j, Y', $meta );
+		$datepicker = $this->text_field( $id, $meta, $desc, $attrs );
+
+		return $datepicker;
+	} // time()
+
+
+
+	/**
 	 * Creates a HTML text area WYSWIG editor and description.
 	 *
-	 * @since   Snifter 1.0.0
+	 * @param string  $id    id attribute
+	 * @param string  $meta  meta value
+	 * @param string  $desc  description
+	 * @param string  $args  Customize wp_editor arguments.
 	 *
-	 * @param   string  $id    Input id attribute.
-	 * @param   string  $meta  Input meta value.
-	 * @param   string  $desc  Input description,
-	 * @param   string  $args  Customize wp_editor arguments.
-	 *
-	 * @return  string         The text area and description.
+	 * @return string            The text area and description
 	 */
 	public function wysiwg_editor( $id, $meta, $desc = '', $args = array() ) {
 		$meta = html_entity_decode( $meta );
@@ -626,6 +661,10 @@ class SN_Form_Fields extends SN_Utilities {
 				$input_field = $this->email_field( $id, $meta, $desc, $attrs );
 				break;
 
+			case 'number':
+				$input_field = $this->number_field( $id, $meta, $desc, $attrs );
+				break;
+
 			case 'url':
 				$input_field = $this->url_field( $id, $meta, $desc, $attrs );
 				break;
@@ -660,6 +699,10 @@ class SN_Form_Fields extends SN_Utilities {
 
 			case 'date':
 				$input_field = $this->datepicker( $id, $meta, $desc, $date_format, $attrs );
+				break;
+
+			case 'time':
+				$input_field = $this->time( $id, $meta, $desc, $date_format, $attrs );
 				break;
 
 			case 'title':

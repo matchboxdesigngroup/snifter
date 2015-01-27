@@ -1,6 +1,6 @@
 <?php
 /**
- * MDG Meta Helper Class
+ * Snifter Meta Helper Class
  */
 
 /**
@@ -11,7 +11,7 @@
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
-class MDG_Meta_Helper extends SN_Form_Fields {
+class SN_Meta_Helper extends SN_Form_Fields {
 	/** @var string Sets the meta box title */
 	public $meta_box_title;
 	/** @var string Sets the meta box position */
@@ -278,10 +278,6 @@ class MDG_Meta_Helper extends SN_Form_Fields {
 				$value = sanitize_text_field( $value );
 				break;
 
-			case 'file':
-				$value = esc_url_raw( $value, $protocols );
-				break;
-
 			case 'url':
 				$value = esc_url_raw( $value, $protocols );
 				break;
@@ -300,6 +296,11 @@ class MDG_Meta_Helper extends SN_Form_Fields {
 
 			case 'multi_input':
 				$value = wp_kses( $value, 'post' );
+				break;
+
+			case 'time':
+				$value = ( $value == '' ) ? $value : strtotime( $value );
+				$value = esc_attr( $value );
 				break;
 
 			default:
@@ -342,7 +343,7 @@ class MDG_Meta_Helper extends SN_Form_Fields {
 			$old = get_post_meta( $post_id, esc_attr( $id ), true );
 			$new = isset( $_POST[esc_attr( $id )] ) ? $_POST[esc_attr( $id )] : '';
 
-			$new = $this->sanitize_post_meta( $id, $new );
+			$new = $this->sanitize_post_meta( $type, $new );
 
 			if ( $new && $new != $old ) {
 				update_post_meta( $post_id, esc_attr( $id ), $new );
@@ -500,4 +501,4 @@ class MDG_Meta_Helper extends SN_Form_Fields {
 
 		$this->save_custom_meta( $post_id, $meta_fields );
 	} // save_meta()
-} // END Class MDG_Meta_Helper
+} // END Class SN_Meta_Helper

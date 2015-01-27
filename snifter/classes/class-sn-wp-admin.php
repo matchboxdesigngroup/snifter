@@ -1,6 +1,6 @@
 <?php
 /**
- * MDG WP Admin Class
+ * Snifter WP Admin Class
  */
 
 /**
@@ -11,7 +11,7 @@
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
-class MDG_WP_Admin extends SN_Utilities {
+class SN_WP_Admin extends SN_Utilities {
 	/**
 	 * Class constructor
 	 *
@@ -67,7 +67,7 @@ class MDG_WP_Admin extends SN_Utilities {
 		// Meta upload thumbnail
 		add_action( 'wp_ajax_sn_meta_upload_thumb', array( &$this, 'sn_meta_upload_thumb_callback' ) );
 
-		// Add MDG dashboard widget
+		// Add Snifter dashboard widget
 		// add_action( 'wp_dashboard_setup', array( &$this, 'add_sn_dashboard_widget' ) );
 	} // _add_actions()
 
@@ -419,7 +419,7 @@ class MDG_WP_Admin extends SN_Utilities {
 
 
 	/**
-	 * Adds the MDG dashboard widget to the dashboard.
+	 * Adds the Snifter dashboard widget to the dashboard.
 	 *
 	 * @return Void
 	 */
@@ -435,7 +435,7 @@ class MDG_WP_Admin extends SN_Utilities {
 
 
 	/**
-	 * Outputs/includes th MDG dashboard widgets content.
+	 * Outputs/includes th Snifter dashboard widgets content.
 	 *
 	 * @return Void
 	 */
@@ -446,7 +446,7 @@ class MDG_WP_Admin extends SN_Utilities {
 
 
 	/**
-	 * Handles saving form fields for MDG dashboard widget.
+	 * Handles saving form fields for Snifter dashboard widget.
 	 *
 	 * @todo Build widget.
 	 *
@@ -533,7 +533,7 @@ class MDG_WP_Admin extends SN_Utilities {
 		);
 
 		// Change this to your theme text domain, used for internationalising strings
-		$theme_text_domain = 'roots';
+		$theme_text_domain = 'sn';
 
 		/**
 		 * Array of configuration settings. Amend each line as needed.
@@ -594,8 +594,8 @@ class MDG_WP_Admin extends SN_Utilities {
 		echo json_encode( $thumbnail );
 		exit;
 	} // sn_meta_upload_thumb_callback
-} // End class MDG_WP_Admin()
+} // End class SN_WP_Admin()
 
 // Set global instance
 global $sn_wp_admin;
-$sn_wp_admin = new MDG_WP_Admin();
+$sn_wp_admin = new SN_WP_Admin();

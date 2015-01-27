@@ -15,7 +15,7 @@
  *
  * @return boolean True will display the sidebar, False will not
  */
-class MDG_Sidebar {
+class SN_Sidebar {
 	/**
 	 * WordPress conditional tags to check against.
 	 *
@@ -91,4 +91,4 @@ class MDG_Sidebar {
 	private function check_page_template( $page_template ) {
 		return is_page_template( $page_template );
 	} // check_page_template()
-} // MDG_Sidebar()
+} // SN_Sidebar()

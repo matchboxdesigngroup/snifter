@@ -13,8 +13,8 @@
  *
  * @copyright    2013 - Present         Dan Holloran
  */
-if ( ! class_exists( 'MDG_Settings' ) ) {
-	class MDG_Settings extends SN_Form_Fields {
+if ( ! class_exists( 'SN_Settings' ) ) {
+	class SN_Settings extends SN_Form_Fields {
 		/**
 		 * The slug to be used for the options page.
 		 *
@@ -49,7 +49,7 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 
 
 		/**
-		 * MDG_Settings class constructor.
+		 * SN_Settings class constructor.
 		 *
 		 * @since  0.2.3
 		 *
@@ -343,7 +343,7 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 
 
 		/**
-		 * Handles adding all of the MDG_Base setting actions and filters.
+		 * Handles adding all of the Snifter setting actions and filters.
 		 *
 		 * <code>$this->_add_sn_settings_actions_filters();</code>
 		 *
@@ -379,7 +379,7 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 		/**
 		 * Adds the option page content.
 		 *
-		 * <code>add_options_page( 'MDG_Base Settings', 'MDG_Base Settings', 'manage_options', $this->page_slug, array( &$this, 'options_page' ) );</code>
+		 * <code>add_options_page( 'Snifter Settings', 'Snifter Settings', 'manage_options', $this->page_slug, array( &$this, 'options_page' ) );</code>
 		 *
 		 * @since   0.2.3
 		 *
@@ -598,9 +598,9 @@ if ( ! class_exists( 'MDG_Settings' ) ) {
 
 			return $input_html;
 		} // build_inputs()
-	} // MDG_Settings()
+	} // SN_Settings()
 
 	// Instantiate Class
 	global $sn_settings;
-	$sn_settings = new MDG_Settings();
+	$sn_settings = new SN_Settings();
 } // if()
