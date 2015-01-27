@@ -333,7 +333,7 @@ class SN_Meta_Helper extends SN_Form_Fields {
 		} // if()
 
 		// check autosave
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ){
+		if ( defined( 'DOING_AUTOSAVE' ) and DOING_AUTOSAVE ){
 			return $post_id;
 		} // if()
 
@@ -345,9 +345,9 @@ class SN_Meta_Helper extends SN_Form_Fields {
 
 			$new = $this->sanitize_post_meta( $type, $new );
 
-			if ( $new && $new != $old ) {
+			if ( $new and ( $new !== $old ) ) {
 				update_post_meta( $post_id, esc_attr( $id ), $new );
-			} elseif ( '' == $new && $old ) {
+			} elseif ( '' == $new and $old ) {
 				delete_post_meta( $post_id, esc_attr( $id ), $old );
 			} // if/elseif()
 		} // end foreach
@@ -491,7 +491,6 @@ class SN_Meta_Helper extends SN_Form_Fields {
 	public function save_meta( $post_id ) {
 		$after_title_meta_fields = $this->get_custom_after_title_meta_fields();
 		$custom_meta_fields = $this->get_custom_meta_fields();
-
 
 		$meta_fields = array_merge( $custom_meta_fields, $after_title_meta_fields );
 
