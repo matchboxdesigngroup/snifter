@@ -17,7 +17,8 @@
     "tests"
   ],
   "dependencies": {
-    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.3.0/chosen_v1.3.0.zip"
+    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.3.0/chosen_v1.3.0.zip",
+    "jquery.ui": "~1.11.2"
   },
   "devDependencies": {}
 }
