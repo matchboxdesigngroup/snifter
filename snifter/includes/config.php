@@ -41,7 +41,8 @@ define( 'RELATIVE_CONTENT_PATH', str_replace( home_url() . '/', '', content_url(
 /**
  * The current theme name
  */
-define( 'THEME_NAME', next( explode( '/themes/', get_template_directory() ) ) );
+$template_directory = explode( '/themes/', get_template_directory() );
+define( 'THEME_NAME', next( $template_directory ) );
 
 /**
  * Relative path to wp-content/themes/{{THEME_NAME}}
@@ -111,6 +112,8 @@ function sn_display_sidebar() {
  * Example: If the content area is 640px wide, set $content_width = 620; so images and videos will not overflow.
  * Default: 1140px is the default Bootstrap container width.
  */
+global $content_width;
 if ( ! isset( $content_width ) ) {
 	$content_width = 1200;
 } // if()
+var_dump( $content_width );
