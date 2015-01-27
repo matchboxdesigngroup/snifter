@@ -1,27 +1,21 @@
-,
-"file_exclude_patterns": [
-	"assets/*.css",
-	"assets/*.min.*",
-	"codekit-config.json",
-	".scss-lint.yml",
-	".jscs.json",
-	"*.sublime*",
-	"*codekit-*",
-	"config.rb",
-	".editorconfig",
-	".jshintrc",
-	"*.map",
-	"*.lock",
-	"*.psd",
-	"._.DS_Store",
-	"config.codekit"
-],
-"folder_exclude_patterns": [
-	".sass-cache",
-	"node_modules",
-	"lang",
-	"bower_components",
-	"docs",
-	"*codekit-*",
-	"twenty*"
-]
+			"file_exclude_patterns": [
+				".*",
+				"*sublime*",
+				"*codekit*",
+				"*bower*"
+				"config.*",
+				"*.map",
+				"*.lock",
+				"*.psd",
+				"license",
+				"readme.*"
+			],
+			"folder_exclude_patterns": [
+				".*",
+				"lang",
+				"bower*",
+				"docs",
+				"dist"
+				"*codekit-*",
+				"twenty*"
+			]
