@@ -1,3 +1,5 @@
+// @codekit-prepend "meta-upload.js";
+
 /* global pagenow */
 jQuery((function($) {
 	var Meta   = {},
@@ -11,7 +13,7 @@ jQuery((function($) {
 				textField  = $("#" + select_id)
 		;
 		textField.val(chosenElem);
-	}; // MEta.changeChosen()
+	}; // Meta.changeChosen()
 
 	/**
 	 * Sets up the chosen select
@@ -19,7 +21,7 @@ jQuery((function($) {
 	 * @return Void
 	 */
 	Meta.setupChosen = function() {
-		var chosenElem = $('.mdg-chosen-select');
+		var chosenElem = $('.sn-chosen-select');
 
 		if ( chosenElem === 0 ) {
 			return false;
@@ -41,7 +43,7 @@ jQuery((function($) {
 	 * @return Void
 	 */
 	Meta.setupDatepicker = function() {
-		var datePicker = $('.mdg-datepicker');
+		var datePicker = $('.sn-datepicker');
 
 		if ( datePicker.length === 0 ) {
 			return false;
@@ -64,7 +66,7 @@ jQuery((function($) {
 	 * @return Void
 	 */
 	Meta.setupColorPicker = function() {
-		var colorPicker = $('.mdg-color-picker');
+		var colorPicker = $('.sn-color-picker');
 
 		if ( colorPicker.length === 0 ) {
 			return false;
@@ -154,14 +156,14 @@ jQuery((function($) {
 		trigger.click(function() {
 			$.get(
 				ajaxurl,
-				{ action : 'mdg-image-reference-grid' },
+				{ action : 'sn-image-reference-grid' },
 				function( returnHtml ) {
 					trigger.after(
-						'<p class="mdg-image-reference"><a href="#" id="hide-image-grid-reference">hide image sizes</a></p>' +
-						'<p class="mdg-image-reference">please note that image sizes may be smaller to fit into your screen</p>'
+						'<p class="sn-image-reference"><a href="#" id="hide-image-grid-reference">hide image sizes</a></p>' +
+						'<p class="sn-image-reference">please note that image sizes may be smaller to fit into your screen</p>'
 					);
 
-					returnHtml = '<div class="mdg-image-reference">' +
+					returnHtml = '<div class="sn-image-reference">' +
 													returnHtml +
 													'<div style="clear:both"></div>' +
 												'</div>';
@@ -171,7 +173,7 @@ jQuery((function($) {
 					trigger.hide();
 
 					$('#hide-image-grid-reference').click(function() {
-						$('.mdg-image-reference').remove();
+						$('.sn-image-reference').remove();
 						trigger.show();
 					});
 

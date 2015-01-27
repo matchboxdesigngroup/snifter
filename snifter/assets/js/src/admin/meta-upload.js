@@ -3,7 +3,7 @@ jQuery((function($) {
 		var file_frame;
 
 		// Handle Text Field Changes
-		$('.mdg-meta-upload').each(function(index, el) {
+		$('.sn-meta-upload').each(function(index, el) {
 			var wrap        = $(el),
 					srcField    = wrap.find('input[type="text"]'),
 					idField     = wrap.find('input[type="hidden"]'),
@@ -26,8 +26,8 @@ jQuery((function($) {
 		* Attach Image
 		*/
 		// Uploading files
-		$('.mdg-meta-upload .upload-link').on('click', function( e ) {
-			var metaWrap      = $(e.currentTarget).parent('.mdg-meta-upload'),
+		$('.sn-meta-upload .upload-link').on('click', function( e ) {
+			var metaWrap      = $(e.currentTarget).parent('.sn-meta-upload'),
 					metaTextField = metaWrap.find('input[type="text"]'),
 					metaSaveField = metaWrap.find('input[type="hidden"]')
 			;
@@ -58,7 +58,7 @@ jQuery((function($) {
 				metaSaveField.val(fileId);
 
 				var ajaxParams = {
-					action  : 'mdg_meta_upload_thumb',
+					action  : 'sn_meta_upload_thumb',
 					fileSrc : fileUrl
 				};
 				$.getJSON(ajaxurl, ajaxParams, function(json) {
