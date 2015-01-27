@@ -11,7 +11,7 @@
  *
  * @author       Matchbox Design Group <info@matchboxdesigngroup.com>
  */
-class SN_Form_Fields extends SN_Generic {
+class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Class constructor
 	 *
