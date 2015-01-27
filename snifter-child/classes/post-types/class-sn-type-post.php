@@ -54,7 +54,7 @@ class SN_Type_Post extends SN_Type_Base {
 		/** @var string  REQUIRED singular title */
 		$this->post_type_single = 'Post';
 
-		// MDG_Meta_Helper Properties
+		// SN_Meta_Helper Properties
 		$this->_set_sn_meta_helper_options();
 
 		parent::__construct();

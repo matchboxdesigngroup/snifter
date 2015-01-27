@@ -1,9 +1,9 @@
-/** global MDG_GLOBALS */
+/** global SN_GLOBALS */
 jQuery((function($) {
 	var site    = {};
 
 	// Globals defined in scripts.php
-	// ajaxurl = MDG_GLOBALS.ajaxurl
+	// ajaxurl = SN_GLOBALS.ajaxurl
 
 	/**
 	 * Initialize FlexSliders here
