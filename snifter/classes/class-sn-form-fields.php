@@ -567,12 +567,15 @@ class SN_Form_Fields extends SN_Utilities {
 	 * @return string            The text area and description
 	 */
 	public function wysiwg_editor( $id, $meta, $desc = '', $args = array() ) {
-		$meta = html_entity_decode( $meta );
+		$meta          = html_entity_decode( $meta );
 		$wysiwg_editor = '';
 		$default_args  = array(
-			'teeny'         => false,
-			'editor_class'  => 'sn-wyswig-editor',
-			'textarea_rows' => 8,
+			'teeny'            => true,
+			'editor_class'     => 'sn-wyswig-editor',
+			'textarea_rows'    => 8,
+			'quicktags'        => false,
+			'media_buttons'    => false,
+			'drag_drop_upload' => false,
 		);
 		$wp_editor_settings = array_merge( $default_args, $args );
 		ob_start();

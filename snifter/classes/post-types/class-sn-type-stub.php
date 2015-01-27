@@ -492,6 +492,14 @@ class SN_Type_Stub extends SN_Type_Base {
 			'desc'  => 'WYSIWG Editor description.',
 			'id'    => "{$this->post_type}_wysiwg_editor",
 			'type'  => 'wysiwg_editor',
+			'args'  => array(
+				'teeny'            => true,
+				'editor_class'     => 'sn-wyswig-editor',
+				'textarea_rows'    => 8,
+				'quicktags'        => false,
+				'media_buttons'    => false,
+				'drag_drop_upload' => false,
+			)
 		);
 
 		return $meta_fields;
