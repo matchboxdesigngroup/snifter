@@ -5,3 +5,4 @@ twentytwelve
 twentyfifteen
 bower_components
 .sass-cache
+*codekit-*
