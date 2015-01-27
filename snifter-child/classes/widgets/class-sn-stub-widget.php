@@ -2,7 +2,7 @@
 /**
  * Example Stub widget
  */
-class MDG_Stub_Widget extends WP_Widget {
+class SN_Stub_Widget extends WP_Widget {
 	/**
 	 * Widget form fields for administrator.
 	 *
@@ -133,4 +133,4 @@ class MDG_Stub_Widget extends WP_Widget {
 		<?php
 		} // foreach()
 	} // form()
-} // MDG_Stub_Widget()
+} // SN_Stub_Widget()

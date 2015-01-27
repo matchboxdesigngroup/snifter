@@ -12,21 +12,6 @@
 
 $directories = array();
 
-$libs = array(
-	'titles',
-	'cleanup',
-	'gallery',
-	'rewrites',
-	'relative-urls',
-	'widgets',
-	'scripts',
-	'actions',
-	'filters',
-	'custom',
-	'debug',
-	'shortcodes',
-);
-
 // Includes
 $directories['includes'] = array(
 	'debug',
@@ -37,7 +22,6 @@ $directories['includes'] = array(
 	'cleanup',
 	'wp-images',
 	'rewrites',
-	'widgets',
 	'scripts',
 	'filter-actions',
 	'shortcodes',

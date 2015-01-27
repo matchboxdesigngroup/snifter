@@ -1,5 +1,10 @@
 <?php
 add_action( 'after_setup_theme', function() {
+	// Includes
+	$directories['includes'] = array(
+		'widgets',
+	);
+
 	// Post Types
 	$directories['classes/post-types']  = array(
 		'class-sn-type-page',

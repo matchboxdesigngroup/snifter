@@ -57,10 +57,10 @@ function sn_add_widgets() {
 	$widgets   = array();
 
 	// Example Stub Widget
-	// $widgets[] = array(
-	// 	'class' => 'MDG_Stub_Widget',
-	// 	'file'  => 'class-sn-stub-widget',
-	// );
+	$widgets[] = array(
+		'class' => 'SN_Stub_Widget',
+		'file'  => 'class-sn-stub-widget',
+	);
 
 	// Include widgets
 	foreach ( $widgets as $widget ) {
