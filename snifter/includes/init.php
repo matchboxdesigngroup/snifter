@@ -23,7 +23,7 @@ function sn_setup() {
 
 	// Tell the TinyMCE editor to use a custom stylesheet
 	add_editor_style( '/assets/css/editor-style.css' );
-}
+} // sn_setup()
 add_action( 'after_setup_theme', 'sn_setup' );
 
 
