@@ -6,13 +6,15 @@
 	".scss-lint.yml",
 	".jscs.json",
 	"*.sublime*",
+	"*codekit-*",
 	"config.rb",
 	".editorconfig",
 	".jshintrc",
 	"*.map",
 	"*.lock",
 	"*.psd",
-	"._.DS_Store"
+	"._.DS_Store",
+	"config.codekit"
 ],
 "folder_exclude_patterns": [
 	".sass-cache",
@@ -20,5 +22,6 @@
 	"lang",
 	"bower_components",
 	"docs",
+	"*codekit-*",
 	"twenty*"
 ]
