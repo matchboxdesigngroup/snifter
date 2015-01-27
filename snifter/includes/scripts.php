@@ -26,7 +26,7 @@ function sn_enqueue_site_scripts() {
 		// CSS for IE.
 		wp_enqueue_style(
 			'sn_main_ltie9_css',
-			"{$theme_uri}/assets/css/dist/main-ltie9.min.css",
+			"{$child_theme_uri}/assets/dist/main-ltie9.min.css",
 			array(),
 			$theme_version,
 			'all'
@@ -35,7 +35,7 @@ function sn_enqueue_site_scripts() {
 		// CSS for good browsers.
 		wp_enqueue_style(
 			'sn_main_css',
-			"{$theme_uri}/assets/css/dist/main.min.css",
+			"{$child_theme_uri}/assets/dist/main.min.css",
 			array(),
 			$theme_version,
 			'all'
@@ -44,18 +44,18 @@ function sn_enqueue_site_scripts() {
 
 	// Register Environment JS
 	wp_register_script(
-		'sn_env_tests_js',
-		"{$theme_uri}/assets/js/dist/env-tests.min.js",
+		'sn_modernizer_js',
+		"{$child_theme_uri}/assets/dist/vendor/modernizr.min.js",
 		array(),
 		$theme_version,
 		false
 	);
-	wp_enqueue_script( 'sn_env_tests_js' );
+	wp_enqueue_script( 'sn_modernizer_js' );
 
 	// Register Main JS
 	wp_register_script(
 		'sn_scripts_js',
-		"{$theme_uri}/assets/js/dist/scripts.min.js",
+		"{$child_theme_uri}/assets/dist/scripts.min.js",
 		array( 'jquery-effects-core' ),
 		$theme_version,
 		true
