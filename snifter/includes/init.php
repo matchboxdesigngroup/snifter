@@ -13,7 +13,7 @@
  */
 function sn_setup() {
 	// Make theme available for translation
-	load_theme_textdomain( 'sn', get_template_directory() . '/lang' );
+	load_theme_textdomain( 'snifter', get_template_directory() . '/lang' );
 
 	// Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)
 	add_theme_support( 'post-thumbnails' );
@@ -37,9 +37,9 @@ function sn_register_nav_menus() {
 	// Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
 	register_nav_menus(
 		array(
-			'primary_navigation' => __( 'Primary Navigation', 'sn' ),
-			'footer_navigation'  => __( 'Footer Navigation', 'sn' ),
-			'social_menu'        => __( 'Social Menu', 'sn' ),
+			'primary_navigation' => __( 'Primary Navigation', 'snifter' ),
+			'footer_navigation'  => __( 'Footer Navigation', 'snifter' ),
+			'social_menu'        => __( 'Social Menu', 'snifter' ),
 		)
 	);
 } // sn_register_nav_menus()

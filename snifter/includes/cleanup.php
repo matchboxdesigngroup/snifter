@@ -285,7 +285,7 @@ add_filter( 'excerpt_length', 'sn_excerpt_length' );
  * @return  string         New read more text.
  */
 function sn_excerpt_more( $more ) {
-	return ' &hellip; <a href="' . get_permalink() . '">' . __( 'Continued', 'sn' ) . '</a>';
+	return ' &hellip; <a href="' . get_permalink() . '">' . __( 'Continued', 'snifter' ) . '</a>';
 } // sn_excerpt_more()
 add_filter( 'excerpt_more', 'sn_excerpt_more' );
 

@@ -533,7 +533,7 @@ class SN_WP_Admin extends SN_Utilities {
 		);
 
 		// Change this to your theme text domain, used for internationalising strings
-		$theme_text_domain = 'sn';
+		$theme_text_domain = 'snifter';
 
 		/**
 		 * Array of configuration settings. Amend each line as needed.
