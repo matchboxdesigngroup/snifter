@@ -47,13 +47,12 @@ $directories['includes'] = array(
 
 // Base classes
 $directories['classes']  = array(
-	'class-sn-generic',
+	'class-sn-utilities',
 	'class-sn-form-fields',
 	'class-sn-meta-helper',
 	'class-sn-images',
 	'class-sn-type-base',
 	'class-sn-theme-wrapper',
-	'class-sn-utilities',
 	'class-sn-wp-admin',
 	'class-sn-walker-comments',
 	'class-sn-nav-walker',
@@ -65,7 +64,7 @@ $directories['classes']  = array(
 $directories['classes/post-types']  = array(
 	'class-sn-type-page',
 	'class-sn-type-post',
-	// 'class-sn-type-stub',
+	'class-sn-type-stub',
 );
 
 // Require all the things!!!
