@@ -7,4 +7,4 @@
  * @since       Snifter 1.0.0
  */
 
-get_template_part( 'templates/content-posts' );
+get_template_part( 'templates/content/content-posts' );

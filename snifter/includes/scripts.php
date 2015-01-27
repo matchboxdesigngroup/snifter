@@ -15,10 +15,11 @@
 function sn_enqueue_site_scripts() {
 	global $is_IE;
 
-	$theme         = wp_get_theme();
-	$theme_version = $theme->get( 'Version' );
-	$theme_uri     = get_template_directory_uri();
-	$ltie9         = preg_match( '/(?i)msie [6-8]/', $_SERVER['HTTP_USER_AGENT'] ) and $is_IE;
+	$theme           = wp_get_theme();
+	$theme_version   = $theme->get( 'Version' );
+	$theme_uri       = get_template_directory_uri();
+	$child_theme_uri = get_stylesheet_directory_uri();
+	$ltie9           = ( preg_match( '/(?i)msie [6-8]/', $_SERVER['HTTP_USER_AGENT'] ) and $is_IE );
 
 	// CSS
 	if ( $ltie9 ) {
@@ -72,7 +73,7 @@ add_action( 'wp_enqueue_scripts', 'sn_enqueue_site_scripts', 100 );
  */
 function sn_add_global_js() {
 	global $is_IE;
-	$ltie9 = preg_match( '/(?i)msie [6-8]/', $_SERVER['HTTP_USER_AGENT'] ) and $is_IE;
+	$ltie9 = ( preg_match( '/(?i)msie [6-8]/', $_SERVER['HTTP_USER_AGENT'] ) and $is_IE );
 
 	// Add Global PHP -> JS
 	$sn_globals = array(
@@ -92,9 +93,10 @@ add_action( 'wp_head', 'sn_add_global_js' );
  * @return Void
  */
 function sn_enqueue_admin_scripts() {
-	$theme         = wp_get_theme();
-	$theme_version = $theme->get( 'Version' );
-	$theme_uri     = get_template_directory_uri();
+	$theme           = wp_get_theme();
+	$theme_version   = $theme->get( 'Version' );
+	$theme_uri       = get_template_directory_uri();
+	$child_theme_uri = get_stylesheet_directory_uri();
 
 	// Chosen CSS
 	wp_register_style(
@@ -162,7 +164,7 @@ add_action( 'admin_enqueue_scripts', 'sn_enqueue_admin_scripts', 100 );
  */
 function sn_add_admin_global_js() {
 	global $is_IE;
-	$ltie9 = preg_match( '/(?i)msie [6-8]/', $_SERVER['HTTP_USER_AGENT'] ) and $is_IE;
+	$ltie9 = ( preg_match( '/(?i)msie [6-8]/', $_SERVER['HTTP_USER_AGENT'] ) and $is_IE );
 
 	// Add Global PHP -> JS
 	$sn_globals = array(
@@ -182,7 +184,7 @@ add_action( 'admin_head', 'sn_add_admin_global_js' );
  * @return Void
  */
 function sn_add_favicon() {
-	echo '<link rel="icon" href="'.get_template_directory_uri().'/assets/img/favicon.png" type="image/png">';
+	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/assets/img/favicon.png" type="image/png">';
 } // sn_add_favicon()
 add_action( 'wp_head', 'sn_add_favicon' );
 add_action( 'admin_head', 'sn_add_favicon' );

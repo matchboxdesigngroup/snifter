@@ -440,7 +440,7 @@ class SN_WP_Admin extends SN_Utilities {
 	 * @return Void
 	 */
 	function sn_dashboard_widget_callback() {
-		get_template_part( 'templates/widget', 'sn-dashboard' );
+		get_template_part( 'templates/admin/widget-sn-dashboard' );
 	} // sn_dashboard_widget_callback()
 
 

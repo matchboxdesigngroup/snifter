@@ -10,7 +10,9 @@
  */
 ?>
 <header class="site-header" role="banner">
-	<a class="logo" href="<?php echo esc_url( home_url() ); ?>/"><?php bloginfo( 'name' ); ?></a>
+	<a class="logo-wrap" href="<?php echo esc_url( home_url() ); ?>/">
+		<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/img/logo.png" alt="<?php bloginfo( 'name' ); ?>" width="" height="">
+	</a>
 	<nav class="primary-navigation" role="navigation">
 		<?php if ( has_nav_menu( 'primary_navigation' ) ) { ?>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary_navigation', 'menu_class' => 'primary-navigation-menu' ) ); ?>

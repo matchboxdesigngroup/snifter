@@ -1,0 +1,23 @@
+// =========================================================
+// Columns
+// =========================================================
+.col-half {
+	width: 50%;
+	@include box-sizing(border-box);
+	float: left;
+	padding: 0 30px;
+} // col-half
+
+.col-third {
+	width: 33.3333%;
+	padding-right: 20px;
+	@include box-sizing(border-box);
+	float: left;
+} // col-third
+
+.col-quarter {
+	width: 25%;
+	padding-right: 20px;
+	@include box-sizing(border-box);
+	float: left;
+} // col-quarter

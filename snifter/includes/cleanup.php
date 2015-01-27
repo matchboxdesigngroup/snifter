@@ -373,7 +373,7 @@ add_filter( 'request', 'sn_request_filter' );
  */
 function sn_get_search_form( $form ) {
 	$form = '';
-	locate_template( '/templates/searchform.php', true, false );
+	locate_template( '/templates/partials/searchform.php', true, false );
 	return $form;
 } // sn_get_search_form()
 add_filter( 'get_search_form', 'sn_get_search_form' );
