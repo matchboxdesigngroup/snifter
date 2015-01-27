@@ -302,7 +302,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'Text',
 			'desc'  => 'Text description.',
-			'id'    => "{$this->post_type}_text",
+			'id'    => '_text',
 			'type'  => 'text',
 		);
 
@@ -310,7 +310,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'URL',
 			'desc'  => 'URL description.',
-			'id'    => "{$this->post_type}_url",
+			'id'    => '_url',
 			'type'  => 'url',
 		);
 
@@ -318,7 +318,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'Email',
 			'desc'  => 'Email description.',
-			'id'    => "{$this->post_type}_email",
+			'id'    => '_email',
 			'type'  => 'email',
 		);
 
@@ -331,7 +331,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'Markup',
 			'desc'  => '<span>Custom markup: </span><a href="#">Link to nowhere</a>',
-			'id'    => "{$this->post_type}_markup",
+			'id'    => '_markup',
 			'type'  => 'markup',
 		);
 
@@ -339,7 +339,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'File Upload 1',
 			'desc'  => 'File description.',
-			'id'    => "{$this->post_type}_file_1",
+			'id'    => '_file_1',
 			'type'  => 'file',
 		);
 
@@ -347,7 +347,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'File Upload 2',
 			'desc'  => 'File description.',
-			'id'    => "{$this->post_type}_file_2",
+			'id'    => '_file_2',
 			'type'  => 'file',
 		);
 
@@ -355,7 +355,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'Textarea',
 			'desc'  => 'Textarea description.',
-			'id'    => "{$this->post_type}_textarea",
+			'id'    => '_textarea',
 			'type'  => 'textarea',
 		);
 
@@ -363,7 +363,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'Checkbox',
 			'desc'  => 'Checkbox description.',
-			'id'    => "{$this->post_type}_checkbox",
+			'id'    => '_checkbox',
 			'type'  => 'checkbox',
 		);
 
@@ -371,7 +371,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label'   => 'Radio',
 			'desc'    => 'Radio description.',
-			'id'      => "{$this->post_type}_radio",
+			'id'      => '_radio',
 			'type'    => 'radio',
 			'options' => array(
 				array(
@@ -397,7 +397,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label'   => 'Select',
 			'desc'    => 'Select description.',
-			'id'      => "{$this->post_type}_select",
+			'id'      => '_select',
 			'type'    => 'select',
 			'options' => array(
 				array(
@@ -427,7 +427,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label'   => 'Chosen Select',
 			'desc'    => 'Chosen select description.',
-			'id'      => "{$this->post_type}_chosen_select",
+			'id'      => '_chosen_select',
 			'type'    => 'chosen_select',
 			'options' => array(
 				array(
@@ -449,7 +449,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		// $meta_fields[] = array(
 		// 	'label'   => 'Chosen Select Multi',
 		// 	'desc'    => 'Chosen select multi description.',
-		// 	'id'      => "{$this->post_type}_chosen_select_multi",
+		// 	'id'      => '_chosen_select_multi',
 		// 	'type'    => 'chosen_select_multi',
 		// 	'options' => array(
 		// 		array(
@@ -467,7 +467,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'Date',
 			'desc'  => 'Date description.',
-			'id'    => "{$this->post_type}_date",
+			'id'    => '_date',
 			'type'  => 'date',
 		);
 
@@ -481,7 +481,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'Color Picker',
 			'desc'  => 'Color Picker description.',
-			'id'    => "{$this->post_type}_color_picker",
+			'id'    => '_color_picker',
 			'type'  => 'color_picker',
 		);
 
@@ -490,7 +490,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'WYSIWG Editor',
 			'desc'  => 'WYSIWG Editor description.',
-			'id'    => "{$this->post_type}_wysiwg_editor",
+			'id'    => '_wysiwg_editor',
 			'type'  => 'wysiwg_editor',
 			'args'  => array(
 				'teeny'            => true,
@@ -526,7 +526,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		$meta_fields[] = array(
 			'label' => 'Text',
 			'desc'  => 'Text description.',
-			'id'    => "{$this->post_type}_text",
+			'id'    => '_text',
 			'type'  => 'text',
 		);
 
