@@ -1,5 +1,3 @@
-$footer-height: 29px; // Used for sticky footer
-
 .content-info {} // .content-info
 
 // ==================================================
@@ -15,7 +13,7 @@ $footer-height: 29px; // Used for sticky footer
 	cursor: pointer;
 	text-indent: -9999px;
 	background: rgba(180 , 180 , 180 , 0.2);
-	@include border-radius(5px);
+	border-radius: 5px;
 
 	a {
 		display: block;
@@ -24,7 +22,7 @@ $footer-height: 29px; // Used for sticky footer
 		position: absolute;
 		top: 5px;
 		left: 5px;
-		@include border-radius(999px);
+		border-radius: 999px;
 		background: url("../../img/page-top-link.png") center center no-repeat $theme1;
 	} // a
 
@@ -35,26 +33,3 @@ $footer-height: 29px; // Used for sticky footer
 		background-size: 30px 30px;
 	} // .backgroundsize & a
 } // .back-to-top
-
-// Sticky Footer
-@include bp-screen-sm {
-	* { margin: 0; }
-
-	.sticky-footer-wrap {
-		height: 100%;
-		.page-wrap {
-			min-height: 100%;
-			margin-bottom: -1 * $footer-height;
-
-			&:after {
-				content: "";
-				display: block;
-			} // &:after
-		} // .page-wrap
-
-		.content-info,
-		.page-wrap:after {
-			height: $footer-height;
-		} // .content-info, .page-wrap:after
-	} // .sticky-footer-wrap
-} // @include bp-screen-sm

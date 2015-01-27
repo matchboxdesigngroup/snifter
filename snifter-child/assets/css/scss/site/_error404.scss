@@ -6,16 +6,6 @@
 	font-size: 14px;
 
 	.big-404 {
-
-		@include bp-min-max-sm {
-			font-size: 80px;
-			line-height: 60px;
-		}
-
-		@include bp-screen-xxs {
-			font-size: 40px;
-			line-height: 40px;
-		}
 		margin-top: 80px;
 		color: $color4;
 		font-weight: bold;

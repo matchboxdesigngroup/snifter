@@ -1,0 +1,11 @@
+// Handles setting a consistent hover.
+//
+// @param  {color}  $color     Color to use as base for hover.
+// @param  {boolean}  $darken  Optional. If `darken()`(TRUE) or `lighten()`(FALSE) should be used. Default TRUE.
+@function hover($color, $darken:true) {
+	@if $darken {
+		@return darken($color, 5%);
+	} @else {
+		@return lighten($color, 5%);
+	} // @if/@else
+} // @function hover

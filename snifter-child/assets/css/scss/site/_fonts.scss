@@ -1,0 +1,33 @@
+// ===============================================
+// Font Stacks
+// ===============================================
+$font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// ===============================================
+// Font Mixins
+// ===============================================
+@mixin font-main {
+	font-family: $font-main;
+	font-weight: normal;
+	font-style: inherit;
+} // @mixin font-main
+
+@mixin font-main-italic {
+	font-family: $font-main;
+	font-weight: normal;
+	font-style: italic;
+} // @mixin font-main-italic
+
+@mixin font-main-bold {
+	font-family: $font-main;
+	font-weight: bold;
+	font-style: inherit;
+} // @mixin font-main-bold
+
+// ===============================================
+// Font Sizes
+// ===============================================
+$small: 14px;
+$med: 16px;
+$large: 32px;
+$xlarge: 42px;

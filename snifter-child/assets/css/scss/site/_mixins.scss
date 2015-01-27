@@ -1,0 +1,85 @@
+// Background opacity.
+//
+// @param {color}   $color   The color to set opacity on.
+// @param {number}  $opacity The opacity value 0 to 1.
+@mixin background-opacity($color, $opacity) {
+	background: $color;
+	background: rgba($color, $opacity);
+} // @mixin background-opacity
+
+
+
+// Media Query Min Width.
+//
+// @param {string}   $screen-size Min device width.
+// @param {boolean}  $ie          Should this media query output to the IE StyleSheet
+@mixin bp-min($screen-size, $ie:false) {
+	@if $ie and $old-ie {
+		@content;
+	} @else {
+		@media (min-width: $screen-size) { @content; }
+	}
+} // @mixin bp-min()
+
+
+
+// Media Query Max Width.
+//
+// @param {string}   $screen-size Max device width.
+// @param {boolean}  $ie          Should this media query output to the IE StyleSheet
+@mixin bp-max($screen-size, $ie:false) {
+	@if $ie and $old-ie {
+		@content;
+	} @else {
+		@media (max-width: $screen-size) { @content; }
+	}
+} // @mixin bp-max()
+
+
+
+// Media Query Min/Max.
+//
+// @param {string}   $min Min device width.
+// @param {string}   $max Max device width.
+// @param {boolean}  $ie  Should this media query output to the IE StyleSheet
+@mixin bp-min-max($min, $max, $ie:false) {
+	@if $ie and $old-ie {
+		@content;
+	} @else {
+		@media (min-width: $min) and (max-width: $max) { @content; }
+	}
+} // @mixin bp-min-max()
+
+
+
+// Handles link interaction states hover, active, focus
+//
+// @param  {string}  $active-class  Optional. The active class to use. Default .active.
+@mixin link-interact($active-class: '.active') {
+	#{$active-class},
+	&:hover,
+	&:active,
+	&:focus {
+		@content;
+	} // &:hover, &:active, &:focus
+} // link-interact()
+
+
+
+// Handles default link states link, visited.
+@mixin link-default {
+	&:link,
+	&:visited {
+		@content;
+	} // &:link, &:visited
+} // @mixin link-default
+
+// Sets element to gray scale.
+@mixin grayscale {
+	@include filter(grayscale(100%));
+} // @mixin grayscale
+
+// Sets removes element gray scale.
+@mixin grayscale-disabled {
+	@include filter(grayscale(0%));
+} // @mixin grayscale-disabled

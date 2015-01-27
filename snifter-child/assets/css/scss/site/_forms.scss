@@ -54,7 +54,9 @@
 	// Base Form Styles
 	// (You should only really need to edit this section)
 	// ==============================================
-	@include placeholder($color4);
+	@include placeholder {
+		color: $color4;
+	} // @include placeholder
 
 	label {
 		color: $color1;
@@ -76,7 +78,7 @@
 			color: $color3;
 			border: 1px solid $color3;
 			background-color: $color2;
-			@include border-radius(0);
+			border-radius: 0;
 			line-height: 1.5em;
 			font-size: $med;
 			height: $input-height;
@@ -103,7 +105,6 @@
 
 	.gform_footer {
 		input[type="submit"] {
-			@extend .btn;
 			background-color: $theme1;
 			color: $color2;
 
@@ -120,7 +121,7 @@
 	// Error Form Styles
 	// ==============================================
 	div.validation_error {
-		color: $brand-danger;
+		color: $color-danger;
 		margin: 0 0 10px;
 	} // div.validation_error
 
@@ -147,7 +148,7 @@
 			ul.gfield_radio,
 			.gfield_label,
 			.validation_message {
-				color: $brand-danger;
+				color: $color-danger;
 			} // div.ginput_complex.ginput_container label, ul.gfield_checkbox, ul.gfield_radio, .gfield_label, .validation_message
 
 			input[type=text],
@@ -157,7 +158,7 @@
 			input[type=number],
 			input[type=password],
 			textarea {
-				border: 1px solid $brand-danger;
+				border: 1px solid $color-danger;
 			} // input[type=text], input[type=url], input[type=email], input[type=tel], input[type=number], input[type=password], textarea
 		} // &.gfield_error
 
