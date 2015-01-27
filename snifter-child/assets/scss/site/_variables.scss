@@ -1,7 +1,24 @@
 // Snifter version.
 //
-// @type  {String}
+// @type  {string}
 $version: '1.0.0';
 
 // Old IE
+//
+// @type  {boolean}
 $old-ie: false !default;
+
+// Parent theme directory name
+//
+// @param  {string}
+$parent-theme-dir : 'snifter';
+
+// Bower path
+//
+// @param  {string}
+$bower-path: '../bower_components';
+
+// Parent theme path
+//
+// @param  {string}
+$parent-path: '../../../#{$parent-theme-dir}';
