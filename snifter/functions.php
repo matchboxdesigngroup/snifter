@@ -60,13 +60,6 @@ $directories['classes']  = array(
 	'class-sn-settings',
 );
 
-// Post Types
-$directories['classes/post-types']  = array(
-	'class-sn-type-page',
-	'class-sn-type-post',
-	// 'class-sn-type-stub',
-);
-
 // Require all the things!!!
 foreach ( $directories as $directory => $files ) {
 	if ( empty( $files ) ) continue;
