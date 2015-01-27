@@ -64,7 +64,7 @@ $directories['classes']  = array(
 $directories['classes/post-types']  = array(
 	'class-sn-type-page',
 	'class-sn-type-post',
-	'class-sn-type-stub',
+	// 'class-sn-type-stub',
 );
 
 // Require all the things!!!
