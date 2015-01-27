@@ -1,5 +1,5 @@
 {
-  "name": "Snifter Child",
+  "name": "Snifter Base",
   "version": "0.0.0",
   "homepage": "https://github.com/matchboxdesigngroup/snifter",
   "authors": [
@@ -17,7 +17,7 @@
     "tests"
   ],
   "dependencies": {
+    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.3.0/chosen_v1.3.0.zip"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
