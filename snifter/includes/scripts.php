@@ -72,11 +72,60 @@ function sn_enqueue_admin_scripts() {
 	$theme_version = $theme->get( 'Version' );
 	$theme_uri     = get_template_directory_uri();
 
-	// Administrator CSS
-	wp_enqueue_style( 'sn-admin-css', "{$theme_uri}/assets/dist/admin.min.css", array( 'wp-color-picker' ), null, 'all' );
+	// Chosen CSS
+	wp_register_style(
+		'sn-chosen-css',
+		"{$theme_uri}/assets/bower_components/chosen/chosen.min.css",
+		array(),
+		$theme_version,
+		'all'
+	);
 
-	// Administrator JS
-	wp_register_script( 'admin_scripts', "{$theme_uri}/assets/dist/admin.min.js", array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker' ), null, true );
+	// jQuery UI CSS
+	wp_register_style(
+		'sn-jquery-ui-all-css',
+		"{$theme_uri}/assets/bower_components/jquery.ui/themes/base/all.css",
+		array(),
+		$theme_version,
+		'all'
+	);
+
+	// Administrator CSS
+	wp_enqueue_style(
+		'sn_admin_css',
+		"{$theme_uri}/assets/dist/admin.min.css",
+		array(
+			'wp-color-picker',
+			'sn-chosen-css',
+			'sn-jquery-ui-all-css',
+		),
+		$theme_version,
+		'all'
+	);
+
+	// Chosen JS
+	wp_register_script(
+		'sn-chosen-jquery-js',
+		"{$theme_uri}/assets/bower_components/chosen/chosen.jquery.min.js",
+		array(),
+		$theme_version,
+		true
+	);
+
+// Administrator JS
+	wp_register_script(
+		'sn_admin_scripts',
+		"{$theme_uri}/assets/dist/admin.min.js",
+		array(
+			'jquery',
+			'jquery-ui-datepicker',
+			'wp-color-picker',
+			'sn-chosen-jquery-js',
+		),
+		$theme_version,
+		true
+	);
+	wp_enqueue_script( 'sn_admin_scripts' );
 } // sn_enqueue_admin_scripts()
 add_action( 'admin_enqueue_scripts', 'sn_enqueue_admin_scripts', 100 );
 
