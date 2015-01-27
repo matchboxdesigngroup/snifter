@@ -83,3 +83,18 @@
 @mixin grayscale-disabled {
 	@include filter(grayscale(0%));
 } // @mixin grayscale-disabled
+
+
+
+// Sets images to be responsive
+@mixin img-responsive {
+	max-width: 100%;
+	height: auto;
+} // @mixin img-responsive
+
+
+
+// Outputs the background
+@mixin body-background {
+	background: $body-bg;
+} // @mixin body-background

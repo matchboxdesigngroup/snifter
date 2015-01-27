@@ -7,12 +7,32 @@ $color3: #666; // medium grey
 $color4: #ccc; // light grey
 
 // ===============================================
+// Default Color Map
+// ===============================================
+$default-colors: (
+	color1 : $color1,
+	color2 : $color2,
+	color3 : $color3,
+	color4 : $color4,
+);
+
+// ===============================================
 // State Colors
 // ===============================================
 $color-success : #5cb85c;
 $color-info    : #5bc0de;
 $color-warning : #f0ad4e;
 $color-danger  : #d9534f;
+
+// ===============================================
+// State Color Map
+// ===============================================
+$state-colors: (
+	color-success : $color-success,
+	color-info    : $color-info,
+	color-warning : $color-warning,
+	color-danger  : $color-danger,
+);
 
 // ===============================================
 // Social Services Colors
@@ -25,3 +45,17 @@ $yt-red: #b00;
 // Theme Colors
 // ===============================================
 $theme1: #dc2327;
+
+// ===============================================
+// Theme Color Map
+// ===============================================
+$theme-colors: (
+	theme1 : $theme1,
+);
+
+// ===============================================
+// Partial Background Colors
+// ===============================================
+$header-bg : $color2;
+$body-bg   : $color2;
+$footer-bg : $color1;

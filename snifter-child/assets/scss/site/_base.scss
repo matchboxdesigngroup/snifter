@@ -1,3 +1,17 @@
+// ===========================================
+// Main Containers
+// ===========================================
+body {
+	background: $footer-bg;
+} // body
+
+.wrap {
+	@include body-background;
+} // .wrap
+
+// ===========================================
+// Standard Elements
+// ===========================================
 object,
 embed,
 a,
@@ -5,11 +19,63 @@ a:hover,
 a:active,
 a:focus,
 input::-moz-focus-inner {
-  outline: 0;
+	outline: 0;
 }
 
+a {
+	transition: all $default-transition;
+	color: $theme1;
+	cursor: pointer;
 
+	@include link-interact {
+		color: hover($theme1);
+	} // .link-interact
+} // a
 
+strong,
+b {
+	@include font-main-bold;
+} // strong, b
 
+i,
+em {
+	@include font-main-italic;
+} // i, em
 
+p {
+	line-height: $small + 6;
+	margin-bottom: $small;
+} // p
 
+.content-loop {
+	ul,
+	ol {
+		li {
+			margin-bottom: 0.6em;
+		} // li
+	} // ul,ol
+
+	img {
+		@include img-responsive;
+	} // img
+} // .content-loop
+
+// ===========================================
+// Titles
+// ===========================================
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	margin: 0 0 10px;
+	line-height: 100%;
+	@include font-main-bold;
+} // h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6

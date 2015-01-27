@@ -2335,6 +2335,22 @@
 		"shouldRunBless": 1,
 		"useLibsass": 0
 		},
+	"\/snifter-child\/assets\/scss\/site\/_buttons.scss": {
+		"createSourceMap": 1,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/snifter-child\/assets\/scss\/site\/_buttons.scss",
+		"outputAbbreviatedPath": "\/snifter-child\/assets\/dist\/_buttons.min.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 3,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 0
+		},
 	"\/snifter-child\/assets\/scss\/site\/_colors.scss": {
 		"createSourceMap": 1,
 		"debugStyle": 0,
@@ -2568,6 +2584,22 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/snifter-child\/assets\/scss\/site\/_variables.scss",
 		"outputAbbreviatedPath": "\/snifter-child\/assets\/dist\/_variables.min.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 3,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 0
+		},
+	"\/snifter-child\/assets\/scss\/site\/_wp-base.scss": {
+		"createSourceMap": 1,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/snifter-child\/assets\/scss\/site\/_wp-base.scss",
+		"outputAbbreviatedPath": "\/snifter-child\/assets\/dist\/_wp-base.min.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 3,
@@ -5688,15 +5720,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/snifter\/includes\/init.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/snifter\/includes\/init.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/snifter\/includes\/rewrites.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -5756,15 +5779,6 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/snifter\/includes\/wp-images.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/snifter\/includes\/wrapper.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/snifter\/includes\/wrapper.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -5839,6 +5853,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/snifter\/template-example.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/snifter\/template-pattern-library.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/snifter\/template-pattern-library.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -5969,6 +5992,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/snifter\/templates\/content\/content-pattern-library-content-loop.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/snifter\/templates\/content\/content-pattern-library-content-loop.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/snifter\/templates\/content\/content-posts.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -6037,6 +6069,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/snifter\/templates\/index.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/snifter\/templates\/partials\/featured-image.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/snifter\/templates\/partials\/featured-image.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -6241,7 +6282,7 @@
 	"coffeeMinifyOutput": 1,
 	"coffeeOutputStyle": 0,
 	"coffeeSyntaxCheckerStyle": 1,
-	"externalServerAddress": "http:\/\/localhost:8888",
+	"externalServerAddress": "http:\/\/snifter.dev\/",
 	"externalServerPreviewPathAddition": "",
 	"genericWebpageFileExtensionsString": "html, htm, shtml, shtm, xhtml, php, jsp, asp, aspx, erb, ctp",
 	"hamlAutoOutputPathEnabled": 1,

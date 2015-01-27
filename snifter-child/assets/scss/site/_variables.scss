@@ -22,3 +22,9 @@ $bower-path: '../bower_components';
 //
 // @param  {string}
 $parent-path: '../../../#{$parent-theme-dir}';
+
+
+// Base transition.
+//
+// @param  {String}
+$default-transition: 0.15s ease-out;

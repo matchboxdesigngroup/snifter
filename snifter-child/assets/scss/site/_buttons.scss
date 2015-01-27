@@ -1,0 +1,59 @@
+// ===========================================
+// Buttons
+// ===========================================
+.btn,
+input[type="submit"],
+button {
+	@include font-main-bold;
+	transition: all $default-transition;
+	font-size: $med;
+	color: $color2;
+	background: $theme1;
+	line-height: $med;
+	text-transform: uppercase;
+	border: 0;
+	padding: 12px 6px;
+	display: inline-block;
+
+	@include link-interact {
+		background: hover($theme1);
+		color: hover($color2);
+	} // @include link-interact
+} // .btn
+
+// Default Color buttons
+@each $name, $value in $default-colors {
+	input[type="submit"].btn-#{$name},
+	button.btn-#{$name},
+	.btn-#{$name} {
+		@extend .btn;
+		background: $value;
+
+		// Adds black text for white button
+		@if $value == $color2 {
+			color: $color1;
+		} // @if
+
+		@include link-interact {
+			background: hover($value);
+
+			@if $value == $color2 {
+				color: hover($color1, false);
+			} // @if
+		} // @include link-interact
+	} // .btn-#{$name}
+} // @each
+
+// Theme color buttons
+@each $name, $value in $theme-colors {
+	input[type="submit"].btn-#{$name},
+	button.btn-#{$name},
+	.btn-#{$name} {
+		@extend .btn;
+		background: $value;
+
+		@include link-interact {
+			background: hover($value);
+		} // @include link-interact
+	} // .btn-#{$name}
+} // @each
