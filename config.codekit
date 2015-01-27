@@ -23,24 +23,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/snifter-child\/assets\/css\/dist\/main-ltie9.min.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/snifter-child\/assets\/css\/dist\/main-ltie9.min.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/snifter-child\/assets\/css\/dist\/main.min.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/snifter-child\/assets\/css\/dist\/main.min.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/snifter-child\/assets\/css\/scss\/admin\/_snifter-admin.scss": {
 		"createSourceMap": 1,
 		"debugStyle": 0,
@@ -1529,6 +1511,22 @@
 		"shouldRunBless": 1,
 		"useLibsass": 0
 		},
+	"\/snifter-child\/assets\/css\/scss\/site\/_variables.scss": {
+		"createSourceMap": 1,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/snifter-child\/assets\/css\/scss\/site\/_variables.scss",
+		"outputAbbreviatedPath": "\/snifter-child\/assets\/css\/dist\/_variables.min.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 3,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 0
+		},
 	"\/snifter-child\/assets\/css\/scss\/site\/main-ltie9.scss": {
 		"createSourceMap": 1,
 		"debugStyle": 0,
@@ -1537,7 +1535,7 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/snifter-child\/assets\/css\/scss\/site\/main-ltie9.scss",
-		"outputAbbreviatedPath": "\/snifter\/assets\/dist\/main-ltie9.min.css",
+		"outputAbbreviatedPath": "\/snifter-child\/assets\/dist\/main-ltie9.min.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 3,
@@ -4417,6 +4415,15 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 2,
 		"syntaxCheckerStyle": 1
+		},
+	"\/snifter\/assets\/dist\/main-ltie9.min.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/snifter\/assets\/dist\/main-ltie9.min.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/snifter\/assets\/img\/admin\/w-logo-blue.png": {
 		"fileType": 32768,
