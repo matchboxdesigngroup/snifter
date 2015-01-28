@@ -332,6 +332,8 @@ class SN_Type_Stub extends SN_Type_Base {
 
 		// Divider
 		$meta_fields[] = array(
+			'label' => '',
+			'id'    => '_divider',
 			'type'  => 'divider',
 		);
 
