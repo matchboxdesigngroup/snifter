@@ -1,3 +1,4 @@
+/* global wp */
 jQuery((function($) {
 	$(window).load(function(){
 		var file_frame;
@@ -32,11 +33,6 @@ jQuery((function($) {
 					metaSaveField = metaWrap.find('input[type="hidden"]')
 			;
 
-			// Handle Text Field Changes
-			metaTextField.change(function(event) {
-				/* Act on the event */
-			});
-
 			e.preventDefault();
 
 			// Create the media frame.
@@ -50,7 +46,7 @@ jQuery((function($) {
 
 			file_frame.on( 'select', function() {
 				var fileFrameJSON = file_frame.state().get('selection').toJSON(),
-						fileUrl = fileFrameJSON[0].url
+						fileUrl = fileFrameJSON[0].url,
 						fileId = fileFrameJSON[0].id
 				;
 
