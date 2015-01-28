@@ -1,4 +1,4 @@
-/* global wp */
+/* global wp, ajaxurl */
 jQuery((function($) {
 	$(window).load(function(){
 		var file_frame;
