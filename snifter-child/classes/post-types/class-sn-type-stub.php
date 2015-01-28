@@ -322,6 +322,14 @@ class SN_Type_Stub extends SN_Type_Base {
 			'type'  => 'email',
 		);
 
+		// Number
+		$meta_fields[] = array(
+			'label' => 'Number',
+			'desc'  => 'Number description.',
+			'id'    => '_number',
+			'type'  => 'number',
+		);
+
 		// Divider
 		$meta_fields[] = array(
 			'type'  => 'divider',
