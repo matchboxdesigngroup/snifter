@@ -442,11 +442,23 @@ class SN_Form_Fields extends SN_Utilities {
 			'name'  => $id,
 		);
 		$input_attrs = $this->merge_element_attributes( $defaults, $attrs );
+		$merged_atts = array_merge( $defaults, $attrs );
+		$meta        = ( isset( $merged_atts['multiple'] ) ) ? explode( ',', $meta ) : $meta;
 
 		$select = "<select {$input_attrs}>";
 		foreach ( $options as $option ) {
-			extract( $option );
-			$selected = ( $value == $meta ) ? ' selected="selected"' : '';
+			$label       = ( isset( $option['label'] ) ) ? $option['label'] : '';
+			$value       = ( isset( $option['value'] ) ) ? $option['value'] : '';
+			$is_selected = false;
+
+			// Multi select will be an array and single will be a string
+			if ( gettype( $meta ) == 'array' ) {
+				$is_selected = in_array( $value, $meta );
+			} else if ( gettype( $meta ) == 'string' ) {
+				$is_selected = ( $value == $meta );
+			} // if/else()
+
+			$selected = ( $is_selected ) ? ' selected="selected"' : '';
 			$select  .= '<option value="'.esc_attr( $value ).'"'.$selected.'>'.esc_attr( $label ).'</option>';
 		} // foreach()
 		$select .= '</select>';
@@ -492,17 +504,16 @@ class SN_Form_Fields extends SN_Utilities {
 	 * @return string            The input field and description
 	 */
 	public function chosen_select_multi( $id, $meta, $desc, $options, $attrs = array() ) {
-		$id = "{$id}_multi_chosen";
-
 		$attrs = array(
 			'name'    => $id,
 			'multiple' => 'multiple',
 			'class'    => 'sn-chosen-select',
 			'style'    => 'width:200px;',
 		);
-		$select = $this->select( $id, $meta, $desc, $options, $attrs );
 
-		return $select;
+		$select  = '';
+		$select .= $this->select( "{$id}_multi_chosen", $meta, $desc, $options, $attrs );
+		$select .= $this->hidden_field( $id, $meta );
 
 		return $select;
 	} // chosen_select_multi()

@@ -2,13 +2,20 @@ jQuery((function($) {
 	var meta = {};
 
 	meta.changeChosen = function(e){
-		if ( typeof e === 'undefined' ) {} //
+		if ( typeof e === 'undefined' ) {
+			return false;
+		} // if()
+
 		// this updates the hidden text box that holds selections
-		var chosenElem = $('#' + e.currentTarget.id).val(),
-				select_id  = e.currentTarget.id.replace('_multi_chosen', ''),
-				textField  = $("#" + select_id)
+		var chosenElem  = $('#' + e.currentTarget.id).val(),
+				select_id   = e.currentTarget.id.replace('_multi_chosen', ''),
+				hiddenField = $("#" + select_id)
 		;
-		textField.val(chosenElem);
+
+
+		hiddenField.val(chosenElem);
+
+		return false;
 	}; // meta.changeChosen()
 
 	/**
@@ -46,7 +53,6 @@ jQuery((function($) {
 		} // if()
 
 		var dateFormat = datePicker.data('format');
-		console.log(dateFormat);
 		dateFormat = (typeof dateFormat === 'undefined' || dateFormat === '' ) ? 'MM d, yy' : dateFormat;
 		datePicker.datepicker({
 			dateFormat  : dateFormat,

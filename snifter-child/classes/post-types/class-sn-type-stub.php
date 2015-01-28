@@ -445,23 +445,23 @@ class SN_Type_Stub extends SN_Type_Base {
 			),
 		);
 
-		// Chosen Select Multi (Does not save correctly)
-		// $meta_fields[] = array(
-		// 	'label'   => 'Chosen Select Multi',
-		// 	'desc'    => 'Chosen select multi description.',
-		// 	'id'      => '_chosen_select_multi',
-		// 	'type'    => 'chosen_select_multi',
-		// 	'options' => array(
-		// 		array(
-		// 			'value' => 'value_1',
-		// 			'label' => 'Label 1',
-		// 		),
-		// 		array(
-		// 			'value' => 'value_2',
-		// 			'label' => 'Label 2',
-		// 		),
-		// 	),
-		// );
+		// Chosen Select Multi
+		$meta_fields[] = array(
+			'label'   => 'Chosen Select Multi',
+			'desc'    => 'Chosen select multi description.',
+			'id'      => '_chosen_select_multi',
+			'type'    => 'chosen_select_multi',
+			'options' => array(
+				array(
+					'value' => 'value_1',
+					'label' => 'Label 1',
+				),
+				array(
+					'value' => 'value_2',
+					'label' => 'Label 2',
+				),
+			),
+		);
 
 		// Date
 		$meta_fields[] = array(
