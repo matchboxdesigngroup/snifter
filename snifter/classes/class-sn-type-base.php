@@ -313,9 +313,21 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 * @return Void
 	 */
 	function display_thumbnail_column( $col, $id ) {
-		if ( $col == 'sn_post_thumb' and $this->is_current_post_type( get_post_type( $id ) ) ) {
+		global $sn_thumbnail_column_image_ids;
+
+		// Check if we should display this image
+		$post_type         = get_post_type( $id );
+		$column_image_ids  = ( isset( $sn_thumbnail_column_image_ids ) ) ? $sn_thumbnail_column_image_ids : array();
+		$already_displayed = in_array( $id, $column_image_ids );
+		$correct_column    = ( $col == 'sn_post_thumb' );
+		$correct_post_type = $this->is_current_post_type( $post_type );
+
+		if ( $correct_column and $correct_post_type and ! $already_displayed ) {
 			echo get_the_post_thumbnail( $id, 'admin-list-thumb' );
+			$column_image_ids[] = $id;
 		} // if()
+
+		$sn_thumbnail_column_image_ids = $column_image_ids;
 	} // display_thumbnail_column()
 
 
