@@ -23,59 +23,158 @@
  */
 class SN_Type_Base extends SN_Meta_Helper {
 
-	/** @var string  REQUIRED slug for post type */
+	/**
+	 * REQUIRED slug for post type.
+	 *
+	 * @var  string
+	 */
 	public $post_type;
 
-	/** @var string  REQUIRED title of post type */
+
+
+	/**
+	 * REQUIRED title of post type.
+	 *
+	 * @var  string
+	 */
 	public $post_type_title;
 
-	/** @var string  REQUIRED singular title */
+
+
+	/**
+	 * REQUIRED singular title.
+	 *
+	 * @var  string
+	 */
 	public $post_type_single;
 
-	/** @var array   Arguments to be used when registering the post type's taxonomy */
+
+
+	/**
+	 * Arguments to be used when registering the post type's taxonomy.
+	 *
+	 * @var  array
+	 */
 	private $_taxonomy_args;
 
-	/** @var array   Arguments to be used when registering the post type */
+
+
+
+	/**
+	 * Arguments to be used when registering the post type.
+	 *
+	 * @var  array
+	 */
 	private $_post_type_args;
 
-	/** @var array   What the post type supports */
+
+
+	/**
+	 * What the post type supports.
+	 *
+	 * @var  array
+	 */
 	private $_post_type_supports;
 
-	/** @var string  All of the transients for each post type, post type will be used as key. */
+
+
+	/**
+	 * All of the transients for each post type, post type will be used as key.
+	 *
+	 * @var  string
+	 */
 	private $_transient_title_option = 'snTransientTitles';
 
-	/** @var integer Will set on construct */
+
+
+	/**
+	 * The transient expiry.
+	 *
+	 * @var  integer
+	 */
 	protected $transient_expiry;
 
-	/** @var array   Will hold array of post objects */
-	public $posts;
 
-	/** @var array   The post types custom labels used in register_post_type() */
+
+	/**
+	 * The post types custom labels used in register_post_type().
+	 *
+	 * @var  array
+	 */
 	public $custom_post_type_labels;
 
-	/** @var array   Used to disable the addition of the featured image column */
+
+
+	/**
+	 * Used to disable the addition of the featured image column.
+	 *
+	 * @var  boolean
+	 */
 	public $disable_image_column;
 
-	/** @var array   Custom post type arguments used in register_post_type() */
+
+
+	/**
+	 * Custom post type arguments used in register_post_type().
+	 *
+	 * @var  array
+	 */
 	public $custom_post_type_args;
 
-	/** @var array   The taxonomy "name" used in register_taxonomy() */
+
+
+	/**
+	 * The taxonomy "name" used in register_taxonomy().
+	 *
+	 * @var  array
+	 */
 	public $taxonomy_name;
 
-	/** @var array   Custom taxonomy labels used in register_taxonomy() */
+
+
+	/**
+	 * Custom taxonomy labels used in register_taxonomy().
+	 *
+	 * @var  array
+	 */
 	public $custom_taxonomy_labels;
 
-	/** @var array   Custom taxonomy arguments used in register_taxonomy() */
-	public $custom_taxonomy_args ;
 
-	/** @var array   Custom post type supports array used in register_post_type() */
+
+	/**
+	 * Custom taxonomy arguments used in register_taxonomy().
+	 *
+	 * @var  array
+	 */
+	public $custom_taxonomy_args;
+
+
+
+	/**
+	 * Custom post type supports array used in register_post_type().
+	 *
+	 * @var  array
+	 */
 	public $custom_post_type_supports;
 
-	/** @var boolean  Disable/Enable Categories per post type */
+
+
+	/**
+	 * Disable/Enable Categories per post type.
+	 *
+	 * @var  boolean
+	 */
 	public $disable_post_type_categories;
 
-	/** @var boolean  Disable/Enable thumbnail post table column */
+
+
+	/**
+	 * Disable/Enable thumbnail post table column.
+	 *
+	 * @var  boolean
+	 */
 	public $disable_thumbnail_column;
+
 
 
 	/**
@@ -105,7 +204,6 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 */
 	private function _set_parameters() {
 		$transient_expiry             = ( isset( $this->transient_expiry ) ) ? $this->transient_expiry : ( 3 * HOUR_IN_SECONDS );
-		$posts                        = ( isset( $this->posts ) ) ? $this->posts : $this->get_posts();
 		$post_type_args               = ( isset( $this->_post_type_args ) ) ? $this->_post_type_args : array();
 		$this->taxonomy_name          = ( isset( $this->taxonomy_name ) ) ? $this->taxonomy_name : "{$this->post_type}-categories";
 		$taxonomy_labels              = ( isset( $this->custom_taxonomy_labels ) ) ? $this->custom_taxonomy_labels : array();
@@ -119,7 +217,6 @@ class SN_Type_Base extends SN_Meta_Helper {
 
 		// Set class properties
 		$this->transient_expiry             = $transient_expiry;
-		$this->posts                        = $posts;
 		$this->_post_type_args              = $post_type_args;
 		$this->custom_taxonomy_labels       = $taxonomy_labels;
 		$this->_taxonomy_args               = $taxonomy_args;
@@ -585,8 +682,6 @@ class SN_Type_Base extends SN_Meta_Helper {
 			} // if/else()
 		} // if/else()
 
-		// $this->posts = $posts;
-
 		if ( $query_object ) {
 			return $query;
 		} // if()
@@ -635,8 +730,6 @@ class SN_Type_Base extends SN_Meta_Helper {
 				delete_transient( $title );
 			} // foreach()
 		} // if()
-
-		$this->posts = $this->get_posts();
 	} // reset_transient()
 
 
