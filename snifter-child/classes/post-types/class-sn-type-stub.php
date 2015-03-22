@@ -67,10 +67,10 @@ class SN_Type_Stub extends SN_Type_Base {
 		$this->post_type_single = 'Stub';
 
 		// SN_Type_Base Properties.
-		$this->_set_mdg_type_base_options();
+		$this->_set_sn_type_base_options();
 
 		// SN_Meta_Helper Properties
-		$this->_set_mdg_meta_helper_options();
+		$this->_set_sn_meta_helper_options();
 
 		parent::__construct();
 
@@ -84,7 +84,7 @@ class SN_Type_Stub extends SN_Type_Base {
 	 *
 	 * return Void
 	 */
-	private function _set_mdg_type_base_options() {
+	private function _set_sn_type_base_options() {
 		/** @var array   The taxonomy "name" used in register_taxonomy() */
 		$this->taxonomy_name = "{$this->post_type}-categories";
 
@@ -181,7 +181,7 @@ class SN_Type_Stub extends SN_Type_Base {
 			'menu_icon'          => 'dashicons-edit',
 			// 'supports'        => This is handled by $this->post_type_supports do not set directly
 		);
-	} // _set_mdg_type_base_options()
+	} // _set_sn_type_base_options()
 
 
 	/**
@@ -189,7 +189,7 @@ class SN_Type_Stub extends SN_Type_Base {
 	 *
 	 * return Void
 	 */
-	private function _set_mdg_meta_helper_options() {
+	private function _set_sn_meta_helper_options() {
 		/** @var string Sets the meta box title */
 		$this->meta_box_title = "{$this->post_type_single} Details";
 
@@ -273,7 +273,7 @@ class SN_Type_Stub extends SN_Type_Base {
 
 		/** @var array   Used to disable the addition of the featured image column */
 		$this->disable_image_column = false;
-	} // _set_mdg_meta_helper_options()
+	} // _set_sn_meta_helper_options()
 
 
 
@@ -292,7 +292,7 @@ class SN_Type_Stub extends SN_Type_Base {
 		// Description
 		$meta_fields[] = array(
 			'label'   => '',
-			'desc'    => '<div class="mdg-note">Meta description.</div>',
+			'desc'    => '<div class="sn-note">Meta description.</div>',
 			'id'      => 'info',
 			'type'    => 'info',
 			'visible' => false,
@@ -597,5 +597,5 @@ class SN_Type_Stub extends SN_Type_Base {
 	} // single_redirect()
 } // END Class SN_Type_Stub()
 
-global $mdg_stub;
-$mdg_stub = new SN_Type_Stub();
+global $sn_stub;
+$sn_stub = new SN_Type_Stub();

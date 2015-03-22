@@ -23,13 +23,13 @@
  *
  * @return  string            The filtered CSS classes separated by empty spaces (i.e. "gfield custom_class").
  */
-function mdg_gforms_input_class( $classes, $field, $form ){
+function sn_gforms_input_class( $classes, $field, $form ){
 	$input_slug = sanitize_title( $field['label'] );
 	$classes   .= " gfield-{$input_slug}";
 
 	return $classes;
-} // mdg_gforms_input_class
-add_action( 'gform_field_css_class', 'mdg_gforms_input_class', 10, 3 );
+} // sn_gforms_input_class
+add_action( 'gform_field_css_class', 'sn_gforms_input_class', 10, 3 );
 
 
 
@@ -47,7 +47,7 @@ add_action( 'gform_field_css_class', 'mdg_gforms_input_class', 10, 3 );
  *
  * @return  object          The filtered query.
  */
-function mdg_remove_hicpo_pre_get_posts_filter( $query ) {
+function sn_remove_hicpo_pre_get_posts_filter( $query ) {
 	global $wp_filter;
 
 	if ( ! isset( $wp_filter['pre_get_posts'] ) or is_admin() ) {
@@ -69,5 +69,5 @@ function mdg_remove_hicpo_pre_get_posts_filter( $query ) {
 
 
 	return $query;
-} // mdg_remove_hicpo_pre_get_posts_filter()
-add_filter( 'pre_get_posts', 'mdg_remove_hicpo_pre_get_posts_filter', 0 );
+} // sn_remove_hicpo_pre_get_posts_filter()
+add_filter( 'pre_get_posts', 'sn_remove_hicpo_pre_get_posts_filter', 0 );

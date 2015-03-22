@@ -19,12 +19,12 @@ class SN_Stub_Widget extends WP_Widget {
 	 */
 	function __construct() {
 		$widget_ops = array(
-			'classname'   => 'widget_mdg_stub',
-			'description' => __( 'Use this widget to add a Stub Widget', 'roots' ),
+			'classname'   => 'widget_sn_stub',
+			'description' => __( 'Use this widget to add a Stub Widget', 'sn' ),
 		);
 
-		$this->WP_Widget( 'widget_mdg_stub', __( 'Stub', 'roots' ), $widget_ops );
-		$this->alt_option_name = 'widget_mdg_stub';
+		$this->WP_Widget( 'widget_sn_stub', __( 'Stub', 'sn' ), $widget_ops );
+		$this->alt_option_name = 'widget_sn_stub';
 
 		add_action( 'save_post', array( &$this, 'flush_widget_cache' ) );
 		add_action( 'deleted_post', array( &$this, 'flush_widget_cache' ) );
@@ -40,7 +40,7 @@ class SN_Stub_Widget extends WP_Widget {
 	 * @param array $instance The settings for the particular instance of the widget
 	 */
 	function widget( $args, $instance ) {
-		$cache = wp_cache_get( 'widget_mdg_stub', 'widget' );
+		$cache = wp_cache_get( 'widget_sn_stub', 'widget' );
 
 		if ( ! is_array( $cache ) ) {
 			$cache = array();
@@ -58,7 +58,7 @@ class SN_Stub_Widget extends WP_Widget {
 		ob_start();
 		extract( $args, EXTR_SKIP );
 
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Stub', 'roots' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Stub', 'sn' ) : $instance['title'], $instance, $this->id_base );
 
 		foreach ( $this->fields as $name => $label ) {
 			if ( ! isset( $instance[$name] ) ) {
@@ -77,7 +77,7 @@ class SN_Stub_Widget extends WP_Widget {
 		<?php echo wp_kses( $after_widget, 'post' );
 
 		$cache[$args['widget_id']] = ob_get_flush();
-		wp_cache_set( 'widget_mdg_stub', $cache, 'widget' );
+		wp_cache_set( 'widget_sn_stub', $cache, 'widget' );
 	} // widget()
 
 
@@ -99,8 +99,8 @@ class SN_Stub_Widget extends WP_Widget {
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
 
-		if ( isset( $alloptions['widget_mdg_stub'] ) ) {
-			delete_option( 'widget_mdg_stub' );
+		if ( isset( $alloptions['widget_sn_stub'] ) ) {
+			delete_option( 'widget_sn_stub' );
 		} // if()
 
 		return $instance;
@@ -114,7 +114,7 @@ class SN_Stub_Widget extends WP_Widget {
 	 * @return  void
 	 */
 	function flush_widget_cache() {
-		wp_cache_delete( 'widget_mdg_stub', 'widget' );
+		wp_cache_delete( 'widget_sn_stub', 'widget' );
 	} // flush_widget_cache()
 
 
@@ -127,7 +127,7 @@ class SN_Stub_Widget extends WP_Widget {
 		foreach ( $this->fields as $name => $label ) {
 			${$name} = isset( $instance[$name] ) ? esc_attr( $instance[$name] ) : ''; ?>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( $name ) ); ?>"><?php _e( "{$label}:", 'roots' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( $name ) ); ?>"><?php _e( "{$label}:", 'sn' ); ?></label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( $name ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $name ) ); ?>" type="text" value="<?php echo esc_attr( ${$name} ); ?>">
 			</p>
 		<?php
