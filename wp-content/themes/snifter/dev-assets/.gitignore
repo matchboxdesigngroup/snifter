@@ -3,6 +3,5 @@
 
 # Except
 !.gitignore
-!sublime-project-template.txt
-!deployment-ignores.txt
+!*.txt
 !*.md
