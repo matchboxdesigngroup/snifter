@@ -174,6 +174,20 @@ class SN_Utilities {
 		$id    = $wpdb->get_var( $query );
 		return $id;
 	} // get_attachment_id_from_src()
+
+
+
+	/**
+	 * Sets a default value for a variable.
+	 *
+	 * @param   mixed  $check_value    The value to check if it is set.
+	 * @param   mixed  $default_value  The default value to be used if $check_value has not already been set.
+	 *
+	 * @return  mixed                   The $check_value if it is set and the $default_value if not.
+	 */
+	public function set_default( $check_value, $default_value ) {
+		return ( isset( $check_value ) ) ? $check_value : $default_value;
+	} // set_default()
 } // END Class SN_Utilities()
 
 global $sn_utilities;
