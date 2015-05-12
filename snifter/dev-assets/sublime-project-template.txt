@@ -2,7 +2,7 @@
 				".*",
 				"*sublime*",
 				"*codekit*",
-				"*bower*"
+				"*bower*",
 				"config.*",
 				"*.map",
 				"*.lock",
@@ -15,7 +15,7 @@
 				"lang",
 				"bower*",
 				"docs",
-				"dist"
+				"dist",
 				"*codekit-*",
 				"twenty*"
 			]
