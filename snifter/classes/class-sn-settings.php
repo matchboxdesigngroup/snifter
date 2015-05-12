@@ -598,6 +598,37 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 
 			return $input_html;
 		} // build_inputs()
+
+
+
+		/**
+		 * Gets all the settings for the default option group.
+		 *
+		 * @return  array  The current settings.
+		 */
+		public function get_settings() {
+			$settings       = get_option( $this->option_group, array() );
+			$clean_settings = array();
+			$general_group  = "{$this->page_slug}_general";
+			$general_fields = $this->get_settings_fields( $general_group );
+
+			// Add defaults
+			foreach ( $general_fields as $field ) {
+				$field_key = ( isset( $field['id'] ) ) ? $field['id'] : '';
+
+				if ( ! isset( $settings[$field_key ] ) ) {
+					$settings[$field_key] = '';
+				} // if()
+			} // foreach
+
+			// Clean Fields
+			foreach ( $settings as $key => $value ) {
+				$clean_key                  = str_replace( "{$general_group}_", '', $key);
+				$clean_settings[$clean_key] = $value;
+			} // foreach()
+
+			return $clean_settings;
+		} // get_settings()
 	} // SN_Settings()
 
 	// Instantiate Class
