@@ -5,6 +5,11 @@ add_action( 'after_setup_theme', function() {
 		'widgets',
 	);
 
+	// Base classes
+	$directories['classes']  = array(
+		'class-sn-settings',
+	);
+
 	// Post Types
 	$directories['classes/post-types']  = array(
 		'class-sn-type-page',
