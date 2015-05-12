@@ -11,6 +11,7 @@
  * @subpackage   Snifter
  */
 
+if ( ! function_exists( 'sn_head_cleanup' ) ) {
 /**
  * Cleans up excess junk in wp_head.
  *
@@ -36,9 +37,11 @@ function sn_head_cleanup() {
 		add_action( 'wp_head', 'sn_rel_canonical' );
 	} // if()
 } // sn_head_cleanup()
+} // if()
 
 
 
+if ( ! function_exists( 'sn_rel_canonical' ) ) {
 /**
  * Handles adding a canonical link to the head.
  *
@@ -59,6 +62,7 @@ function sn_rel_canonical() {
 	echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 } // sn_rel_canonical()
 add_action( 'init', 'sn_head_cleanup' );
+} // if()
 
 
 
@@ -69,6 +73,7 @@ add_filter( 'the_generator', '__return_false' );
 
 
 
+if ( ! function_exists( 'sn_language_attributes' ) ) {
 /**
  * Clean up language_attributes() used in <html> tag
  *
@@ -101,9 +106,11 @@ function sn_language_attributes() {
 	return $output;
 } // sn_language_attributes()
 add_filter( 'language_attributes', 'sn_language_attributes' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_wp_title' ) ) {
 /**
  * Manage output of wp_title()
  *
@@ -123,9 +130,11 @@ function sn_wp_title( $title ) {
 	return $title;
 } // sn_wp_title()
 add_filter( 'wp_title', 'sn_wp_title', 10 );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_clean_style_tag' ) ) {
 /**
  * Clean up output of stylesheet <link> tags.
  *
@@ -140,9 +149,11 @@ function sn_clean_style_tag( $input ) {
 	return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 } // sn_clean_style_tag()
 add_filter( 'style_loader_tag', 'sn_clean_style_tag' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_body_class' ) ) {
 /**
  * Add and remove body_class() classes.
  *
@@ -172,9 +183,11 @@ function sn_body_class( $classes ) {
 	return $classes;
 } // sn_body_class()
 add_filter( 'body_class', 'sn_body_class' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_embed_wrap' ) ) {
 /**
  * Wrap embedded media as suggested by Readability
  *
@@ -192,9 +205,11 @@ function sn_embed_wrap( $cache, $url, $attr = '', $post_ID = '' ) {
 	return '<div class="entry-content-asset">' . $cache . '</div>';
 } // sn_embed_wrap()
 add_filter( 'embed_oembed_html', 'sn_embed_wrap', 10, 4 );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_caption' ) ) {
 /**
  * Add Bootstrap thumbnail styling to images with captions
  * Use <figure> and <figcaption>
@@ -239,9 +254,11 @@ function sn_caption( $output, $attr, $content ) {
 	return $output;
 } // sn_caption()
 add_filter( 'img_caption_shortcode', 'sn_caption', 10, 3 );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_remove_dashboard_widgets' ) ) {
 /**
  * Remove unnecessary dashboard widgets
  *
@@ -256,9 +273,11 @@ function sn_remove_dashboard_widgets() {
 	remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
 } // sn_remove_dashboard_widgets()
 add_action( 'admin_init', 'sn_remove_dashboard_widgets' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_excerpt_length' ) ) {
 /**
  * Clean up the_excerpt()
  *
@@ -272,9 +291,11 @@ function sn_excerpt_length( $length ) {
 	return POST_EXCERPT_LENGTH;
 } // sn_excerpt_length()
 add_filter( 'excerpt_length', 'sn_excerpt_length' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_excerpt_more' ) ) {
 /**
  * Custom more text for the_excerpt().
  *
@@ -288,9 +309,11 @@ function sn_excerpt_more( $more ) {
 	return ' &hellip; <a href="' . get_permalink() . '">' . __( 'Continued', 'snifter' ) . '</a>';
 } // sn_excerpt_more()
 add_filter( 'excerpt_more', 'sn_excerpt_more' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_remove_self_closing_tags' ) ) {
 /**
  * Remove unnecessary self-closing tags
  *
@@ -304,8 +327,11 @@ function sn_remove_self_closing_tags( $input ) {
 add_filter( 'get_avatar',          'sn_remove_self_closing_tags' ); // <img />
 add_filter( 'comment_id_fields',   'sn_remove_self_closing_tags' ); // <input />
 add_filter( 'post_thumbnail_html', 'sn_remove_self_closing_tags' ); // <img />
+} // if()
 
 
+
+if ( ! function_exists( 'sn_remove_default_description' ) ) {
 /**
  * Don't return the default description in the RSS feed if it hasn't been changed
  *
@@ -318,9 +344,11 @@ function sn_remove_default_description( $bloginfo ) {
 	return ( $bloginfo === $default_tagline ) ? '' : $bloginfo;
 } // sn_remove_default_description
 add_filter( 'get_bloginfo_rss', 'sn_remove_default_description' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_nice_search_redirect' ) ) {
 /**
  * Redirects search results from /?s=query to /search/query/, converts %20 to +
  *
@@ -340,9 +368,11 @@ function sn_nice_search_redirect() {
 	} // if()
 } // sn_nice_search_redirect()
 add_action( 'template_redirect', 'sn_nice_search_redirect' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_request_filter' ) ) {
 /**
  * Fix for empty search queries redirecting to home page
  *
@@ -361,9 +391,11 @@ function sn_request_filter( $query_vars ) {
 	return $query_vars;
 } // sn_request_filter()
 add_filter( 'request', 'sn_request_filter' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_get_search_form' ) ) {
 /**
  * Tell WordPress to use searchform.php from the templates/ directory. Requires WordPress 3.6+.
  *
@@ -377,3 +409,4 @@ function sn_get_search_form( $form ) {
 	return $form;
 } // sn_get_search_form()
 add_filter( 'get_search_form', 'sn_get_search_form' );
+} // if()

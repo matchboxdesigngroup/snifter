@@ -7,6 +7,8 @@
  */
 
 
+
+if ( ! function_exists( 'sn_enqueue_site_scripts' ) ) {
 /**
  * Enqueue front-end scripts and style-sheets
  *
@@ -63,9 +65,11 @@ function sn_enqueue_site_scripts() {
 	wp_enqueue_script( 'sn_scripts_js' );
 } // sn_enqueue_site_scripts()
 add_action( 'wp_enqueue_scripts', 'sn_enqueue_site_scripts', 100 );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_add_global_js' ) ) {
 /**
  * Adds a global JS object.
  *
@@ -84,9 +88,11 @@ function sn_add_global_js() {
 	<script>var SN_GLOBALS = <?php echo wp_kses( $sn_globals, 'data' ); ?>;</script>
 <?php } // sn_add_global_js()
 add_action( 'wp_head', 'sn_add_global_js' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_enqueue_admin_scripts' ) ) {
 /**
  * Enqueue administrator scripts/styles.
  *
@@ -137,8 +143,7 @@ function sn_enqueue_admin_scripts() {
 		$theme_version,
 		true
 	);
-
-// Administrator JS
+	// Administrator JS
 	wp_register_script(
 		'sn_admin_scripts',
 		"{$theme_uri}/assets/dist/admin.min.js",
@@ -154,9 +159,11 @@ function sn_enqueue_admin_scripts() {
 	wp_enqueue_script( 'sn_admin_scripts' );
 } // sn_enqueue_admin_scripts()
 add_action( 'admin_enqueue_scripts', 'sn_enqueue_admin_scripts', 100 );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_add_admin_global_js' ) ) {
 /**
  * Adds a global JS object for wp-admin.
  *
@@ -174,9 +181,11 @@ function sn_add_admin_global_js() {
 	<script>var SN_GLOBALS = <?php echo wp_kses( $sn_globals, 'data' ); ?>;</script>
 <?php } // sn_add_admin_global_js()
 add_action( 'admin_head', 'sn_add_admin_global_js' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_add_favicon' ) ) {
 /**
  * Adds the favicon for the site, login, and administrator section.
  * Add favicon.png to /assets/img/.
@@ -188,9 +197,11 @@ function sn_add_favicon() {
 } // sn_add_favicon()
 add_action( 'wp_head', 'sn_add_favicon' );
 add_action( 'admin_head', 'sn_add_favicon' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_google_analytics' ) ) {
 /**
  * Handles adding Google Analytics.
  *
@@ -213,3 +224,4 @@ function sn_google_analytics() { ?>
 	<?php } // if()
 } // sn_google_analytics()
 add_action( 'wp_head', 'sn_google_analytics', 20 );
+} // if()

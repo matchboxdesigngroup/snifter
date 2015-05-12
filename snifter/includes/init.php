@@ -6,6 +6,9 @@
  * @subpackage   Snifter
  */
 
+
+
+if ( ! function_exists( 'sn_setup' ) ) {
 /**
  * Sets up the theme.
  *
@@ -25,9 +28,11 @@ function sn_setup() {
 	add_editor_style( '/assets/css/editor-style.css' );
 } // sn_setup()
 add_action( 'after_setup_theme', 'sn_setup' );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_register_nav_menus' ) ) {
 /**
  * Registers the navigation menus.
  *
@@ -43,7 +48,7 @@ function sn_register_nav_menus() {
 		)
 	);
 } // sn_register_nav_menus()
-
+} // if()
 
 
 // Backwards compatibility for older than PHP 5.3.0

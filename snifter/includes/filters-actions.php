@@ -12,6 +12,7 @@
 
 
 
+if ( ! function_exists( 'sn_gforms_input_class' ) ) {
 /**
  * Filters Gravity Forms CSS classes for a field.
  *
@@ -30,9 +31,11 @@ function sn_gforms_input_class( $classes, $field, $form ){
 	return $classes;
 } // sn_gforms_input_class
 add_action( 'gform_field_css_class', 'sn_gforms_input_class', 10, 3 );
+} // if()
 
 
 
+if ( ! function_exists( 'sn_remove_hicpo_pre_get_posts_filter' ) ) {
 /**
  * Handles removing the hicpo_pre_get_posts filter.
  *
@@ -71,3 +74,4 @@ function sn_remove_hicpo_pre_get_posts_filter( $query ) {
 	return $query;
 } // sn_remove_hicpo_pre_get_posts_filter()
 add_filter( 'pre_get_posts', 'sn_remove_hicpo_pre_get_posts_filter', 0 );
+} // if()
