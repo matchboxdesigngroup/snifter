@@ -1,21 +1,24 @@
-			"file_exclude_patterns": [
+			"file_exclude_patterns":
+			[
 				".*",
 				"*sublime*",
 				"*codekit*",
 				"*bower*",
-				"config.*",
 				"*.map",
 				"*.lock",
 				"*.psd",
 				"license",
 				"readme.*"
 			],
-			"folder_exclude_patterns": [
+			"folder_exclude_patterns":
+			[
 				".*",
 				"lang",
 				"bower*",
 				"docs",
 				"dist",
 				"*codekit-*",
-				"twenty*"
-			]
+				"twenty*",
+				"bourbon",
+				"neat"
+			],

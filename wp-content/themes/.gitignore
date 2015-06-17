@@ -1,0 +1,6 @@
+.DS_Store
+twenty*
+.sass-cache
+*codekit-*
+db.php
+uploads
