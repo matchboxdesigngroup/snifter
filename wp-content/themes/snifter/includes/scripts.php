@@ -177,20 +177,6 @@ add_action( 'admin_head', 'sn_add_admin_global_js' );
 
 
 
-if ( ! function_exists( 'sn_add_favicon' ) ) {
-/**
- * Adds the favicon for the site, login, and administrator section.
- * Add favicon.png to /assets/img/.
- */
-function sn_add_favicon() {
-	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/assets/img/favicon.png" type="image/png">';
-} // sn_add_favicon()
-add_action( 'wp_head', 'sn_add_favicon' );
-add_action( 'admin_head', 'sn_add_favicon' );
-} // if()
-
-
-
 if ( ! function_exists( 'sn_google_analytics' ) ) {
 /**
  * Handles adding Google Analytics.
