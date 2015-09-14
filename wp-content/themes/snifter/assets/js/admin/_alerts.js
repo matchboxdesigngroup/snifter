@@ -1,5 +1,5 @@
 /* global pagenow */
-jQuery((function($) {
+jQuery( ( function( $ ) {
 	var alerts = {};
 
 	/**
@@ -14,12 +14,12 @@ jQuery((function($) {
 			return false;
 		} // if()
 
-		$('h2').after( '<div class="updated"><p><a href="#" id="image-size-reference-trigger">View image size reference.</a></p></div><div class="image-size-reference"></div>' );
+		$( 'h2' ).after( '<div class="updated"><p><a href="#" id="image-size-reference-trigger">View image size reference.</a></p></div><div class="image-size-reference"></div>' );
 
-		var trigger = $('#image-size-reference-trigger');
+		var trigger = $( '#image-size-reference-trigger' );
 		var ajaxurl = ajaxurl;
 
-		trigger.click(function() {
+		trigger.click( function() {
 			$.get(
 				ajaxurl,
 				{ action : 'sn-image-reference-grid' },
@@ -34,26 +34,24 @@ jQuery((function($) {
 													'<div style="clear:both"></div>' +
 												'</div>';
 
-					$('.image-size-reference').empty().append( returnHtml );
+					$( '.image-size-reference' ).empty().append( returnHtml );
 
 					trigger.hide();
 
-					$('#hide-image-grid-reference').click(function() {
-						$('.sn-image-reference').remove();
+					$( '#hide-image-grid-reference' ).click( function() {
+						$( '.sn-image-reference' ).remove();
 						trigger.show();
-					});
+					} );
 
 				} // end success function
 			);
-		});
+		} );
 
 		return false;
 	}; // alerts.getImageReferenceGrid()
 
 	/**
 	 * Initializes all administrator alerts
-	 *
-	 * @return Void
 	 */
 	alerts.init = function() {
 		alerts.getImageReferenceGrid();
@@ -62,7 +60,7 @@ jQuery((function($) {
 	/**
 	 * Document ready
 	 */
-	$(document).ready(function() {
+	$( document ).ready( function() {
 		alerts.init();
-	}); // $(document).ready()
-})(jQuery));
+	} ); // $(document).ready()
+} )( jQuery ) );

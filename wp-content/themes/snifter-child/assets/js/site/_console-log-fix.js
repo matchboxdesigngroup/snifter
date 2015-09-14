@@ -1,7 +1,7 @@
 /**
  * Avoid `console` errors in browsers that lack a console.
  */
-(function() {
+( function() {
 	var method,
 			noop    = function() {},
 			methods = [
@@ -15,11 +15,11 @@
 	;
 
 	while ( length-- ) {
-		method = methods[length];
+		method = methods[ length ];
 
 		// Only stub undefined methods.
-		if (!console[method]) {
-			console[method] = noop;
+		if ( !console[ method ] ) {
+			console[ method ] = noop;
 		}
 	}
-}());
+}() );
