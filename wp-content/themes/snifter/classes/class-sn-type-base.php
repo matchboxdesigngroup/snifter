@@ -367,16 +367,37 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 * @return array $cols The current columns with thumbnail column added.
 	 */
 	function add_thumbnail_column( $cols ) {
-		if ( ! isset( $_GET['post_type'] ) ) {
+		// Make sure the image column has not been disabled.
+		if ( $this->disable_image_column ) {
 			return $cols;
 		} // if()
 
-		$post_type          = $_GET['post_type'];
-		$correct_post_type  = $this->is_current_post_type( $post_type );
-		$supports_thumbnail = post_type_supports( get_post_type(), 'thumbnail' );
-		if ( ! $this->disable_image_column and $correct_post_type and $supports_thumbnail  ) {
-			$cols['sn_post_thumb'] = __( $this->featured_image_title );
+		// Get the current post type.
+		$post_type = ( isset( $_GET['post_type'] ) ) ? $_GET['post_type'] : '';
+		if ( '' === $post_type ) {
+			return $cols;
 		} // if()
+
+		// Make sure this is the correct post type.
+		if ( ! $this->is_current_post_type( $post_type ) ) {
+			return $cols;
+		} // if()
+
+		// Make sure the post supports thumbnails.
+		if ( ! post_type_supports( $post_type, 'thumbnail' ) ) {
+			return $cols;
+		} // if()
+
+		// Get the post type object.
+		$post_type_obj = get_post_type_object( $post_type );
+		if ( is_null( $post_type_obj ) ) {
+			return $cols;
+		} // if()
+
+		// Set the column.
+		$featured_image_label  = ( isset( $post_type_obj->labels->featured_image ) ) ? $post_type_obj->labels->featured_image : 'Featured Image';
+		$cols['sn_post_thumb'] = __( $featured_image_label );
+
 		return $cols;
 	} // add_thumbnail_column()
 
@@ -511,19 +532,23 @@ class SN_Type_Base extends SN_Meta_Helper {
 		$lowercase_post_type_title  = strtolower( $this->post_type_title );
 		$lowercase_post_type_single = strtolower( $this->post_type_single );
 		$default_post_type_labels   = array(
-			'name'               => __( $this->post_type_title ),
-			'singular_name'      => __( $this->post_type_single ),
-			'add_new'            => __( "Add New {$this->post_type_single}" ),
-			'add_new_item'       => __( "Add New {$this->post_type_single}" ),
-			'edit_item'          => __( "Edit {$this->post_type_single}" ),
-			'new_item'           => __( "New {$this->post_type_single}" ),
-			'all_items'          => __( "All {$this->post_type_title}" ),
-			'view_item'          => __( "View {$this->post_type_single}" ),
-			'search_items'       => __( "Search {$this->post_type_title}" ),
-			'not_found'          => __( "No {$lowercase_post_type_title} found" ),
-			'not_found_in_trash' => __( "No {$lowercase_post_type_title} found in Trash" ),
-			'parent_item_colon'  => __( '' ),
-			'menu_name'          => __( $this->post_type_title ),
+			'name'                  => __( $this->post_type_title ),
+			'singular_name'         => __( $this->post_type_single ),
+			'add_new'               => __( "Add New {$this->post_type_single}" ),
+			'add_new_item'          => __( "Add New {$this->post_type_single}" ),
+			'edit_item'             => __( "Edit {$this->post_type_single}" ),
+			'new_item'              => __( "New {$this->post_type_single}" ),
+			'all_items'             => __( "All {$this->post_type_title}" ),
+			'view_item'             => __( "View {$this->post_type_single}" ),
+			'search_items'          => __( "Search {$this->post_type_title}" ),
+			'not_found'             => __( "No {$lowercase_post_type_title} found" ),
+			'not_found_in_trash'    => __( "No {$lowercase_post_type_title} found in Trash" ),
+			'parent_item_colon'     => __( '' ),
+			'menu_name'             => __( $this->post_type_title ),
+			'featured_image'        => __( "{$this->post_type_single} Image" ),
+			'set_featured_image'    => __( "Set {$lowercase_post_type_single} image" ),
+			'remove_featured_image' => __( "Remove {$lowercase_post_type_single} image" ),
+			'use_featured_image'    => __( "Use as {$lowercase_post_type_single} image" ),
 		);
 
 		$labels = array_merge( $default_post_type_labels, $this->custom_post_type_labels );

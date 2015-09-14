@@ -159,21 +159,29 @@ class SN_Type_Stub extends SN_Type_Base {
 		// To disable all supports except title, you should always support title no mater what.
 		// $this->custom_post_type_supports = false;
 
+		// Lower case post type labels.
+		$lowercase_post_type_title  = strtolower( $this->post_type_title );
+		$lowercase_post_type_single = strtolower( $this->post_type_single );
+
 		/** @var array   The post types custom labels used in register_post_type() */
 		$this->custom_post_type_labels = array(
-			'name'               => __( $this->post_type_title ),
-			'singular_name'      => __( $this->post_type_single ),
-			'add_new'            => __( "Add New {$this->post_type_single}" ),
-			'add_new_item'       => __( "Add New {$this->post_type_single}" ),
-			'edit_item'          => __( "Edit {$this->post_type_single}" ),
-			'new_item'           => __( "New {$this->post_type_single}" ),
-			'all_items'          => __( "All {$this->post_type_title}" ),
-			'view_item'          => __( "View {$this->post_type_single}" ),
-			'search_items'       => __( "Search {$this->post_type_title}" ),
-			'not_found'          => __( "No {$this->post_type_title} found" ),
-			'not_found_in_trash' => __( "No {$this->post_type_title} found in Trash" ),
-			'parent_item_colon'  => __( '' ),
-			'menu_name'          => __( $this->post_type_title ),
+			'name'                  => __( $this->post_type_title ),
+			'singular_name'         => __( $this->post_type_single ),
+			'add_new'               => __( "Add New {$this->post_type_single}" ),
+			'add_new_item'          => __( "Add New {$this->post_type_single}" ),
+			'edit_item'             => __( "Edit {$this->post_type_single}" ),
+			'new_item'              => __( "New {$this->post_type_single}" ),
+			'all_items'             => __( "All {$this->post_type_title}" ),
+			'view_item'             => __( "View {$this->post_type_single}" ),
+			'search_items'          => __( "Search {$this->post_type_title}" ),
+			'not_found'             => __( "No {$lowercase_post_type_title} found" ),
+			'not_found_in_trash'    => __( "No {$lowercase_post_type_title} found in Trash" ),
+			'parent_item_colon'     => __( '' ),
+			'menu_name'             => __( $this->post_type_title ),
+			'featured_image'        => __( "{$this->post_type_single} Image" ),
+			'set_featured_image'    => __( "Set {$lowercase_post_type_single} image" ),
+			'remove_featured_image' => __( "Remove {$lowercase_post_type_single} image" ),
+			'use_featured_image'    => __( "Use as {$lowercase_post_type_single} image" ),
 		);
 
 		/** @var array   Custom post type arguments used in register_post_type() */
