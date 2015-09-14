@@ -40,7 +40,6 @@ $directories['classes']  = array(
 	'class-sn-walker-comments',
 	'class-sn-nav-walker',
 	'class-sn-sidebar',
-	'class-sn-settings',
 );
 
 // Require all the things!!!

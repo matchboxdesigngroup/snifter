@@ -6,9 +6,7 @@ add_action( 'after_setup_theme', function() {
 	);
 
 	// Base classes
-	$directories['classes']  = array(
-		'class-sn-settings',
-	);
+	$directories['classes']  = array();
 
 	// Post Types
 	$directories['classes/post-types']  = array(
