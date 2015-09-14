@@ -27,8 +27,6 @@ class SN_WP_Admin extends SN_Utilities {
 	/**
 	 * Initialization.
 	 * Place all initialization code/logic here.
-	 *
-	 * @return Void
 	 */
 	private function _init() {
 		$this->_add_actions();
@@ -39,8 +37,6 @@ class SN_WP_Admin extends SN_Utilities {
 
 	/**
 	 * Add actions.
-	 *
-	 * @return Void
 	 */
 	private function _add_actions() {
 		// Login logo.
@@ -75,7 +71,6 @@ class SN_WP_Admin extends SN_Utilities {
 
 	/**
 	 * Add filters.
-	 *@return Void
 	 */
 	private function _add_filters() {
 		// Login logo URL title.
@@ -111,8 +106,6 @@ class SN_WP_Admin extends SN_Utilities {
 
 	/**
 	 * Login logo.
-	 *
-	 * @return Void
 	 */
 	public function login_logo() {
 		$theme_img_base = '/assets/img/w-logo-blue.png';
@@ -152,36 +145,26 @@ class SN_WP_Admin extends SN_Utilities {
 
 	/**
 	 * Removes Links from New+.
-	 *
-	 * @return Void
 	 */
 	public function admin_bar_new_btn() {
 		global $wp_admin_bar;
 
 		// This removes the complete menu "Add New".
 		// $wp_admin_bar->remove_menu( 'new-content' );
-
 		// Hides the menu item "Post".
 		// $wp_admin_bar->remove_menu( 'new-post' );
-
 		// Hides the menu item "Page".
 		// $wp_admin_bar->remove_menu( 'new-page' );
-
 		// Hides the menu item "Media".
 		// $wp_admin_bar->remove_menu( 'new-media' );
-
 		// Hides the menu item "Link".
 		// $wp_admin_bar->remove_menu( 'new-link' );
-
 		// Hides the menu item "User".
 		// $wp_admin_bar->remove_menu( 'new-user' );
-
 		// Hides the menu item "Theme".
 		// $wp_admin_bar->remove_menu( 'new-theme' );
-
 		// Hides the menu item "Plugin".
 		// $wp_admin_bar->remove_menu( 'new-plugin' );
-
 		// Hides the menu item "POST_TYPE_NAME".
 		// $wp_admin_bar->remove_menu( 'new-POST_TYPE_NAME' );
 	} // admin_bar_new_btn()
@@ -190,36 +173,26 @@ class SN_WP_Admin extends SN_Utilities {
 
 	/**
 	 * Remove Default Dashboard Widgets
-	 *
-	 * @return Void
 	 */
 	public function remove_dashboard_widgets() {
 		// Removes Welcome Panel
 		// remove_action( 'welcome_panel', 'wp_welcome_panel' );
-
 		// Removes the incoming links dashboard widget
 		// remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
-
 		// Removes the right now dashboard widget
 		// remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
-
 		// Removes the recent comments dashboard widget
 		// remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
-
 		// Removes the plugins dashboard widget
 		// remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
 		// Removes the not a current browser dashboard widget.
 		// remove_meta_box( 'dashboard_browser_nag', 'dashboard', 'normal' );
-
 		// Removes the quick press dashboard widget
 		// remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
-
 		// Removes the recent drafts links dashboard widget
 		// remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
-
 		// Removes the WordPress blog dashboard widget
 		// remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
-
 		// Removes the other WordPress news dashboard widget
 		// remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );
 	} // remove_dashboard_widgets()
@@ -228,8 +201,6 @@ class SN_WP_Admin extends SN_Utilities {
 
 	/**
 	 * Custom admin footer text
-	 *
-	 * @return Void
 	 */
 	public function custom_admin_footer() {
 		$client_name    = get_bloginfo( 'name' );
@@ -249,42 +220,30 @@ class SN_WP_Admin extends SN_Utilities {
 
 	/**
 	 * Remove Administrator Menu Items.
-	 *
-	 * @return Void
 	 */
 	public function remove_admin_menu_pages() {
 		// Use this to get the values to remove top menu pages
 		// global $menu;
 		// pp($menu);
-
 		// Use this to get the values to remove sub menu pages
 		// global $submenu;
 		// pp($submenu);
-
 		// Removes Posts menu page
 		// remove_menu_page( 'edit.php' );
-
 		// Remove Media menu page
 		// remove_menu_page( 'upload.php' );
-
 		// Remove Link menu page
 		// remove_menu_page( 'link-manager.php' );
-
 		// Removes Comments menu page
 		// remove_menu_page( 'edit-comments.php' );
-
 		// Removes Plugins menu page
 		// remove_menu_page( 'plugins.php' );
-
 		// Removes the Appearance > Theme sub-menu page
 		// remove_submenu_page( 'themes.php', 'themes.php' );
-
 		// Removes the Tools > Available Tools sub-menu page
 		// remove_submenu_page( 'tools.php', 'tools.php' );
-
 		// Removes the Tools > Import sub-menu page
 		// remove_submenu_page( 'tools.php', 'import.php' );
-
 		// Removes the Settings > Permalinks sub-menu page
 		// remove_submenu_page( 'options-general.php', 'options-permalink.php' );
 	} // remove_admin_menu_pages()
@@ -293,46 +252,32 @@ class SN_WP_Admin extends SN_Utilities {
 
 	/**
 	 * Remove widgets.
-	 *
-	 * @return Void
 	 */
 	public function remove_widgets() {
 		// Removes the default WordPress pages widget
 		// unregister_widget('WP_Widget_Pages');
-
 		// Removes the default WordPress calendar widget
 		// unregister_widget( 'WP_Widget_Calendar' );
-
 		// Removes the default WordPress archives widget
 		// unregister_widget( 'WP_Widget_Archives' );
-
 		// Removes the default WordPress links widget
 		// unregister_widget( 'WP_Widget_Links' );
-
 		// Removes the default WordPress meta widget
 		// unregister_widget( 'WP_Widget_Meta' );
-
 		// Removes the default WordPress search widget
 		// unregister_widget('WP_Widget_Search');
-
 		// Removes the default WordPress text widget
 		// unregister_widget('WP_Widget_Text');
-
 		// Removes the default WordPress categories widget
 		// unregister_widget( 'WP_Widget_Categories' );
-
 		// Removes the default WordPress recent widget
 		// unregister_widget( 'WP_Widget_Recent_Posts' );
-
 		// Removes the default WordPress recent comments widget
 		// unregister_widget( 'WP_Widget_Recent_Comments' );
-
 		// Removes the default WordPress RSS widget
 		// unregister_widget( 'WP_Widget_RSS' );
-
 		// Removes the default WordPress tag cloud widget
 		// unregister_widget( 'WP_Widget_Tag_Cloud' );
-
 		// Removes the default WordPress custom menu widget
 		// unregister_widget('WP_Nav_Menu_Widget');
 	} // remove_widgets()
@@ -420,8 +365,6 @@ class SN_WP_Admin extends SN_Utilities {
 
 	/**
 	 * Adds the Snifter dashboard widget to the dashboard.
-	 *
-	 * @return Void
 	 */
 	function add_sn_dashboard_widget() {
 		wp_add_dashboard_widget(
@@ -436,8 +379,6 @@ class SN_WP_Admin extends SN_Utilities {
 
 	/**
 	 * Outputs/includes th Snifter dashboard widgets content.
-	 *
-	 * @return Void
 	 */
 	function sn_dashboard_widget_callback() {
 		get_template_part( 'templates/admin/widget-sn-dashboard' );
@@ -464,8 +405,6 @@ class SN_WP_Admin extends SN_Utilities {
 	 * TGM_Plugin_Activation class constructor.
 	 *
 	 * @example http://thomasgriffinmedia.com/blog/2011/09/automatically-install-plugins-with-themes-for-wordpress/
-	 *
-	 * @return Void
 	 */
 	function register_required_plugins() {
 		if ( is_admin() and isset( $_GET['page'] ) and $_GET['page'] == 'theme_activation_options' ) {

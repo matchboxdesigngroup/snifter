@@ -197,10 +197,7 @@ class SN_Type_Base extends SN_Meta_Helper {
 	/**
 	 * Sets all of the classes parameters
 	 *
-	 *
 	 * @todo Make this cleaner
-	 *
-	 * @return Void
 	 */
 	private function _set_parameters() {
 		$transient_expiry             = ( isset( $this->transient_expiry ) ) ? $this->transient_expiry : ( 3 * HOUR_IN_SECONDS );

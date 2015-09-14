@@ -11,8 +11,6 @@
 if ( ! function_exists( 'sn_enqueue_site_scripts' ) ) {
 /**
  * Enqueue front-end scripts and style-sheets
- *
- * @return Void
  */
 function sn_enqueue_site_scripts() {
 	global $is_IE;
@@ -72,8 +70,6 @@ add_action( 'wp_enqueue_scripts', 'sn_enqueue_site_scripts', 100 );
 if ( ! function_exists( 'sn_add_global_js' ) ) {
 /**
  * Adds a global JS object.
- *
- * @return Void
  */
 function sn_add_global_js() {
 	global $is_IE;
@@ -95,8 +91,6 @@ add_action( 'wp_head', 'sn_add_global_js' );
 if ( ! function_exists( 'sn_enqueue_admin_scripts' ) ) {
 /**
  * Enqueue administrator scripts/styles.
- *
- * @return Void
  */
 function sn_enqueue_admin_scripts() {
 	$theme           = wp_get_theme();
@@ -166,8 +160,6 @@ add_action( 'admin_enqueue_scripts', 'sn_enqueue_admin_scripts', 100 );
 if ( ! function_exists( 'sn_add_admin_global_js' ) ) {
 /**
  * Adds a global JS object for wp-admin.
- *
- * @return Void
  */
 function sn_add_admin_global_js() {
 	global $is_IE;
@@ -189,8 +181,6 @@ if ( ! function_exists( 'sn_add_favicon' ) ) {
 /**
  * Adds the favicon for the site, login, and administrator section.
  * Add favicon.png to /assets/img/.
- *
- * @return Void
  */
 function sn_add_favicon() {
 	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/assets/img/favicon.png" type="image/png">';
@@ -208,8 +198,6 @@ if ( ! function_exists( 'sn_google_analytics' ) ) {
  * <code>
  * add_action( 'wp_head', 'sn_google_analytics', 20 );
  * </code>
- *
- * @return Void
  */
 function sn_google_analytics() { ?>
 	<?php if ( GOOGLE_ANALYTICS_ID && ! current_user_can( 'manage_options' ) ) { ?>

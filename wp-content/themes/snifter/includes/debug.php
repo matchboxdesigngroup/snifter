@@ -37,9 +37,7 @@ if ( ! function_exists( 'pp' ) ) {
 	 *
 	 * @todo  Add localhost check.
 	 *
-	 * @param mixed   $value Any value.
-	 *
-	 * @return Void
+	 * @param mixed $value Any value.
 	 */
 	function pp( $value ) {
 		global $sn_utilities;

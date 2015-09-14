@@ -179,8 +179,6 @@ class SN_Type_Post extends SN_Type_Base {
 
 	/**
 	 * Disables creating post type since post is a default post type
-	 *
-	 * @return Void
 	 */
 	public function register_post_type() {}
 } // END Class SN_Type_Post()

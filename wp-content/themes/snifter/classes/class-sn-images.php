@@ -49,8 +49,6 @@ class SN_Images {
 	 * </code>
 	 *
 	 * @since Snifter 1.0.0
-	 *
-	 * @return void
 	 */
 	public function set_image_sizes() {
 		global $content_width;
@@ -63,7 +61,7 @@ class SN_Images {
 			'used_in' => array(
 					'title' => 'Featured Image Size', // Title to be used in Media notification
 					'link'  => '', // Link to an image of the created size to be used in Media notification
-				)
+				),
 		);
 
 		// Featured image administrator column image size
@@ -75,7 +73,7 @@ class SN_Images {
 			'used_in' => array(
 				'title'  => 'Example Size',    // Title to be used in Media notification
 				'link'   => '',                // Link to an image of the created size to be used in Media notification
-			)
+			),
 		);
 	} // function set_image_sizes()
 
@@ -119,13 +117,13 @@ class SN_Images {
 				$cropped = isset( $cropped ) ? $cropped : true;
 
 				add_image_size(
-					$title,  //title
+					$title,  // title
 					$width,  // width
 					$height, // height
 					$cropped // crop
 				);
 			}
-			//add_image_size( 'homepage-thumb', 220, 180, true ); //(cropped)
+			// add_image_size( 'homepage-thumb', 220, 180, true ); //(cropped)
 		} // if()
 	} // function register_sizes()
 

@@ -263,8 +263,6 @@ if ( ! function_exists( 'sn_remove_dashboard_widgets' ) ) {
  * Remove unnecessary dashboard widgets
  *
  * @link http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
- *
- * @return Void
  */
 function sn_remove_dashboard_widgets() {
 	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );

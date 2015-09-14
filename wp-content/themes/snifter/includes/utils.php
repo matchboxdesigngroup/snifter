@@ -20,8 +20,6 @@
  *
  * @param  array   $tags      The filters to add.
  * @param  string  $function  The function name to add
- *
- * @return Void
  */
 function add_filters( $tags, $function ) {
 	foreach ( $tags as $tag ) {
