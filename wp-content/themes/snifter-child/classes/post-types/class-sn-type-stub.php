@@ -209,37 +209,9 @@ class SN_Type_Stub extends SN_Type_Base {
 	 * Add post type actions & filters
 	 */
 	private function _add_type_actions_filters() {
-		// Clears transients on post save
-		add_action( 'save_post', array( &$this, 'clear_type_transients' ) );
-
 		// Uncomment to redirect the single page to the landing page.
 		// add_action( 'template_redirect', array( &$this, 'single_redirect' ) );
 	} // _add_type_actions_filters()
-
-
-
-	/**
-	 * Clears all of the transients for the current post type.
-	 *
-	 * @todo  Make it easier to add type transients.
-	 *
-	 * <code>
-	 * add_action( 'save_post', array( &$this, 'clear_type_transients' ) );
-	 * </code>
-	 *
-	 * @param   integer  $post_id  The post id.
-	 *
-	 * @return  void
-	 */
-	public function clear_type_transients( $post_id ) {
-		if ( get_post_type( $post_id ) != $this->post_type ) {
-			return;
-		} // if()
-
-		foreach ( $this->type_transients as $transient ) {
-			$this->delete_transient( $transient );
-		} // foreach()
-	} // clear_type_transients()
 
 
 

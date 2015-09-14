@@ -21,7 +21,7 @@
  *
  * @example sn-bases/classes/class-sn-type-stub.php
  */
-class SN_Type_Base extends SN_Meta_Helper {
+class SN_Type_Base extends SN_Utilities {
 
 	/**
 	 * REQUIRED slug for post type.
@@ -640,45 +640,9 @@ class SN_Type_Base extends SN_Meta_Helper {
 			'order'          => 'DESC',
 			'orderby'        => 'date',
 		);
-		$query_args      = array_merge( $default_query_args, $custom_query_args );
-		$transient_title = $this->_custom_transient_title( $query_args );
-
-		// $transient = ( $this->is_localhost() ) ? false : get_transient( $transient_title );
-		$transient = get_transient( $transient_title );
-		// $transient = false;
-		if ( $transient ) {
-			if ( $query_object ) {
-				$query = $transient;
-				$post  = $query->get_posts();
-			} else {
-				$posts = $transient;
-			} // if/else()
-
-		} else {
-			$query = new WP_Query( $query_args );
-			$posts = $query->get_posts();
-
-			// Set all transients as an option value so we have
-			// access them to reset them when a post is saved
-			$transient_titles = get_option( $this->_transient_title_option, array() );
-			$current_titles   = ( ! empty( $transient_titles ) ) ? $transient_titles[$this->post_type] : null;
-			if ( isset( $current_titles ) ) {
-				$new_title                          = array( $transient_title );
-				$transient_titles[$this->post_type] = array_merge( $current_titles, $new_title );
-				$transient_titles[$this->post_type] = array_unique( $transient_titles[$this->post_type] );
-				$transient_titles[$this->post_type] = array_filter( $transient_titles[$this->post_type] );
-			} else {
-				$transient_titles[$this->post_type] = array( $transient_title );
-			} // if()
-			update_option( $this->_transient_title_option, $transient_titles );
-
-			// Set transient
-			if ( $query_object ) {
-				set_transient( $transient_title, $query, $this->transient_expiry );
-			} else {
-				set_transient( $transient_title, $posts, $this->transient_expiry );
-			} // if/else()
-		} // if/else()
+		$query_args = array_merge( $default_query_args, $custom_query_args );
+		$query      = new WP_Query( $query_args );
+		$posts      = $query->get_posts();
 
 		if ( $query_object ) {
 			return $query;
@@ -687,32 +651,6 @@ class SN_Type_Base extends SN_Meta_Helper {
 		return $posts;
 	} // get_posts()
 
-
-	/**
-	 * Retrieves the responsive image.
-	 * Requires responsive images plugin to be activated in Grunt uglify config.
-	 *
-	 * <code>
-	 * <?php $resp_image = $sn_stub->get_responsive_image( get_the_id(), 'some_image', null, true, array( 'title' => 'My title image' ) ); ?>
-	 * </code>
-	 *
-	 * @see https://github.com/kvendrik/responsive-images.js
-	 *
-	 * @uses SN_Images()
-	 *
-	 * @param   integer $src_id       The attachment ID or the post ID to get the featured image from.
-	 * @param   string  $base_title   The base title of your responsive image size set in SN_Images->set_image_sizes().
-	 * @param   string  $default_img  Optional, default image URL, defaults to the 'full' size image, used if Javascript is not supported.
-	 * @param   boolean $echo         Optional, to output the responsive image, default true.
-	 * @param   array   $attrs        Optional, HTML attributes to add to the img tag.
-	 *
-	 * @return string                  The responsive image HTML with no script fall back.
-	 */
-	public function get_responsive_image( $src_id, $base_title, $default_img = null, $echo = true, $attrs = array() ) {
-		global $sn_images;
-
-		return $sn_images->get_responsive_image( $src_id, $base_title, $default_img, $echo, $attrs );
-	} // get_responsive_image()
 
 
 	/**
