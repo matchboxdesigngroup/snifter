@@ -32,7 +32,6 @@ $directories['includes'] = array(
 // Base classes
 $directories['classes']  = array(
 	'class-sn-utilities',
-	'class-sn-form-fields',
 	'class-sn-images',
 	'class-sn-type-base',
 	'class-sn-theme-wrapper',
