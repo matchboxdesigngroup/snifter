@@ -22,9 +22,12 @@ add_action( 'after_setup_theme', function() {
 		foreach ( $files as $file ) {
 			$has_php  = ( strpos( $file, '.php' ) !== false );
 			$file     = ( $has_php ) ? $file : "{$file}.php";
-			$template = locate_template( "/{$directory}/{$file}" );
+			$template = get_stylesheet_directory() . "/{$directory}/{$file}";
 
-			if ( $template == '' ) continue;
+			// Make sure the file exists.
+			if ( false === file_exists( $template ) ) {
+				continue;
+			} // if()
 
 			require_once $template;
 		} // foreach()
