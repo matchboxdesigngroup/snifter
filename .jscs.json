@@ -1,0 +1,55 @@
+{
+	"requireCurlyBraces": [ "if", "else", "for", "while", "do", "try", "catch" ],
+	"requireAlignedObjectValues": "all",
+	"disallowQuotedKeysInObjects": true,
+	"requireOperatorBeforeLineBreak": true,
+	"requireParenthesesAroundIIFE": true,
+	"requireCommaBeforeLineBreak": true,
+	"requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+	"requireDotNotation": "except_snake_case",
+	"requireSpacesInForStatement": true,
+	"requireSpaceBetweenArguments": true,
+	"validateQuoteMarks": {
+		"mark": "'",
+		"escape": true
+	},
+	"disallowMixedSpacesAndTabs": "smart",
+	"disallowTrailingWhitespace": true,
+	"disallowMultipleLineStrings": true,
+	"requireSpaceBeforeBlockStatements": true,
+	"requireSpacesInFunctionExpression": {
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpacesInsideParentheses": "all",
+	"requireSpaceAfterKeywords": [ "if", "else", "for", "while", "do", "switch", "return", "try", "catch" ],
+	"requireSpacesInsideObjectBrackets": "all",
+	"requireSpacesInsideBrackets": true,
+	"requireSemicolons": true,
+	"requireSpacesInConditionalExpression": true,
+	"requireSpaceAfterBinaryOperators": true,
+	"requireLineFeedAtFileEnd": true,
+	"requireSpaceBeforeBinaryOperators": [ "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=", "&=", "|=", "^=", "+=", "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&", "|", "^", "&&", "||", "===", "==", ">=", "<=", "<", ">", "!=", "!==" ],
+	"requireSpacesInAnonymousFunctionExpression": {
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpacesInNamedFunctionExpression": {
+		"beforeOpeningCurlyBrace": true
+	},
+	"requirePaddingNewLinesBeforeLineComments": true,
+	"validateLineBreaks": "LF",
+	"disallowKeywords": [ "with" ],
+	"disallowKeywordsOnNewLine": [ "else" ],
+	"disallowSpacesInFunctionExpression": {
+		"beforeOpeningRoundBrace": true
+	},
+	"disallowSpacesInNamedFunctionExpression": {
+		"beforeOpeningRoundBrace": true
+	},
+	"disallowSpacesInAnonymousFunctionExpression": {
+		"beforeOpeningRoundBrace": true
+	},
+	"disallowSpaceAfterPrefixUnaryOperators": true,
+	"disallowSpaceBeforePostfixUnaryOperators": true,
+	"disallowSpaceBeforeBinaryOperators": [ ",", ":" ],
+	"disallowMultipleLineBreaks": true
+}

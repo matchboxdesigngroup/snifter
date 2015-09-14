@@ -1,0 +1,64 @@
+# Explanations: https://github.com/brigade/scss-lint/blob/master/lib/scss_lint/linter/README.md
+#
+# Some things may need to change on a project per project basis ONLY if a plugin requires it.
+# Try to change the severity to warning, exclude the file, or move it to _shame.scss
+linters:
+
+  IdSelector:
+    enabled: true
+    severity: warning
+
+  ImportantRule:
+    enabled: true
+    severity: warning
+
+  Indentation:
+    enabled: true
+    allow_non_nested_indentation: false
+    character: tab
+    width: 1
+
+  MergeableSelector:
+    enabled: true
+    force_nesting: true
+    severity: warning
+
+  NameFormat:
+    enabled: true
+    allow_leading_underscore: true
+    convention: hyphenated_lowercase
+    severity: warning
+
+  NestingDepth:
+    enabled: true
+    max_depth: 3
+    ignore_parent_selectors: false
+    severity: warning
+
+  PlaceholderInExtend:
+    enabled: true
+    severity: warning
+
+  PropertyCount:
+    enabled: true
+    include_nested: false
+    max_properties: 10
+    severity: warning
+
+  PropertySortOrder:
+    enabled: false
+
+  QualifyingElement:
+    enabled: true
+    allow_element_with_attribute: true
+
+  SelectorFormat:
+    enabled: true
+    convention: hyphenated_lowercase
+    severity: warning
+
+  VariableForProperty:
+    enabled: true
+    properties:
+      - color
+      - font
