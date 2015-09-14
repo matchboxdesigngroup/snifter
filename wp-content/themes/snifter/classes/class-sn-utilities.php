@@ -32,7 +32,7 @@ class SN_Utilities {
 	/**
 	 * Checks the current host against the supplied hosts.
 	 *
-	 * @param   array    $http_hosts  The possible hosts to check against.
+	 * @param   array $http_hosts  The possible hosts to check against.
 	 *
 	 * @return  boolean               True if the current host matches any of the supplied hosts, false if not.
 	 */
@@ -59,8 +59,7 @@ class SN_Utilities {
 	/**
 	 * Checks if the current HTTP host is localhost.
 	 * Default possible HTTP hosts http://localhost, 127.0.0.1, 10.0.0.2, http://*.dev.
- 	 *
- 	 *
+	 *
 	 * <code>
 	 * if ( $sn_utilities->is_localhost() ) {
 	 *  // Do something localhost specific...
@@ -128,13 +127,13 @@ class SN_Utilities {
 	 *
 	 * @since   Snifter 1.0.0
 	 *
-	 * @param   string   $slug  The slug of the page/post/custom post type you want an ID for.
+	 * @param   string $slug  The slug of the page/post/custom post type you want an ID for.
 	 *
 	 * @return  integer         The ID of the page/post/custom post type
 	 */
 	public function get_id_by_slug( $slug ) {
 		$page = get_page_by_path( $slug );
-		if ( $page ){
+		if ( $page ) {
 			return $page->ID;
 		} // if()
 
@@ -146,7 +145,7 @@ class SN_Utilities {
 	/**
 	 * Retrieves the YouTube video ID from the supplied embed code
 	 *
-	 * @param string  $embed YouTube embed code
+	 * @param string $embed YouTube embed code
 	 *
 	 * @return string        The YouTube video id.
 	 */
@@ -164,7 +163,7 @@ class SN_Utilities {
 	/**
 	 * Get attachment ID from SRC URL.
 	 *
-	 * @param string  $attachment_url Absolute URI to an attachment
+	 * @param string $attachment_url Absolute URI to an attachment
 	 *
 	 * @return integer Post ID
 	 */
@@ -180,8 +179,8 @@ class SN_Utilities {
 	/**
 	 * Sets a default value for a variable.
 	 *
-	 * @param   mixed  $check_value    The value to check if it is set.
-	 * @param   mixed  $default_value  The default value to be used if $check_value has not already been set.
+	 * @param   mixed $check_value    The value to check if it is set.
+	 * @param   mixed $default_value  The default value to be used if $check_value has not already been set.
 	 *
 	 * @return  mixed                   The $check_value if it is set and the $default_value if not.
 	 */

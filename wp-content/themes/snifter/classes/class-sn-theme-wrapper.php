@@ -71,7 +71,7 @@ class SN_Theme_Wrapper {
 	/**
 	 * Class constructor.
 	 *
-	 * @param  string  $template  The template.
+	 * @param  string $template  The template.
 	 */
 	public function __construct( $template = 'base.php' ) {
 		$this->_slug      = basename( $template, '.php' );
@@ -103,9 +103,9 @@ class SN_Theme_Wrapper {
 	 *
 	 * <code><?php add_filter( 'template_include', array( 'SN_Theme_Wrapper', 'wrap' ), 99 ); ?></code>
 	 *
-	 * @param   [type]  $main  [description]
+	 * @param   string $main  The template to filter.
 	 *
-	 * @return  [type]         [description]
+	 * @return  string        The filtered template.
 	 */
 	static function wrap( $main ) {
 		self::$main_template = $main;

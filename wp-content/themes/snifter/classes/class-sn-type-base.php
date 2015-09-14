@@ -184,8 +184,8 @@ class SN_Type_Base extends SN_Meta_Helper {
 		parent::__construct();
 
 		// First make sure the sub class has the required properties
-		if ( ! $this->_passed_config_test() )
-			return false;
+		if ( ! $this->_passed_config_test() ) {
+			return false; }
 
 		$this->_set_parameters();
 		$this->_type_base_add_actions();
@@ -200,41 +200,32 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 * @todo Make this cleaner
 	 */
 	private function _set_parameters() {
-		$transient_expiry             = ( isset( $this->transient_expiry ) ) ? $this->transient_expiry : ( 3 * HOUR_IN_SECONDS );
-		$post_type_args               = ( isset( $this->_post_type_args ) ) ? $this->_post_type_args : array();
-		$this->taxonomy_name          = ( isset( $this->taxonomy_name ) ) ? $this->taxonomy_name : "{$this->post_type}-categories";
-		$taxonomy_labels              = ( isset( $this->custom_taxonomy_labels ) ) ? $this->custom_taxonomy_labels : array();
-		$taxonomy_args                = ( isset( $this->_taxonomy_args ) ) ? $this->_taxonomy_args: array();
-		$custom_post_type_args        = ( isset( $this->custom_post_type_args ) ) ? $this->custom_post_type_args : array();
-		$custom_post_type_labels      = ( isset( $this->custom_post_type_labels ) ) ? $this->custom_post_type_labels : array();
-		$custom_taxonomy_args         = ( isset( $this->custom_taxonomy_args ) ) ? $this->custom_taxonomy_args : array();
-		$custom_post_type_supports    = ( isset( $this->custom_post_type_supports ) ) ? $this->custom_post_type_supports : array();
-		$disable_image_column         = ( isset( $this->disable_image_column ) ) ? $this->disable_image_column : false;
-		$disable_post_type_categories = ( isset( $this->disable_post_type_categories ) ) ? $this->disable_post_type_categories : false;
+		// Taxonomy Properties
+		$this->_taxonomy_args         = $this->set_default( $this->_taxonomy_args, array() );
+		$this->custom_taxonomy_labels = $this->set_default( $this->custom_taxonomy_labels, array() );
+		$this->custom_taxonomy_args   = $this->set_default( $this->custom_taxonomy_args, array() );
+		$this->taxonomy_name          = $this->set_default( $this->taxonomy_name, "{$this->post_type}-categories" );
+		$this->set_taxonomy_args( $this->custom_taxonomy_args );
+		$this->disable_post_type_categories = $this->set_default( $this->disable_post_type_categories, false );
 
-		// Set class properties
-		$this->transient_expiry             = $transient_expiry;
-		$this->_post_type_args              = $post_type_args;
-		$this->custom_taxonomy_labels       = $taxonomy_labels;
-		$this->_taxonomy_args               = $taxonomy_args;
-		$this->custom_post_type_args        = $custom_post_type_args;
-		$this->custom_post_type_labels      = $custom_post_type_labels;
-		$this->disable_post_type_categories = $disable_post_type_categories;
-		$this->custom_taxonomy_args         = $custom_taxonomy_args;
-		$this->custom_post_type_supports    = $custom_post_type_supports;
-		$this->disable_image_column         = $disable_image_column;
+		// Post Type
+		$this->_post_type_args           = $this->set_default( $this->_post_type_args, array() );
+		$this->custom_post_type_args     = $this->set_default( $this->custom_post_type_args, array() );
+		$this->custom_post_type_labels   = $this->set_default( $this->custom_post_type_labels, array() );
+		$this->custom_post_type_supports = $this->set_default( $this->custom_post_type_supports, array() );
 		$this->set_post_type_supports( $this->custom_post_type_supports );
 		$this->set_post_type_args( $this->custom_post_type_args );
-		$this->set_taxonomy_args( $this->custom_taxonomy_args );
+
+		// General
+		$this->disable_image_column = $this->set_default( $this->disable_image_column, false );
+		$this->transient_expiry     = $this->set_default( $this->transient_expiry, ( 3 * HOUR_IN_SECONDS ) );
 	} // _set_parameters()
 
 
 
 	/**
 	 * This method runs after __construct() just a way for sub classes to run custom
-	 * initialization stuff while still inheriting the constructor from this class
-	 *
-	 * @return Void
+	 * initialization stuff while still inheriting the constructor from this class.
 	 */
 	public function init() {
 		// Overwrite/Extend in Sub-classes do not add anything here!
@@ -245,15 +236,11 @@ class SN_Type_Base extends SN_Meta_Helper {
 
 	/**
 	 * Actions that need to be set for this base class only using add_action()
-	 * sub-classes will need to set there own actions without overriding this method
-	 *
-	 *
-	 * @return Void
+	 * sub-classes will need to set there own actions without overriding this method.
 	 */
 	private function _type_base_add_actions() {
 		// Enable "Links" post type
 		// add_filter( 'pre_option_link_manager_enabled', '__return_true' );
-
 		// hook to create post_type
 		add_action( 'init', array( &$this, 'register_post_type' ) );
 
@@ -269,9 +256,8 @@ class SN_Type_Base extends SN_Meta_Helper {
 	/**
 	 * Checks if the current post type is the correct post type.
 	 *
-	 *
-	 * @param  string   $post_type   The post type name to check against
-	 * @param  boolean  $admin_only  Optional, if it should only check in the admin, default tue.
+	 * @param  string  $post_type   The post type name to check against
+	 * @param  boolean $admin_only  Optional, if it should only check in the admin, default tue.
 	 *
 	 * @return boolean If the post type is correct.
 	 */
@@ -300,7 +286,7 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 *
 	 * @uses http://codex.wordpress.org/Function_Reference/wp_kses_allowed_html
 	 *
-	 * @param string  $context  The context to retrieve the tags in.
+	 * @param string $context  The context to retrieve the tags in.
 	 *
 	 * @return array Allowed HTML tags.
 	 */
@@ -326,7 +312,7 @@ class SN_Type_Base extends SN_Meta_Helper {
 			'id'       => array(),
 			'class'    => array(),
 			'style'    => array(),
-			'multiple' => array()
+			'multiple' => array(),
 		);
 		$allowed_tags['span'] = array(
 			'class' => array(),
@@ -346,8 +332,6 @@ class SN_Type_Base extends SN_Meta_Helper {
 
 	/**
 	 * Column filter for featured image.
-	 *
-	 * @return void
 	 */
 	private function _add_image_column_action() {
 		if ( $this->disable_image_column ) {
@@ -402,9 +386,7 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 * Grab featured-thumbnail size post thumbnail and display it.
 	 *
 	 * @param array   $col  Current post table columns.
-	 * @param integer $id   The current post ID.
-	 *
-	 * @return Void
+	 * @param integer $id   The current post ID..
 	 */
 	function display_thumbnail_column( $col, $id ) {
 		global $sn_thumbnail_column_image_ids;
@@ -431,12 +413,11 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 * the class will halt and produce a warning instead of throwing an
 	 * error.
 	 *
-	 *
 	 * @return bool If all required properties are set TRUE is returned
 	 */
 	private function _passed_config_test() {
-		if ( ! is_subclass_of( $this, 'SN_Type_Base' ) )
-			return false;
+		if ( ! is_subclass_of( $this, 'SN_Type_Base' ) ) {
+			return false; }
 
 		$errors = array();
 		$required_properties = array(
@@ -446,15 +427,15 @@ class SN_Type_Base extends SN_Meta_Helper {
 		);
 
 		foreach ( $required_properties as $property_name => $property ) {
-			if ( is_null( $property ) )
-				$errors[] = "Property {$property_name} has not been set in your sub-class.\n";
+			if ( is_null( $property ) ) {
+				$errors[] = "Property {$property_name} has not been set in your sub-class.\n"; }
 		} // foreach()
 
 		if ( empty( $errors ) ) {
 			return true;
 		} else {
-			foreach ( $errors as $error )
-				echo esc_html( $error );
+			foreach ( $errors as $error ) {
+				echo esc_html( $error ); }
 		} // if/each()
 
 		return false;
@@ -467,7 +448,7 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/post_type_supports
 	 *
-	 * @param array  $custom_post_type_supports  What the current post type should support.
+	 * @param array $custom_post_type_supports  What the current post type should support.
 	 *
 	 * @return                                   Void
 	 */
@@ -499,14 +480,12 @@ class SN_Type_Base extends SN_Meta_Helper {
 
 
 	/**
-	 * Registers the post type and a custom taxonomy for the post type.
-	 *
-	 * @return Void
+	 * Registers the post type and a custom taxonomy for the post type..
 	 */
 	public function register_post_type() {
 		// make sure the post type info is set - none of this will work without it!
-		if ( is_null( $this->post_type ) or is_null( $this->post_type_title ) or is_null( $this->post_type_single ) )
-			return false;
+		if ( is_null( $this->post_type ) or is_null( $this->post_type_title ) or is_null( $this->post_type_single ) ) {
+			return false; }
 
 		// Register post type
 		register_post_type( $this->post_type, $this->_post_type_args );
@@ -527,7 +506,6 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 * Sets the arguments used for registering the post type with register_post_type()
 	 *
 	 * @param  array $custom_post_type_args Optional. Anything acceptable in the $args parameter for register_post_type() http://codex.wordpress.org/Function_Reference/register_post_type
-	 *
 	 */
 	public function set_post_type_args( $custom_post_type_args = array() ) {
 		$lowercase_post_type_title  = strtolower( $this->post_type_title );
@@ -574,8 +552,7 @@ class SN_Type_Base extends SN_Meta_Helper {
 	/**
 	 * Sets the taxonomy args when registering a taxonomy using register_taxonomy()
 	 *
-	 * @param array   $custom_taxonomy_args Optional. Anything acceptable in the $args parameter for register_taxonomy() http://codex.wordpress.org/Function_Reference/register_taxonomy
-	 *
+	 * @param array $custom_taxonomy_args Optional. Anything acceptable in the $args parameter for register_taxonomy() http://codex.wordpress.org/Function_Reference/register_taxonomy
 	 */
 	public function set_taxonomy_args( $custom_taxonomy_args = array() ) {
 		// Taxonomy labels
@@ -644,7 +621,6 @@ class SN_Type_Base extends SN_Meta_Helper {
 		// $transient = ( $this->is_localhost() ) ? false : get_transient( $transient_title );
 		$transient = get_transient( $transient_title );
 		// $transient = false;
-
 		if ( $transient ) {
 			if ( $query_object ) {
 				$query = $transient;
@@ -699,11 +675,11 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 *
 	 * @uses SN_Images()
 	 *
-	 * @param   integer  $src_id       The attachment ID or the post ID to get the featured image from.
-	 * @param   string   $base_title   The base title of your responsive image size set in SN_Images->set_image_sizes().
-	 * @param   string   $default_img  Optional, default image URL, defaults to the 'full' size image, used if Javascript is not supported.
-	 * @param   boolean  $echo         Optional, to output the responsive image, default true.
-	 * @param   array    $attrs        Optional, HTML attributes to add to the img tag.
+	 * @param   integer $src_id       The attachment ID or the post ID to get the featured image from.
+	 * @param   string  $base_title   The base title of your responsive image size set in SN_Images->set_image_sizes().
+	 * @param   string  $default_img  Optional, default image URL, defaults to the 'full' size image, used if Javascript is not supported.
+	 * @param   boolean $echo         Optional, to output the responsive image, default true.
+	 * @param   array   $attrs        Optional, HTML attributes to add to the img tag.
 	 *
 	 * @return string                  The responsive image HTML with no script fall back.
 	 */
@@ -715,9 +691,7 @@ class SN_Type_Base extends SN_Meta_Helper {
 
 
 	/**
-	 * Resets the transient data by deleting the transient data
-	 *
-	 * @return Void
+	 * Resets the transient data by deleting the transient data.
 	 */
 	public function reset_transient() {
 		$transient_type = $this->_get_all_cached_attachment_transient_ids();
@@ -733,14 +707,15 @@ class SN_Type_Base extends SN_Meta_Helper {
 	/**
 	 * Sets the custom transient title.
 	 *
-	 * @param  array   $query_args   The query arguments for WP_Query.
+	 * @param  array $query_args   The query arguments for WP_Query.
 	 *
 	 * @return string             Custom transient value.
 	 */
 	private function _custom_transient_title( $query_args ) {
 		$flattened_array = array();
 
-		$flatten_array = array_walk_recursive( $query_args, function( $key, $value) use (&$flattened_array) { $flattened_array[$key] = $value; } );
+		$flatten_array = array_walk_recursive( $query_args, function( $key, $value) use (&$flattened_array) { $flattened_array[$key] = $value;
+		} );
 		$keys          = implode( '', array_keys( $flattened_array ) );
 		$values        = implode( '' , $flattened_array );
 		$transient_id  = md5( "{$keys}{$values}" );
@@ -756,7 +731,7 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 *
 	 * <code>$this->_get_all_cached_attachment_transient_ids();</code>
 	 *
-	 * @param   string  $prefix  Optional, the transient id prefix to search for default _sn.
+	 * @param   string $prefix  Optional, the transient id prefix to search for default _sn.
 	 *
 	 * @return  array            All of the current transient IDs.
 	 */
@@ -788,10 +763,10 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 *
 	 * @link http://codex.wordpress.org/Class_Reference/WP_Query
 	 *
-	 * @param   integer  $post_id             Optional, post id defaults to current post.
-	 * @param   array    $custom_query_args   Optional, custom query arguments excepts anything WP_Query does.
-	 * @param   boolean  $only_images         Optional, only return images.
-	 * @param   array    $allowed_file_types  Optional, restricts allowed file types.
+	 * @param   integer $post_id             Optional, post id defaults to current post.
+	 * @param   array   $custom_query_args   Optional, custom query arguments excepts anything WP_Query does.
+	 * @param   boolean $only_images         Optional, only return images.
+	 * @param   array   $allowed_file_types  Optional, restricts allowed file types.
 	 *
 	 * @return array                           The attachments for the post.
 	 */
@@ -841,7 +816,7 @@ class SN_Type_Base extends SN_Meta_Helper {
 	 *
 	 * @link http://codex.wordpress.org/Class_Reference/WP_Query
 	 *
-	 * @param   array    $custom_query_args   Optional, custom query arguments excepts anything WP_Query does.
+	 * @param   array $custom_query_args   Optional, custom query arguments excepts anything WP_Query does.
 	 *
 	 * @return Retrieved post objects.
 	 */

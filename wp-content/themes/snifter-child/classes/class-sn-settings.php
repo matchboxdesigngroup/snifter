@@ -53,7 +53,7 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 		 *
 		 * @since  0.2.3
 		 *
-		 * @param  array  $config  Class configuration.
+		 * @param  array $config  Class configuration.
 		 */
 		public function __construct( $config = array() ) {
 			parent::__construct();
@@ -77,7 +77,7 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 		 *
 		 * @param   string  $key            The setting to retrieve.
 		 * @param   string  $default        Optional, default value to return if option does not exists, default empty string.
-		 * @param   boolean  $force_update  Optional, to force update check of the options instead of stored value, default false.
+		 * @param   boolean $force_update  Optional, to force update check of the options instead of stored value, default false.
 		 *
 		 * @return  mixed             The option if it exists or the value of $default.
 		 */
@@ -100,7 +100,7 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 		 *
 		 * @since   0.2.3
 		 *
-		 * @param   array  $settings_group  The settings group to retrieve fields for.
+		 * @param   array $settings_group  The settings group to retrieve fields for.
 		 *
 		 * @return  array                   The setting fields for the specified group.
 		 */
@@ -291,22 +291,21 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 
 			// Chosen Select Multi (Does not save correctly)
 			// $settings_fields[] = array(
-			// 	'label'   => 'Chosen Select Multi',
-			// 	'desc'    => 'Chosen select multi description.',
-			// 	'id'      => "{$prefix}_chosen_select_multi",
-			// 	'type'    => 'chosen_select_multi',
-			// 	'options' => array(
-			// 		array(
-			// 			'value' => 'value_1',
-			// 			'label' => 'Label 1',
-			// 		),
-			// 		array(
-			// 			'value' => 'value_2',
-			// 			'label' => 'Label 2',
-			// 		),
-			// 	),
+			// 'label'   => 'Chosen Select Multi',
+			// 'desc'    => 'Chosen select multi description.',
+			// 'id'      => "{$prefix}_chosen_select_multi",
+			// 'type'    => 'chosen_select_multi',
+			// 'options' => array(
+			// array(
+			// 'value' => 'value_1',
+			// 'label' => 'Label 1',
+			// ),
+			// array(
+			// 'value' => 'value_2',
+			// 'label' => 'Label 2',
+			// ),
+			// ),
 			// );
-
 			// Date
 			$settings_fields[] = array(
 				'label' => 'Date',
@@ -332,12 +331,11 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 			// WYSIWG Editor
 			// You have to use html_entity_decode() when outputting the setting.
 			// $settings_fields[] = array(
-			// 	'label' => 'WYSIWG Editor',
-			// 	'desc'  => 'WYSIWG Editor description.',
-			// 	'id'    => "{$prefix}_wysiwg_editor",
-			// 	'type'  => 'wysiwg_editor',
+			// 'label' => 'WYSIWG Editor',
+			// 'desc'  => 'WYSIWG Editor description.',
+			// 'id'    => "{$prefix}_wysiwg_editor",
+			// 'type'  => 'wysiwg_editor',
 			// );
-
 			return $settings_fields;
 		} // _get_general_settings_fields()
 
@@ -432,7 +430,7 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 		 *
 		 * @since  0.2.3
 		 *
-		 * @param   string  $settings_group  The settings group the fields should be associated with.
+		 * @param   string $settings_group  The settings group the fields should be associated with.
 		 *
 		 * @return  void
 		 */
@@ -479,7 +477,7 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 		/**
 		 * Handles merging the new input options with the current options.
 		 *
-		 * @param   array  $inputs  The new submitted options.
+		 * @param   array $inputs  The new submitted options.
 		 *
 		 * @return  array           The merged options.
 		 */
@@ -534,7 +532,7 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 		 *
 		 * @todo   Figure out why whitelisting is not working...???
 		 *
-		 * @param   array  $input  Submitted settings fields.
+		 * @param   array $input  Submitted settings fields.
 		 *
 		 * @return  array          The validate settings fields.
 		 */
@@ -568,8 +566,8 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 		 *
 		 * @todo    Document input types.
 		 *
-		 * @param   array    $inputs  The input(s) information (id,label,value,type,attrs).
-		 * @param   boolean  $echo    Optional, if the inputs should be echoed out once built.
+		 * @param   array   $inputs  The input(s) information (id,label,value,type,attrs).
+		 * @param   boolean $echo    Optional, if the inputs should be echoed out once built.
 		 *
 		 * @return  string           The input(s) HTML.
 		 */
@@ -577,7 +575,6 @@ if ( ! class_exists( 'SN_Settings' ) ) {
 			$input_html   = '';
 			$allowed_tags = $this->get_form_kses_allowed_html();
 			$options      = get_option( $this->option_group, array() );
-
 
 			foreach ( $inputs as $input ) {
 				$id    = ( isset( $input['id'] ) ) ? $input['id'] : '';

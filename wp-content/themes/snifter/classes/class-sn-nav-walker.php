@@ -21,7 +21,7 @@ class SN_Nav_Walker extends Walker_Nav_Menu {
 	/**
 	 * Checks current navigation classes.
 	 *
-	 * @param   string  $classes  Current classes.
+	 * @param   string $classes  Current classes.
 	 *
 	 * @return  string            If the current classes container active or dropdown.
 	 */
@@ -92,16 +92,16 @@ class SN_Nav_Walker extends Walker_Nav_Menu {
 	 *
 	 * @see Walker::start_lvl()
 	 *
-	 * @param object  $element           Data object.
-	 * @param array   $children_elements List of elements to continue traversing.
-	 * @param int     $max_depth         Max depth to traverse.
-	 * @param int     $depth             Depth of current element.
-	 * @param array   $args              An array of arguments.
-	 * @param string  $output            Passed by reference. Used to append additional content.
+	 * @param object $element           Data object.
+	 * @param array  $children_elements List of elements to continue traversing.
+	 * @param int    $max_depth         Max depth to traverse.
+	 * @param int    $depth             Depth of current element.
+	 * @param array  $args              An array of arguments.
+	 * @param string $output            Passed by reference. Used to append additional content.
 	 * @return null                     Null on failure with no changes to parameters.
 	 */
 	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
-		$element->is_dropdown = ( ( !empty( $children_elements[$element->ID] ) && ( ( $depth + 1 ) < $max_depth || ( $max_depth === 0 ) ) ) );
+		$element->is_dropdown = ( ( ! empty( $children_elements[$element->ID] ) && ( ( $depth + 1 ) < $max_depth || ( $max_depth === 0 ) ) ) );
 
 		if ( $element->is_dropdown ) {
 			$element->classes[] = 'dropdown';
@@ -121,8 +121,8 @@ class SN_Nav_Walker extends Walker_Nav_Menu {
 /**
  * Removes the id="" on navigation menu items.
  *
- * @param   array   $classes  Current menu navigation classes.
- * @param   object  $item     Menu item.
+ * @param   array  $classes  Current menu navigation classes.
+ * @param   object $item     Menu item.
  *
  * @return  array            The menu navigation classes.
  */
@@ -148,22 +148,22 @@ add_filter( 'nav_menu_item_id', '__return_null' );
  * Remove the container.
  * Use SN_Nav_Walker() by default.
  *
- * @param   array   $args  wp_nav_menu arguments.
+ * @param   array $args  wp_nav_menu arguments.
  *
  * @return  array          wp_nav_menu arguments merged with defaults.
  */
 function sn_nav_menu_args( $args = array() ) {
 	$sn_nav_menu_args['container'] = false;
 
-	if ( !$args['items_wrap'] ) {
+	if ( ! $args['items_wrap'] ) {
 		$sn_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
 	} // if()
 
-	if ( current_theme_supports( 'bootstrap-top-navbar' ) && !$args['depth'] ) {
+	if ( current_theme_supports( 'bootstrap-top-navbar' ) && ! $args['depth'] ) {
 		$sn_nav_menu_args['depth'] = 2;
 	} // if()
 
-	if ( !$args['walker'] ) {
+	if ( ! $args['walker'] ) {
 		$sn_nav_menu_args['walker'] = new SN_Nav_Walker();
 	} // if()
 

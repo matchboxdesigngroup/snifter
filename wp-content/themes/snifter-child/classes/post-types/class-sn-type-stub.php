@@ -1,6 +1,8 @@
 <?php
 /**
  * SN Type Stub Class.
+ *
+ * @package Snifter
  */
 
 /**
@@ -16,7 +18,6 @@
  * any property that is optional has the defaults as an example.
  */
 
-
 /**
  * This class can be used as a starting point to add new post types.
  *
@@ -29,7 +30,7 @@ class SN_Type_Stub extends SN_Type_Base {
 	/**
 	 * Holds all the transient keys for the cache.
 	 *
-	 * @param  array
+	 * @var  array
 	 */
 	public $type_transients = array();
 
@@ -50,22 +51,32 @@ class SN_Type_Stub extends SN_Type_Base {
 	 * @var  string
 	 */
 	public $landing_page_template = 'template-stub.php';
+		/**
+		* The posts types slug.
+		*
+		* @var  string
+		*/
+		public $post_type = 'stub';
 
+		/**
+		* Title of post type.
+		*
+		* @var  string
+		*/
+		public $post_type_title = 'Stubs';
+
+		/**
+		* Siglular post type title.
+		*
+		* @var  string
+		*/
+		public $post_type_single = 'Stub';
 
 
 	/**
 	 * Class constructor, handles instantiation functionality for the class
 	 */
 	function __construct() {
-		/** @var string  REQUIRED slug for post type */
-		$this->post_type = 'stub';
-
-		/** @var string  REQUIRED title of post type */
-		$this->post_type_title = 'Stubs';
-
-		/** @var string  REQUIRED singular title */
-		$this->post_type_single = 'Stub';
-
 		// SN_Type_Base Properties.
 		$this->_set_sn_type_base_options();
 
@@ -74,6 +85,7 @@ class SN_Type_Stub extends SN_Type_Base {
 
 		parent::__construct();
 
+		// Add filters and actions.
 		$this->_add_type_actions_filters();
 	} // __construct()
 

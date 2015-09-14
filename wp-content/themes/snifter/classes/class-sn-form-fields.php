@@ -1,6 +1,8 @@
 <?php
 /**
  * Snifter Meta Form Fields Class.
+ *
+ * @package Snifter
  */
 
 /**
@@ -15,7 +17,7 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Class constructor
 	 *
-	 * @param array   $config Class configuration
+	 * @param array $config Class configuration.
 	 */
 	function __construct( $config = array() ) {
 		parent::__construct();
@@ -26,10 +28,10 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML hidden input field.
 	 *
-	 * @param string  $id    id attribute
-	 * @param string  $meta  meta value
+	 * @param string $id   Id attribute.
+	 * @param string $meta Meta value.
 	 *
-	 * @return string       The hidden input field and description
+	 * @return string      The hidden input field and description
 	 */
 	public function hidden_field( $id, $meta ) {
 		$attrs = array(
@@ -50,13 +52,13 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * @since   0.2.3
 	 *
-	 * @param   string  $id     The input fields ID value.
-	 * @param   string  $label  The text to be displayed in the label.
+	 * @param   string $id    The input fields ID value.
+	 * @param   string $label The text to be displayed in the label.
 	 *
-	 * @return  string          The label for the form input field.
+	 * @return  string        The label for the form input field.
 	 */
 	public function label( $id, $label ) {
-		if ( $label == '' ) {
+		if ( '' === $label ) {
 			return '';
 		} // if()
 
@@ -72,12 +74,12 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * @since   0.2.3
 	 *
-	 * @param   string  $description  The text to be displayed in the description.
+	 * @param   string $description The text to be displayed in the description.
 	 *
-	 * @return  string          The description for the form input field.
+	 * @return  string              The description for the form input field.
 	 */
 	public function description( $description ) {
-		if ( $description == '' ) {
+		if ( '' === $description ) {
 			return '';
 		} // if()
 
@@ -93,29 +95,29 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * @since   0.2.3
 	 *
-	 * @param   array   $defaults  The default attributes.
-	 * @param   array   $attrs     The supplied attributes
+	 * @param   array $defaults The default attributes.
+	 * @param   array $attrs    The supplied attributes.
 	 *
-	 * @return  string             The merged HTML element attributes.
+	 * @return  string          The merged HTML element attributes.
 	 */
 	public function merge_element_attributes( $defaults, $attrs ) {
-		if ( gettype( $defaults ) != 'array' or gettype( $attrs ) != 'array' ) {
+		if ( 'array' !== gettype( $defaults ) or 'array' !== gettype( $attrs ) ) {
 			return $attrs;
 		} // if()
 
-		// Merge the attributes together
+		// Merge the attributes together.
 		foreach ( $defaults as $key => $value ) {
-			if ( isset( $attrs[$key] ) ) {
-				$attrs[$key] = "{$attrs[$key]} {$value}";
+			if ( isset( $attrs[ $key ] ) ) {
+				$attrs[ $key ] = "{$attrs[ $key ]} {$value}";
 			} else {
-				$attrs[$key] = $value;
+				$attrs[ $key ] = $value;
 			} // if/else()
 		} // foreach()
 
-		// Flatten the attributes
+		// Flatten the attributes.
 		$input_attrs = array();
 		foreach ( $attrs as $attr => $attr_value ) {
-			$attr_value    = ( $attr == 'class' ) ? "{$attr_value} pull-left" : $attr_value;
+			$attr_value    = ( 'class' === $attr ) ? "{$attr_value} pull-left" : $attr_value;
 			$input_attrs[] = esc_attr( "{$attr}={$attr_value}" );
 		} // foreach()
 		$input_attrs = trim( implode( ' ', $input_attrs ) );
@@ -170,7 +172,7 @@ class SN_Form_Fields extends SN_Utilities {
 			'id'       => array(),
 			'class'    => array(),
 			'style'    => array(),
-			'multiple' => array()
+			'multiple' => array(),
 		);
 		$allowed_tags['span'] = array(
 			'class' => array(),
@@ -191,10 +193,10 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML text field and description.
 	 *
-	 * @param string  $id    id attribute
-	 * @param string  $meta  meta value
-	 * @param string  $desc  description
-	 * @param array   $attrs Input attributes.
+	 * @param string $id    Id attribute.
+	 * @param string $meta  Meta value.
+	 * @param string $desc  Description.
+	 * @param array  $attrs Optional, input attributes. Default none.
 	 *
 	 * @return string       The text field and description
 	 */
@@ -218,9 +220,10 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML email field and description.
 	 *
-	 * @param string  $id   id attribute
-	 * @param string  $meta meta value
-	 * @param string  $desc description
+	 * @param string $id    Id attribute.
+	 * @param string $meta  Meta value.
+	 * @param string $desc  Description.
+	 * @param array  $attrs Optional, input attributes. Default none.
 	 *
 	 * @return string       The email field and description
 	 */
@@ -235,9 +238,10 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML number field and description.
 	 *
-	 * @param string  $id   id attribute
-	 * @param string  $meta meta value
-	 * @param string  $desc description
+	 * @param string $id    Id attribute.
+	 * @param string $meta  Meta value.
+	 * @param string $desc  Description.
+	 * @param array  $attrs Optional, input attributes. Default none.
 	 *
 	 * @return string       The number field and description
 	 */
@@ -252,9 +256,10 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML URL field and description.
 	 *
-	 * @param string  $id   id attribute
-	 * @param string  $meta meta value
-	 * @param string  $desc description
+	 * @param string $id    Id attribute.
+	 * @param string $meta  Meta value.
+	 * @param string $desc  Description.
+	 * @param array  $attrs Optional, input attributes. Default none.
 	 *
 	 * @return string       The URL field and description
 	 */
@@ -269,9 +274,10 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a color picker.
 	 *
-	 * @param string  $id   id attribute
-	 * @param string  $meta meta value
-	 * @param string  $desc description
+	 * @param string $id    Id attribute.
+	 * @param string $meta  Meta value.
+	 * @param string $desc  Description.
+	 * @param array  $attrs Optional, input attributes. Default none.
 	 *
 	 * @return string       The color picker and description
 	 */
@@ -286,9 +292,10 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML input field and description.
 	 *
-	 * @param string  $id       id attribute
-	 * @param string  $file_src meta value
-	 * @param string  $desc     description
+	 * @param string $id    Id attribute.
+	 * @param string $meta  Meta value.
+	 * @param string $desc  Description.
+	 * @param array  $attrs Optional, input attributes. Default none.
 	 *
 	 * @return string            The input field and description
 	 */
@@ -313,7 +320,7 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Retrieves file upload field thumbnails
 	 *
-	 * @param string  $file_src The files source url
+	 * @param string $file_src The files source url.
 	 *
 	 * @return string           The image HTML or an empty string
 	 */
@@ -321,15 +328,15 @@ class SN_Form_Fields extends SN_Utilities {
 		$file_id         = $this->get_attachment_id_from_src( $file_src );
 		$image_thumbnail = '';
 
-		if ( is_null( $file_id ) )
-			return '';
+		if ( is_null( $file_id ) ) {
+			return ''; }
 
-		if ( ! wp_attachment_is_image( $file_id ) )
-			return '';
+		if ( ! wp_attachment_is_image( $file_id ) ) {
+			return ''; }
 
 		$image_sizes = get_intermediate_image_sizes();
-		$width  = get_option( 'thumbnail' . '_size_w' );
-		$height = get_option( 'thumbnail' . '_size_h' );
+		$width  = get_option( 'thumbnail_size_w' );
+		$height = get_option( 'thumbnail_size_h' );
 
 		$image_thumbnail .= '<br>';
 		$image_thumbnail .= wp_get_attachment_image(
@@ -351,11 +358,12 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML textarea and description.
 	 *
-	 * @param string  $id   id attribute
-	 * @param string  $meta meta value
-	 * @param string  $desc description
+	 * @param string $id    Id attribute.
+	 * @param string $meta  Meta value.
+	 * @param string $desc  description.
+	 * @param array  $attrs Optional, input attributes. Default none.
 	 *
-	 * @return string            The input field and description
+	 * @return string       The input field and description
 	 */
 	public function textarea( $id, $meta, $desc, $attrs = array() ) {
 		$textarea  = '<textarea name="'.esc_attr( $id ).'" id="'.esc_attr( $id ).'" cols="55" rows="4">'.$meta.'</textarea>';
@@ -370,18 +378,19 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML checkbox and description.
 	 *
-	 * @param string  $id   id attribute
-	 * @param string  $meta meta value
-	 * @param string  $desc description
+	 * @param string $id    Id attribute.
+	 * @param string $meta  Meta value.
+	 * @param string $desc  Description.
+	 * @param array  $attrs Optional, input attributes. Default none.
 	 *
-	 * @return string            The input field and description
+	 * @return string       The input field and description
 	 */
 	public function checkbox( $id, $meta, $desc, $attrs = array() ) {
 		$attrs = array(
 			'type' => 'checkbox',
 		);
 
-		if ( $meta == 'on' )  {
+		if ( 'on' === $meta ) {
 			$attrs['checked'] = 'checked';
 		} // if()
 
@@ -395,24 +404,26 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML radio and description.
 	 *
-	 * @param string  $id      id attribute
-	 * @param string  $meta    meta value
-	 * @param string  $desc    description
-	 * @param array   $options select options
+	 * @param string $id      Id attribute.
+	 * @param string $meta    Meta value.
+	 * @param string $desc    Description.
+	 * @param array  $options Select options.
+	 * @param array  $attrs   Optional, input attributes. Default none.
 	 *
-	 * @return string            The input field and description
+	 * @return string         The input field and description
 	 */
 	public function radio( $id, $meta, $desc, $options, $attrs = array() ) {
 		$i     = 1;
 		$radio = '';
 		foreach ( $options as $option ) {
-			extract( $option );
+			$value = ( isset( $option['value'] ) ) ? $option['value'] : '';
+			$label = ( isset( $option['label'] ) ) ? $option['label'] : '';
 			$attrs = array(
 				'type' => 'radio',
 				'name' => $id,
 			);
 
-			if ( $value == $meta )  {
+			if ( $value === $meta ) {
 				$attrs['checked'] = 'checked';
 			} // if()
 
@@ -429,12 +440,13 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML select and description.
 	 *
-	 * @param string  $id      id attribute
-	 * @param string  $meta    meta value
-	 * @param string  $desc    description
-	 * @param array   $options select options
+	 * @param string $id      Id attribute.
+	 * @param string $meta    Meta value.
+	 * @param string $desc    Description.
+	 * @param array  $options Select options.
+	 * @param array  $attrs   Optional, input attributes. Default none.
 	 *
-	 * @return string            The input field and description
+	 * @return string       The input field and description.
 	 */
 	public function select( $id, $meta, $desc, $options, $attrs = array() ) {
 		$defaults = array(
@@ -451,11 +463,11 @@ class SN_Form_Fields extends SN_Utilities {
 			$value       = ( isset( $option['value'] ) ) ? $option['value'] : '';
 			$is_selected = false;
 
-			// Multi select will be an array and single will be a string
-			if ( gettype( $meta ) == 'array' ) {
+			// Multi select will be an array and single will be a string.
+			if ( 'array' === gettype( $meta ) ) {
 				$is_selected = in_array( $value, $meta );
-			} else if ( gettype( $meta ) == 'string' ) {
-				$is_selected = ( $value == $meta );
+			} else if ( 'string' === gettype( $meta ) ) {
+				$is_selected = ( $value === $meta );
 			} // if/else()
 
 			$selected = ( $is_selected ) ? ' selected="selected"' : '';
@@ -472,10 +484,11 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML chosen select and description.
 	 *
-	 * @param string  $id      id attribute
-	 * @param string  $meta    meta value
-	 * @param string  $desc    description
-	 * @param array   $options select options
+	 * @param string $id      Id attribute.
+	 * @param string $meta    Meta value.
+	 * @param string $desc    Description.
+	 * @param array  $options Select options.
+	 * @param array  $attrs   Optional, input attributes. Default none.
 	 *
 	 * @return string            The input field and description
 	 */
@@ -496,10 +509,11 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * @todo    Fix chosen multi not saving correctly.
 	 *
-	 * @param string  $id      id attribute
-	 * @param string  $meta    meta value
-	 * @param string  $desc    description
-	 * @param array   $options select options
+	 * @param string $id      Id attribute.
+	 * @param string $meta    Meta value.
+	 * @param string $desc    Description.
+	 * @param array  $options Select options.
+	 * @param array  $attrs   Optional, input attributes. Default none.
 	 *
 	 * @return string            The input field and description
 	 */
@@ -523,10 +537,11 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a date picker.
 	 *
-	 * @param string  $id           Id attribute.
-	 * @param string  $meta         Meta value.
-	 * @param string  $desc         Description.
-	 * @param string  $date_format  Optional, JavaScript date format default DD, MM d, yy.
+	 * @param string $id           Id attribute.
+	 * @param string $meta         Meta value.
+	 * @param string $desc         Description.
+	 * @param string $date_format  Optional, JavaScript date format default DD, MM d, yy.
+	 * @param array  $attrs        Optional, input attributes. Default none.
 	 *
 	 * @return string       The date picker and description
 	 */
@@ -546,10 +561,11 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a date picker, but will be saved as strtotime().
 	 *
-	 * @param string  $id           Id attribute.
-	 * @param string  $meta         Meta value.
-	 * @param string  $desc         Description.
-	 * @param string  $date_format  Optional, JavaScript date format default DD, MM d, yy.
+	 * @param string $id           Id attribute.
+	 * @param string $meta         Meta value.
+	 * @param string $desc         Description.
+	 * @param string $date_format  Optional, JavaScript date format default DD, MM d, yy.
+	 * @param array  $attrs        Optional, input attributes. Default none.
 	 *
 	 * @return string       The date picker and description
 	 */
@@ -559,7 +575,7 @@ class SN_Form_Fields extends SN_Utilities {
 			'class'       => 'sn-datepicker datepicker',
 		);
 
-		$meta       = ( $meta == '' ) ? $meta : date( 'F j, Y', $meta );
+		$meta       = ( '' === $meta ) ? $meta : date( 'F j, Y', $meta );
 		$datepicker = $this->text_field( $id, $meta, $desc, $attrs );
 
 		return $datepicker;
@@ -570,12 +586,12 @@ class SN_Form_Fields extends SN_Utilities {
 	/**
 	 * Creates a HTML text area WYSWIG editor and description.
 	 *
-	 * @param string  $id    id attribute
-	 * @param string  $meta  meta value
-	 * @param string  $desc  description
-	 * @param string  $args  Customize wp_editor arguments.
+	 * @param string $id    id attribute.
+	 * @param string $meta  meta value.
+	 * @param string $desc  description.
+	 * @param string $args  Optional, customize wp_editor arguments. Default none.
 	 *
-	 * @return string            The text area and description
+	 * @return string       The text area and description
 	 */
 	public function wysiwg_editor( $id, $meta, $desc = '', $args = array() ) {
 		$meta          = html_entity_decode( $meta );
@@ -606,31 +622,18 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * @todo Document and fix this method better.
 	 *
-	 * @param array   $args  The input field arguments.
-	 *
-	 * @return string The multi input field and description.
+	 * @param array $args  The input field arguments.
 	 */
 	public function multi_input_field( $args = array() ) {
-		// get the fields
+		// Get the fields.
 		$multi_fields = isset( $multi_fields ) ? $multi_fields : '';
 		$id           = isset( $id ) ? $id : '';
 		$description  = isset( $args['desc'] ) ? $args['desc'] : '';
 		$meta         = isset( $args['meta'] ) ? $args['meta'] : '';
 
-		$json_fields = '\''.json_encode( $multi_fields ).'\' ';
+		$json_fields = '\''.wp_json_encode( $multi_fields ).'\' ';
 		echo wp_kses( $description, 'post' );
-		echo '<div class="multi-input" id="'.$id.'_container">';
-		echo '<input '.
-			'type="text" '.
-			'style="display:none;"'.
-			'name="'.$id.'" '.
-			'id="'.$id.'" '.
-			'value="'.$meta.'" '.
-			'size="30" '.
-			'class="multi-input-field" '.   // JS will grab this class to start the magic
-		'data-field-id="'.$id.'" '.    // JS uses this to identify this multi-input field
-		'data-fields='.$json_fields.'" '.  // JS converts this to an object to manage the fields
-		'/>';
+		echo '<div class="multi-input" id="'.esc_attr( $id ).'_container">';
 		echo '</div>';
 	} // multi_input_field()
 
@@ -641,7 +644,9 @@ class SN_Form_Fields extends SN_Utilities {
 	 *
 	 * @since   0.2.3
 	 *
-	 * @param   boolean  Optional, if the form field should be output, default true.
+	 * @param   string  $field  The field key to select.
+	 * @param   string  $value  The fields value.
+	 * @param   boolean $echo   Optional, if the form field should be output, default true.
 	 *
 	 * @return  string  The form field HTML
 	 */

@@ -18,8 +18,8 @@ class SN_Walker_Comment extends Walker_Comment {
 	 * @see Walker_Comment::start_lvl()
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param int $depth Depth of comment.
-	 * @param array $args Uses 'style' argument for type of HTML list.
+	 * @param int    $depth Depth of comment.
+	 * @param array  $args Uses 'style' argument for type of HTML list.
 	 */
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$GLOBALS['comment_depth'] = $depth + 1; ?>
@@ -50,18 +50,18 @@ class SN_Walker_Comment extends Walker_Comment {
 	 *
 	 * @see SN_Walker_Comment::start_el()
 	 *
-	 * @param string   $output  Passed by reference. Used to append additional content.
-	 * @param object   $comment Comment data object.
-	 * @param int      $depth   Depth of comment in reference to parents.
-	 * @param array    $args    An array of arguments. @see wp_list_comments()
-	 * @param integer  $id      Comment ID.
+	 * @param string  $output  Passed by reference. Used to append additional content.
+	 * @param object  $comment Comment data object.
+	 * @param int     $depth   Depth of comment in reference to parents.
+	 * @param array   $args    An array of arguments. @see wp_list_comments()
+	 * @param integer $id      Comment ID.
 	 */
 	function start_el( &$output, $comment, $depth = 0, $args = array(), $id = 0 ) {
 		$depth++;
 		$GLOBALS['comment_depth'] = $depth;
 		$GLOBALS['comment'] = $comment;
 
-		if ( !empty( $args['callback'] ) ) {
+		if ( ! empty( $args['callback'] ) ) {
 			call_user_func( $args['callback'], $comment, $args, $depth );
 			return;
 		} // if()
@@ -86,7 +86,7 @@ class SN_Walker_Comment extends Walker_Comment {
 	 * @param array  $args    An array of arguments. @see wp_list_comments()
 	 */
 	function end_el( &$output, $comment, $depth = 0, $args = array() ) {
-		if ( !empty( $args['end-callback'] ) ) {
+		if ( ! empty( $args['end-callback'] ) ) {
 			call_user_func( $args['end-callback'], $comment, $args, $depth );
 			return;
 		}
@@ -101,7 +101,7 @@ class SN_Walker_Comment extends Walker_Comment {
  *
  * @see https://codex.wordpress.org/Function_Reference/get_avatar
  *
- * @param   string  $avatar  User avatar using get_avatar().
+ * @param   string $avatar  User avatar using get_avatar().
  *
  * @return  string           Avatar with Bootstrap classes.
  */

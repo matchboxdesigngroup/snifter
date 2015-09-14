@@ -47,8 +47,8 @@ class SN_Sidebar {
 	/**
 	 * Class constructor.
 	 *
-	 * @param  array  $conditionals  WordPress conditional tags to check against.
-	 * @param  array  $templates     Page template checks (via is_page_template())
+	 * @param  array $conditionals  WordPress conditional tags to check against.
+	 * @param  array $templates     Page template checks (via is_page_template())
 	 */
 	function __construct( $conditionals = array(), $templates = array() ) {
 		$this->conditionals = $conditionals;
@@ -67,7 +67,7 @@ class SN_Sidebar {
 	/**
 	 * Checks the supplied conditional tag.
 	 *
-	 * @param   string   $conditional_tag  The conditional tag to check against.
+	 * @param   string $conditional_tag  The conditional tag to check against.
 	 *
 	 * @return  boolean                    The conditional tag check result.
 	 */
@@ -84,7 +84,7 @@ class SN_Sidebar {
 	/**
 	 * Checks the supplied page template.
 	 *
-	 * @param   string   $page_template  Page template to check against.
+	 * @param   string $page_template  Page template to check against.
 	 *
 	 * @return  boolean                  The page template check result.
 	 */

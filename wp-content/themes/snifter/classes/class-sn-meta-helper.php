@@ -69,7 +69,7 @@ class SN_Meta_Helper extends SN_Form_Fields {
 			'id'       => array(),
 			'class'    => array(),
 			'style'    => array(),
-			'multiple' => array()
+			'multiple' => array(),
 		);
 		$allowed_tags['span'] = array(
 			'class' => array(),
@@ -91,8 +91,7 @@ class SN_Meta_Helper extends SN_Form_Fields {
 
 	/**
 	 * All action hooks that are required by the class using add_action.
-	 *
-	 * @return Void
+
 	 */
 	protected function _add_actions() {
 		if ( is_admin() ) {
@@ -170,20 +169,18 @@ class SN_Meta_Helper extends SN_Form_Fields {
 
 	/**
 	 * Removes unwanted meta boxes
-	 *
-	 * @return Void
 	 */
 	public function remove_metaboxes() {
 		// Remove from all post types
 		$post_types = get_post_types();
-		foreach ( $post_types as $post_type )
-			remove_meta_box( 'postcustom', $post_type, 'normal' );
+		foreach ( $post_types as $post_type ) {
+			remove_meta_box( 'postcustom', $post_type, 'normal' ); }
 
 		// Remove from specific post type
 		foreach ( $this->meta_boxes_to_remove as $meta_box ) {
 			extract( $meta_box );
-			if ( $id != '' and $context != '' and $page != '' )
-				remove_meta_box( $id, $page, $context );
+			if ( $id != '' and $context != '' and $page != '' ) {
+				remove_meta_box( $id, $page, $context ); }
 		} // foreach();
 	} // remove_metaboxes()
 
@@ -191,8 +188,6 @@ class SN_Meta_Helper extends SN_Form_Fields {
 
 	/**
 	 * Renames the featured image meta box.
-	 *
-	 * @return Void
 	 */
 	public function rename_featured_image_meta_box() {
 		$post_type_supports_thumbnail = post_type_supports( get_post_type(), 'thumbnail' );
@@ -225,7 +220,7 @@ class SN_Meta_Helper extends SN_Form_Fields {
 	 *  )
 	 * );
 	 *
-	 * @param array   $args [description]
+	 * @param array $args [description]
 	 *
 	 * @return [type]       [description]
 	 */
@@ -235,7 +230,7 @@ class SN_Meta_Helper extends SN_Form_Fields {
 		$allowed_tags = $this->get_meta_output_kses_allowed_html();
 
 		// Output description information
-		foreach ( $meta_fields as $field ){
+		foreach ( $meta_fields as $field ) {
 			if ( $field['type'] == 'info' ) {
 				echo wp_kses( $field['desc'], $allowed_tags );
 			} // if()
@@ -267,8 +262,8 @@ class SN_Meta_Helper extends SN_Form_Fields {
 	/**
 	 * Handles sanitizing the post meta value dependent of the field type.
 	 *
-	 * @param   string  $field_type  The field id/type.
-	 * @param   mixed   $value       The meta value to be sanitized.
+	 * @param   string $field_type  The field id/type.
+	 * @param   mixed  $value       The meta value to be sanitized.
 	 *
 	 * @return  mixed               The sanitized meta data.
 	 */
@@ -328,12 +323,12 @@ class SN_Meta_Helper extends SN_Form_Fields {
 
 		// verify nonce
 		$mb_nonce = isset( $_POST['custom_meta_box_nonce'] ) ? $_POST['custom_meta_box_nonce'] : '';
-		if ( ! wp_verify_nonce( $mb_nonce, basename( __FILE__ ) ) ){
+		if ( ! wp_verify_nonce( $mb_nonce, basename( __FILE__ ) ) ) {
 			return $post_id;
 		} // if()
 
 		// check autosave
-		if ( defined( 'DOING_AUTOSAVE' ) and DOING_AUTOSAVE ){
+		if ( defined( 'DOING_AUTOSAVE' ) and DOING_AUTOSAVE ) {
 			return $post_id;
 		} // if()
 
@@ -370,8 +365,8 @@ class SN_Meta_Helper extends SN_Form_Fields {
 	 * extract( $single_post_meta );
 	 * </code>
 	 *
-	 * @param   integer        $post_id  Optional post id, defaults to current post.
-	 * @param   string         $key      Optional meta key minus the post type, to return one meta value instead of all of them.
+	 * @param   integer $post_id  Optional post id, defaults to current post.
+	 * @param   string  $key      Optional meta key minus the post type, to return one meta value instead of all of them.
 	 *
 	 * @return string|array              Specific post meta value | All all post meta values.
 	 */
@@ -445,13 +440,11 @@ class SN_Meta_Helper extends SN_Form_Fields {
 
 	/**
 	 * Handles registering and generating the custom meta box.
-	 *
-	 * @return Void
 	 */
 	public function make_meta_box() {
 		$custom_meta_fields = $this->get_custom_meta_fields();
-		if ( empty( $custom_meta_fields ) )
-			return;
+		if ( empty( $custom_meta_fields ) ) {
+			return; }
 
 		add_meta_box(
 			"{$this->post_type}_id_meta_box", // $id
@@ -467,13 +460,11 @@ class SN_Meta_Helper extends SN_Form_Fields {
 
 	/**
 	 * Handles outputting of the meta box form.
-	 *
-	 * @return Void
 	 */
 	public function show_meta_box() {
 		$custom_meta_fields = $this->get_custom_meta_fields();
-		if ( empty( $custom_meta_fields ) )
-			return;
+		if ( empty( $custom_meta_fields ) ) {
+			return; }
 
 		global $post;
 		$this->make_form( array( 'meta_fields' => $custom_meta_fields ) );
@@ -484,9 +475,7 @@ class SN_Meta_Helper extends SN_Form_Fields {
 	/**
 	 * Handles the saving of custom meta.
 	 *
-	 * @param integer $post_id ID of the post that you wish to save custom meta for
-	 *
-	 * @return Void
+	 * @param integer $post_id ID of the post that you wish to save custom meta for.
 	 */
 	public function save_meta( $post_id ) {
 		$after_title_meta_fields = $this->get_custom_after_title_meta_fields();

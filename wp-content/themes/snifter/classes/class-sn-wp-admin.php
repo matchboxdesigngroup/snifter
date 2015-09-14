@@ -15,7 +15,7 @@ class SN_WP_Admin extends SN_Utilities {
 	/**
 	 * Class constructor
 	 *
-	 * @param array   $config Class configuration
+	 * @param array $config Class configuration
 	 */
 	public function __construct( $config = array() ) {
 		parent::__construct();
@@ -287,7 +287,7 @@ class SN_WP_Admin extends SN_Utilities {
 	/**
 	 * Make TinyMCE Editor Awesome.
 	 *
-	 * @param array   $init Tiny MCE initialization properties.
+	 * @param array $init Tiny MCE initialization properties.
 	 *
 	 * @return array       Tiny MCE initialization properties.
 	 */
@@ -312,7 +312,7 @@ class SN_WP_Admin extends SN_Utilities {
 	/**
 	 * Tiny MCE Buttons 2, adds the style drop down.
 	 *
-	 * @param array   $buttons Tiny MCE level 2 buttons.
+	 * @param array $buttons Tiny MCE level 2 buttons.
 	 *
 	 * @return array          Tiny MCE level 2 buttons.
 	 */
@@ -326,7 +326,7 @@ class SN_WP_Admin extends SN_Utilities {
 	/**
 	 * Adds a custom style drop down to Tiny MCE.
 	 *
-	 * @param array   $settings Tiny MCE settings.
+	 * @param array $settings Tiny MCE settings.
 	 *
 	 * @return array           Tiny MCE settings.
 	 */
@@ -353,7 +353,7 @@ class SN_WP_Admin extends SN_Utilities {
 	 * Forces the admin theme to use Midnight.
 	 * It has a red that works well for Matchbox.
 	 *
-	 * @param String  $result  User administrator color scheme.
+	 * @param String                                                   $result  User administrator color scheme.
 	 *
 	 * @param String           Our default administrator color scheme.
 	 */
