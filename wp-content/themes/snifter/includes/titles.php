@@ -40,7 +40,7 @@ function sn_title( $echo = true ) {
 			$title = single_cat_title( '', false );
 		}
 	} elseif ( is_search() ) {
-		$title = __( 'Portfolio Search Results', 'roots' );
+		$title = sprintf( __( 'Search Results for %s', 'roots' ), get_search_query() );
 	} elseif ( is_404() ) {
 		$title = __( 'Not Found', 'roots' );
 	} else {
